@@ -4,4 +4,5 @@
 format: jb-book
 root: intro
 chapters:
-- file: Reactive_Air_shock
+- file: code_structure.md
+- file: Specie_class_definition.ipynb
