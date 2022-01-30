@@ -53,7 +53,8 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Code structure" href="code_structure.html" />
+    <link rel="next" title="Reaction and sub-reaction classes" href="Reaction_class_definition.html" />
+    <link rel="prev" title="One temperature" href="1T_code_structure.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -97,15 +98,15 @@
   </a>
  </li>
 </ul>
+<p class="caption">
+ <span class="caption-text">
+  Code description
+ </span>
+</p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="code_structure.html">
-   Code structure
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Specie class definition
+  <a class="reference internal" href="1T_code_structure.html">
+   One temperature
   </a>
  </li>
 </ul>
@@ -218,11 +219,6 @@
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id1">
-   Specie class definition
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#specie-variables-definition">
    Specie variables definition
   </a>
@@ -253,11 +249,6 @@
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id1">
-   Specie class definition
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#specie-variables-definition">
    Specie variables definition
   </a>
@@ -271,34 +262,15 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="specie-class-definition">
+  <div class="cell tag_hide_cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> 1T_code_structure.ipynb
+</pre></div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="specie-class-definition">
 <h1>Specie class definition<a class="headerlink" href="#specie-class-definition" title="Permalink to this headline">¶</a></h1>
-<p>Firstly, some relevant python packages are imporoted and some useful constants are set. From the next page on the first lines will be hidden, they usually serve the same purpuse as here and eventually add some tolerance parameter or load the results of the previous page.</p>
-<div class="cell tag_hide-cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">copy</span> <span class="k">as</span> <span class="nn">cp</span>
-<span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">import</span> <span class="nn">scipy.optimize</span> <span class="k">as</span> <span class="nn">opt</span>
-<span class="kn">import</span> <span class="nn">scipy.integrate</span> <span class="k">as</span> <span class="nn">itg</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell tag_hide-cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Kb</span>  <span class="o">=</span> <span class="mf">1.3806503e-23</span><span class="p">;</span>     <span class="c1"># Boltzmann constant [J/K]</span>
-<span class="n">amu</span> <span class="o">=</span> <span class="mf">1.66053904020e-24</span><span class="p">;</span> <span class="c1"># 1/Avogadro&#39;s number [mol]</span>
-<span class="n">Ru</span> <span class="o">=</span> <span class="n">Kb</span><span class="o">/</span><span class="n">amu</span>              <span class="c1"># Universal gas constant [J/(K*mol)]</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="id1">
-<h1>Specie class definition<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>For each specie a common framework is defined which allows to compute thermodynamic derivatives, energy, temperature and other relevant values for the subsequent calculations starting from the data provided by :cite:p:<code class="docutils literal notranslate"><span class="pre">park_convergence_1985</span></code> and {cite:p}<code class="docutils literal notranslate"><span class="pre">Zanardi_2020</span></code>.</p>
 <p>See :cite:t:<code class="docutils literal notranslate"><span class="pre">1987:nelson</span></code> for an introduction to non-standard analysis.See :cite:t:<code class="docutils literal notranslate"><span class="pre">1987:nelson</span></code> for an introduction to non-standard analysis. \textcolor{red}{Le citazioni non funzionano}</p>
 <p>Assuming that the different contributions can be computed indipendently, the temperature and CVs are defined as the sum of the translational-rotational, vibrational and electronic which are calculated as:</p>
@@ -384,7 +356,7 @@ Given the partition function (Zanardi’s tables), the energy due to electronic 
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="specie-variables-definition">
 <h1>Specie variables definition<a class="headerlink" href="#specie-variables-definition" title="Permalink to this headline">¶</a></h1>
-<p>Follows the definition of a number of specthe species. The data used can be found in {% cite Zanardi_2020 %}.</p>
+<p>Follows the definition of a number of selected species. The data used can be found in {% cite Zanardi_2020 %}.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N2</span> <span class="o">=</span> <span class="n">specie</span><span class="p">(</span><span class="mf">28.0134</span><span class="p">,</span> <span class="mi">3395</span><span class="p">,</span> <span class="mf">2.9</span><span class="p">,</span> <span class="mi">113200</span><span class="p">)</span>
@@ -487,12 +459,19 @@ Given the partition function (Zanardi’s tables), the energy due to electronic 
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="code_structure.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="1T_code_structure.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Code structure</p>
+            <p class="prev-next-title">One temperature</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="Reaction_class_definition.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Reaction and sub-reaction classes</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             

@@ -1,27 +1,10 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Specie class definition
-# Firstly, some relevant python packages are imporoted and some useful constants are set. From the next page on the first lines will be hidden, they usually serve the same purpuse as here and eventually add some tolerance parameter or load the results of the previous page.
-
 # In[1]:
 
 
-import matplotlib.pyplot as plt
-import numpy as np
-import pandas as pd
-import copy as cp
-import sys
-import scipy.optimize as opt
-import scipy.integrate as itg
-
-
-# In[2]:
-
-
-Kb  = 1.3806503e-23;     # Boltzmann constant [J/K]
-amu = 1.66053904020e-24; # 1/Avogadro's number [mol]
-Ru = Kb/amu              # Universal gas constant [J/(K*mol)]
+get_ipython().run_line_magic('run', '1T_code_structure.ipynb')
 
 
 # # Specie class definition
@@ -49,7 +32,7 @@ Ru = Kb/amu              # Universal gas constant [J/(K*mol)]
 #     
 # All energies are written as sensible energy whose reference temperature is $T_0 = 298.15 K$
 
-# In[3]:
+# In[2]:
 
 
 class specie:
@@ -111,9 +94,9 @@ class specie:
 
 
 # # Specie variables definition
-# Follows the definition of a number of specthe species. The data used can be found in {% cite Zanardi_2020 %}.
+# Follows the definition of a number of selected species. The data used can be found in {% cite Zanardi_2020 %}.
 
-# In[4]:
+# In[3]:
 
 
 N2 = specie(28.0134, 3395, 2.9, 113200)

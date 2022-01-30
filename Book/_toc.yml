@@ -1,8 +1,29 @@
 # Table of contents
 # Learn more at https://jupyterbook.org/customize/toc.html
 
+# format: jb-book
+# root: intro
+# parts:
+#  - caption: introduction to the code
+#   chapters:
+#    - caption: one temperature version
+#    - file: specie_class_definition.ipynb
+#     - caption: specie class definition
+#    - file: reaction_class_definition
+
 format: jb-book
 root: intro
-chapters:
-- file: code_structure.md
-- file: Specie_class_definition.ipynb
+parts:
+  - caption: Code description
+    chapters:
+    - file: 1T_code_structure
+      sections:
+      - file: Specie_class_definition
+      - file: Reaction_class_definition
+      - file: Problem_class_definition
+#  - caption: Name of Part 2
+#    chapters:
+#    - file: path/to/part2/chapter1
+#    - file: path/to/part2/chapter2
+#      sections:
+#      - file: path/to/part2/chapter2/section1
