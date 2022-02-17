@@ -109,7 +109,7 @@ class problem:
 # The non-linear equations are written in the "RHsystem" function whose solutions are found through a non-linear. 
 
 # ```{note}
-# The shock is solved with the hypothesis of frozen chemistry
+# The shock is solved with the hypothesis of frozen chemistry.
 # ```
 
 # In[3]:

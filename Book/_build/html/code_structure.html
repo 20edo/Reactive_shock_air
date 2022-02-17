@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>One temperature &#8212; Reactive air shock assignment</title>
+    <title>Code structure &#8212; Reactive air shock assignment</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
   <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -51,8 +51,6 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Specie class definition" href="Specie_class_definition.html" />
-    <link rel="prev" title="Introduction" href="intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -98,13 +96,28 @@
 </ul>
 <p class="caption">
  <span class="caption-text">
-  Code description
+  1 Temperature
  </span>
 </p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="1_Temperature/code_structure.html">
    One temperature
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1_Temperature/Reaction_class_definition.html">
+   Reaction and sub-reaction classes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1_Temperature/Specie_class_definition.html">
+   Specie class definition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1_Temperature/Problem_class_definition.html">
+   Problem class definition
   </a>
  </li>
 </ul>
@@ -148,9 +161,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/1T_code_structure.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="_sources/code_structure.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
+                data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
                 onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -168,7 +181,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/20edo/Reactive_shock_air/issues/new?title=Issue%20on%20page%20%2F1T_code_structure.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/20edo/Reactive_shock_air/issues/new?title=Issue%20on%20page%20%2Fcode_structure.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -184,46 +197,11 @@
 
             <!-- Launch buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/20edo/Reactive_shock_air/master?urlpath=tree/Book/1T_code_structure.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
         </div>
 
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   One temperature
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#required-packages-and-global-constants">
-   Required packages and global constants
-  </a>
- </li>
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -231,72 +209,25 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>One temperature</h1>
+                <h1>Code structure</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   One temperature
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#required-packages-and-global-constants">
-   Required packages and global constants
-  </a>
- </li>
-</ul>
-
-                        </nav>
                     </div>
                 </div>
             </div>
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="one-temperature">
-<h1>One temperature<a class="headerlink" href="#one-temperature" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="code-structure">
+<h1>Code structure<a class="headerlink" href="#code-structure" title="Permalink to this headline">¶</a></h1>
 <p>The main classes of the code are:</p>
 <ul class="simple">
-<li><p>Specie: contains specie data such as energy level and degeneracy and allows to compute the energy of a specie at a given temperature</p></li>
-<li><p>Reaction and sub-reaction: contain the reaction data such as reactants, products, exponents etc. and allows to compute the forward and backward coefficients</p></li>
-<li><p>Problem: contains the problem information such as initial mixture composition, speed, temperature, etc. and allows to compute the mixture properties for a given state, solve the chemical relaxation problem and plot the results.</p></li>
+<li><p>Specie -&gt; Contains specie data such as energy level and degeneracy and allows to compute the energy of a specie at a given temperature</p></li>
+<li><p>Reaction and sub-reaction -&gt; Contain the reaction data such as reactants, products, exponents etc. and allows to compute the forward and backward coefficients</p></li>
+<li><p>Problem -&gt; Contains the problem information such as initial mixture composition, speed, temperature, etc. and allows to compute the mixture properties for a given state, solve the chemical relaxation problem and plot the results.</p></li>
 </ul>
-<p>Each of these classes will be explained in details in the following pages.</p>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="required-packages-and-global-constants">
-<h1>Required packages and global constants<a class="headerlink" href="#required-packages-and-global-constants" title="Permalink to this headline">¶</a></h1>
-<p>Firstly, some relevant python packages are imporoted and some useful constants are set. From the next page on the first lines will be hidden, they usually serve the same purpuse as here and eventually add some tolerance parameter or load the results of the previous page.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">copy</span> <span class="k">as</span> <span class="nn">cp</span>
-<span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">import</span> <span class="nn">scipy.optimize</span> <span class="k">as</span> <span class="nn">opt</span>
-<span class="kn">import</span> <span class="nn">scipy.integrate</span> <span class="k">as</span> <span class="nn">itg</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Kb</span>  <span class="o">=</span> <span class="mf">1.3806503e-23</span><span class="p">;</span>     <span class="c1"># Boltzmann constant [J/K]</span>
-<span class="n">amu</span> <span class="o">=</span> <span class="mf">1.66053904020e-24</span><span class="p">;</span> <span class="c1"># 1/Avogadro&#39;s number [mol]</span>
-<span class="n">Ru</span> <span class="o">=</span> <span class="n">Kb</span><span class="o">/</span><span class="n">amu</span>              <span class="c1"># Universal gas constant [J/(K*mol)]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="toctree-wrapper compound">
-</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -323,21 +254,7 @@
               
             
                 <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Introduction</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="Specie_class_definition.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Specie class definition</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
+<div class='prev-next-area'>
 </div>
             
         </div>

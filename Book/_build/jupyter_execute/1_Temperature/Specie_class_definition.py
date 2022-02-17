@@ -4,7 +4,7 @@
 # In[1]:
 
 
-get_ipython().run_line_magic('run', '1T_code_structure.ipynb')
+get_ipython().run_line_magic('run', 'code_structure.ipynb')
 
 
 # # Specie class definition

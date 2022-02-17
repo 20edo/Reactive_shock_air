@@ -14,16 +14,11 @@
 format: jb-book
 root: intro
 parts:
-  - caption: Code description
+  - caption: 1 Temperature
     chapters:
-    - file: 1T_code_structure
-      sections:
-      - file: Specie_class_definition
-      - file: Reaction_class_definition
-      - file: Problem_class_definition
-#  - caption: Name of Part 2
-#    chapters:
-#    - file: path/to/part2/chapter1
-#    - file: path/to/part2/chapter2
-#      sections:
-#      - file: path/to/part2/chapter2/section1
+    - file: 1_Temperature/code_structure.ipynb
+    - file: 1_Temperature/Reaction_class_definition.ipynb
+    - file: 1_Temperature/Specie_class_definition.ipynb
+    - file: 1_Temperature/Problem_class_definition.ipynb
+
+
