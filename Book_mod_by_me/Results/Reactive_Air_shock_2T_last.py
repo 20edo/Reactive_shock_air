@@ -619,9 +619,6 @@ N_ion.e_mol = -335.23*4184
 # In[12]:
 
 
-# I devide the constant rate Cf for 1e6 to convert from cm3/mol to m3/mol
-# I also multiplicate e_mol for 4184 in order to convert Kcal/mol in J/mol
-
 O2diss_7s = reaction([1.335, -4.127, -0.616, 0.093, -0.005], -117.98*4184)
 O2diss_7s.add_subreaction(subreaction([O2, N], [O, N], [1, 1], [2,1], 8.25e19/1e6,
                                   -1, 59500))
@@ -1426,10 +1423,10 @@ def Euler_x(self, x_spatial, x):
                 print('State values  = ' + str(x))
         
         
-        x0 = [0.0, 0.0, 0.0]
-        
-        for i in self.specie:
-            x0.append(0)
+        x0 = [self.rho1, self.u1, self.T1]
+    
+        for i in self.Y0:
+            x0.append(i)
         
         x0 = np.array(x0)
         
@@ -1635,7 +1632,7 @@ def Euler_x_2T(self, x_spatial, x, x0 = None):
         
         
         if x0 == None:
-            a = 0.2
+            a = 0.15
             x0 = [self.rho1, self.u1, self.T1, ( a * self.T1 + (1-a) * self.T0)]
             for i in self.Y0:
                 x0.append(i)
