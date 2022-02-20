@@ -2121,7 +2121,7 @@ def validate(self, xmax = None, xmax_l = None, ls = '-', print_max = True):
 #     subaxes_energy.yaxis.grid(True)
     
     # Compute and plot sum of mass fractions
-    subaxes_mass_frac     = plt.subplot(4, 1, 5)
+    subaxes_mass_frac     = plt.subplot(4, 1, 4)
     mass_frac_flux = np.sum(self.sol_Y,axis=0) 
     error_mass_frac_flux = ( mass_frac_flux - mass_frac_flux[0] ) / mass_frac_flux[0]
     subaxes_mass_frac.plot(self.sol_x, error_mass_frac_flux, ls)
