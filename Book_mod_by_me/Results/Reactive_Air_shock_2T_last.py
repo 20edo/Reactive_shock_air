@@ -900,7 +900,6 @@ def RHjump(self):
     print('Post-shock values:')
     print('rho    : ' + str(self.rho1))
     print('T      : ' + str(self.T1))
-    print('Tv     : ' + str(self.T0))
     print('Speed  : ' + str(self.u1))
     print('Mach   : ' + str(M2c))
     print('******************************')
