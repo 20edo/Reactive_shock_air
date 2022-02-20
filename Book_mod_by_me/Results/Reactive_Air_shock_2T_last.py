@@ -2049,7 +2049,7 @@ def validate(self, xmax = None, xmax_l = None, ls = '-', print_max = True):
     
     # Compute and plot mass flux
 
-    subaxes_mass       = plt.subplot(5, 1, 1)
+    subaxes_mass       = plt.subplot(4, 1, 1)
     mass_flux = self.sol_rho * self.sol_u
     error_mass_flux = ( mass_flux - mass_flux[0] ) / mass_flux[0]
     subaxes_mass.plot(self.sol_x, error_mass_flux, ls)
@@ -2067,7 +2067,7 @@ def validate(self, xmax = None, xmax_l = None, ls = '-', print_max = True):
     subaxes_mass.yaxis.grid(True)
     
     # Compute and plot momentum flux
-    subaxes_momentum   = plt.subplot(5, 1, 2)
+    subaxes_momentum   = plt.subplot(4, 1, 2)
     momentum_flux = self.sol_rho * self.sol_u ** 2 + self.sol_p 
     error_momentum_flux = ( momentum_flux - momentum_flux[0] ) / momentum_flux[0]
     subaxes_momentum.plot(self.sol_x, error_momentum_flux, ls)
@@ -2085,7 +2085,7 @@ def validate(self, xmax = None, xmax_l = None, ls = '-', print_max = True):
     subaxes_momentum.yaxis.grid(True)
     
     # Compute and plot total enthalpy flux
-    subaxes_enthalpy     = plt.subplot(5, 1, 3)
+    subaxes_enthalpy     = plt.subplot(4, 1, 3)
     enthalpy_flux = (self.sol_rho * ( self.sol_e + 1 / 2 * self.sol_u ** 2 ) + self.sol_p) * self.sol_u 
     error_enthalpy_flux = ( enthalpy_flux - enthalpy_flux[0] ) / enthalpy_flux[0]
     subaxes_enthalpy.plot(self.sol_x, error_enthalpy_flux, ls)
@@ -2121,7 +2121,7 @@ def validate(self, xmax = None, xmax_l = None, ls = '-', print_max = True):
 #     subaxes_energy.yaxis.grid(True)
     
     # Compute and plot sum of mass fractions
-    subaxes_mass_frac     = plt.subplot(5, 1, 5)
+    subaxes_mass_frac     = plt.subplot(4, 1, 5)
     mass_frac_flux = np.sum(self.sol_Y,axis=0) 
     error_mass_frac_flux = ( mass_frac_flux - mass_frac_flux[0] ) / mass_frac_flux[0]
     subaxes_mass_frac.plot(self.sol_x, error_mass_frac_flux, ls)
