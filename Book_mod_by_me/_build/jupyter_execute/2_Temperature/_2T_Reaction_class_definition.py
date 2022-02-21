@@ -8,64 +8,56 @@ get_ipython().run_line_magic('run', '_2T_Specie_class_definition.ipynb')
 
 
 # # Reaction and sub-reaction classes
-# Two classes for the modeling of the chemical reactions have been defined:
-# 
-# 1. The reactions which have the same reactants and products but a molecule that triggers the reaction (such as exchange or dissociation reactions) have been grouped together in a single reaction made of many sub-reactions.
-# 
-# 2. On the other hand some reactions as exchange reactions, associative ionization and electron impact ionization are considered by themselves and are made by a single sub-reaction.
-# 
-# While there is no real need for this division, this worklow allows to group together the reactions that ""have the same main reactant"" to be able to include or exclude one of them by just a line of code. Despite that, all reactions may be re-written to be one or many variables of class sub-reaction with no effect on the code execution.
-# 
-# The definition of the parameters used to model the two classes is a little tricky and may be more user-friendly.
+# Two classes for the modeling of the chemical reactions have been defined in accordance with the one temperature model.
 
 # # Chemical reaction class definition
 # A reaction is defined by the stochiometric coefficients, the reactants, the products and the reaction rate coefficients. The latter are computed as follows:
 # 
-# * $\textbf{Forward reaction coefficient}$ : &nbsp; &nbsp; &nbsp; $k_f$ is expressed as $$k_f = C_f T ^{\eta_f}e^{-\frac{\theta_d}{T}}$$ (coefficients from Park's tables)
-# * $\textbf{Equilibrium reaction coefficient}$ : &nbsp; $k_c$ is computed from the fitted fouth-order polynomial interpolation by Park: $$k_c = exp(A_i + A_2Z + A_3Z^2 + A_4Z^3 + A_5Z^4)$$
-# Where: $$Z = \frac{10000}{T}$$
-# * $\textbf{Backward reaction coefficient}$: &nbsp; &nbsp; &nbsp; $k_b$ is computed as $$k_b = \frac{k_f}{k_c}$$
+# * $\textbf{Forward reaction coefficient}$ : &nbsp; &nbsp; &nbsp; $k_f$ is expressed as $k_f = C_f T ^{\eta_f}e^{-\frac{\theta_d}{T}}$ <br> (coefficients from Park's tables [1])
+# * $\textbf{Equilibrium reaction coefficient}$ : &nbsp; $k_c$ is computed from the fitted fouth-order polynomial interpolation by Park [1]: $k_c = exp(A_i + A_2Z + A_3Z^2 + A_4Z^3 + A_5Z^4)$ <br>
+# Where: $Z = \frac{10000}{T}$
+# * $\textbf{Backward reaction coefficient}$: &nbsp; &nbsp; &nbsp; $k_b$ is computed as $k_b = \frac{k_f}{k_c}$
 # <br>
 # 
-# The two-temperature model by Park consider four different groups of reactions that need to be treated differently. They can be distinguished between: the impact dissociation, the exchange reactions, the associative ionization (or, in reverse, dissociative ricombination) and the elctron-impact ionization. The impact dissociation must be subdivided further into heavy-particle impact dissociation and electron-impact dissociation. <br>
+# The two-temperature model by Park [1] consider four different groups of reactions that need to be treated differently. They can be distinguished between: impact dissociations, exchange reactions, associative ionizations (or, in reverse, dissociative ricombinations) and elctron-impact ionizations. The impact dissociations must be subdivided further into heavy-particle impact dissociations and electron-impact dissociations. <br>
 # 
 # * $\textbf{Heavy-particle impact dissociation}$ : <br>
-# $$
+# $
 # AB + M \rightleftharpoons A + B + M
-# $$
+# $ <br>
 # The forward reaction occurs mostly as a result of vibrational ladder-climbing process, that is the successive excitation of vibrational energy levels in the molecule AB. The final parting process occurs mostly from the levels close to the dissociation limit, that is, from the levels that are located within an energy $K_bT$ from the dissociation limit. The rate coefficient is approximately proportional, therefore to the population of the vibrational level $K_bT$ below the dissociation limit $D' = D - K_bT$, resulting proportional to  $exp(− D' /(K_b T_v)) = exp(− (D - K_bT) /(K_b T_v)) = exp(− \theta^d /(T_v) + T/T^v)$. The rate of parting of the molecules from this level is dictated mostly by the kinetic energy of the impacting particles $K_bT$ hence its rate is proportional to $exp(−(K_b T)/(K_b T)) = exp(−1)$. The preexponential factor T expresses the dependence of the collision frequence and cross sections on he collision energy, both of which are dictated by the translational temperature T. Therefore the expression for $k_f$ becomes: 
 # $k_f = C T exp(- \theta^d/T^v - 1 + T/T^v)$ <br>
 # The reverse rate of this process are dictated only by the translational temperature of the particles involved:
 # $k_b = k_b(T)$
 # 
 # * $\textbf{Electron-impact dissociation}$ : <br>
-# $$
+# $
 # AB + e^- \rightleftharpoons A + B + e^-
-# $$
-# In this case $T$ must be replaced by the electron temperature, which in the two-temperature formulation by Park is the same as $T^v$:
-# $$k_f = C T^v exp(- \theta^d/T^v)$$
-# The reverse rate coefficient depends on $\sqrt{T T^v}$, hence:
+# $ <br>
+# In this case $T$ must be replaced by the electron temperature, which in the two-temperature formulation by Park [1] is the same as $T^v$: <br>
+# $k_f = C T^v exp(- \theta^d/T^v)$ <br>
+# The reverse rate coefficient depends on $\sqrt{T T^v}$, hence: <br>
 # $k_b = k_b(\sqrt{T T^v})$
 # 
 # * $\textbf{Exchange reaction}$:
-# $$
+# $
 # AB + C \rightleftharpoons A + BC
-# $$
+# $ <br>
 # Similar considerations as heavy-particle impact dissociation can be made, therefore the forward and backward reaction coefficents have the same expressions as described before.
 # 
 # * $\textbf{Associative ionization}$:
-# $$
+# $
 # A + B \rightleftharpoons AB^+ + e^-
-# $$
+# $ <br>
 # In this case the initial state contains no molecules, hence the coefficient of the forward rate must be  function only of heavy-particle translational temperature $T$: 
 # $k_f = C T exp(- \theta^d/T)$ <br>
 # While the reverse rate is dictated mostly by the vibrational energy of the molecule $AB^+$ and the translational temperature of $e^-$, which is set equal to $T^v$:
 # $k_b = k_b(T^v)$
 # 
 # * $\textbf{Elctron-impact ionization}$:
-# $$
+# $
 # A + e^- \rightleftharpoons A^+ + e^- + e^-
-# $$
+# $ <br>
 # In this process the atom $A$ can be considered to be at rest because of its very small thermal velocity. Both the forward and reverse rate coefficients are functions of the electron temperature only:
 # $k_f = C T^v exp(- \theta^d/T^v)$ <br>
 # $k_b = k_b(T^v)$
@@ -170,7 +162,7 @@ class subreaction:
 
 
 # # Reaction class definition
-# A reaction is just a list of sub-reactions that is defined according to what explained above. However, since the coefficient of the polynomial used to compute the equilibrium reaction coefficient do not depend on the impaction body, they do not need to be repeated for every sub-reaction but are stored in the reaction class and automatically updated in each newly created sub-reaction.
+# The reaction class definition follows.
 
 # In[3]:
 
@@ -189,7 +181,7 @@ class reaction:
 
 
 # ## Importing reactions data
-# Reactions data are taken from Park's tables
+# Reactions data are taken from Park's tables [1] and are the same as in the one temperature model.
 
 # In[4]:
 
@@ -339,4 +331,64 @@ O_ion.e_mol = -315.06*4184
 N_ion       = subreaction([N, em], [Np, em], [1, 1], [1, 2], 2.5e34/1e6, -3.820, 168600)
 N_ion.A     = np.array([-2.553, -18.870, 0.472, -0.060, 0.003])
 N_ion.e_mol = -335.23*4184
+
+
+# In[8]:
+
+
+O2diss_7s = reaction([1.335, -4.127, -0.616, 0.093, -0.005], -117.98*4184)
+O2diss_7s.add_subreaction(subreaction([O2, N], [O, N], [1, 1], [2,1], 8.25e19/1e6,
+                                  -1, 59500))
+O2diss_7s.add_subreaction(subreaction([O2, O], [O, O], [1, 1], [2,1], 8.25e19/1e6,
+                                  -1, 59500))
+O2diss_7s.add_subreaction(subreaction([O2, N2], [O, N2], [1, 1], [2,1], 2.75e19/1e6,
+                                  -1, 59500))
+O2diss_7s.add_subreaction(subreaction([O2, O2], [O, O2], [1, 1], [2,1], 2.75e19/1e6,
+                                  -1, 59500))
+O2diss_7s.add_subreaction(subreaction([O2, NO], [O, NO], [1, 1], [2,1], 2.75e19/1e6,
+                                  -1, 59500))
+O2diss_7s.add_subreaction(subreaction([O2, NOp], [O, NOp], [1, 1], [2,1], 2.75e19/1e6,
+                                  -1, 59500))
+O2diss_7s.add_subreaction(subreaction([O2, em], [O, em], [1, 1], [2,1], 1.32e22/1e6,
+                                  -1, 59500))
+
+
+# In[9]:
+
+
+N2diss_7s = reaction([ 3.898, -12.611, 0.683, -0.118, 0.006], -225.00*4184)
+N2diss_7s.add_subreaction(subreaction([N2, N], [N, N], [1, 1], [2,1], 1.11e22/1e6,
+                                  -1.6, 113200))
+N2diss_7s.add_subreaction(subreaction([N2, O], [N, O], [1, 1], [2,1], 1.11e22/1e6,
+                                  -1.6, 113200))
+N2diss_7s.add_subreaction(subreaction([N2, N2], [N, N2], [1, 1], [2,1], 3.7e21/1e6,
+                                  -1.6, 113200))
+N2diss_7s.add_subreaction(subreaction([N2, O2], [N, O2], [1, 1], [2,1], 3.7e21/1e6,
+                                  -1.6, 113200))
+N2diss_7s.add_subreaction(subreaction([N2, NO], [N, NO], [1, 1], [2,1], 3.7e21/1e6,
+                                  -1.6, 113200))
+N2diss_7s.add_subreaction(subreaction([N2, NOp], [N, NOp], [1, 1], [2,1], 3.7e21/1e6,
+                                  -1.6, 113200))
+N2diss_7s.add_subreaction(subreaction([N2, em], [N, em], [1, 1], [2,1], 1.11e24/1e6,
+                                  -1.6, 113200))
+
+
+# In[10]:
+
+
+NOdiss_7s = reaction([1.549, -7.784, 0.228, -0.043, 0.002], -150.03*4184) 
+NOdiss_7s.add_subreaction(subreaction([NO, N], [N, O], [1, 1], [2, 1], 4.6e17/1e6,
+                                  -0.5, 75500))
+NOdiss_7s.add_subreaction(subreaction([NO, O], [N, O], [1, 1], [1, 2], 4.6e17/1e6,
+                                  -0.5, 75500))
+NOdiss_7s.add_subreaction(subreaction([NO, N2], [N, O, N2], [1, 1], [1, 1, 1], 2.3e17/1e6,
+                                  -0.5, 75500))
+NOdiss_7s.add_subreaction(subreaction([NO, O2], [N, O, O2], [1, 1], [1, 1, 1], 2.3e17/1e6,
+                                  -0.5, 75500))
+NOdiss_7s.add_subreaction(subreaction([NO, NO], [N, O, NO], [1, 1], [1, 1, 1], 2.3e17/1e6,
+                                  -0.5, 75500))
+NOdiss_7s.add_subreaction(subreaction([NO, NOp], [N, O, NOp], [1, 1], [1, 1, 1], 2.3e17/1e6,
+                                  -0.5, 75500))
+NOdiss_7s.add_subreaction(subreaction([NO, em], [N, O, em], [1, 1], [1, 1, 1], 7.36e19/1e6,
+                                  -0.5, 75500))
 

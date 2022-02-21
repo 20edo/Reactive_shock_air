@@ -45,6 +45,8 @@
     <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -110,6 +112,21 @@
    One temperature
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Specie_class_definition.html">
+   Specie class definition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Reaction_class_definition.html">
+   Reaction and sub-reaction classes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Problem_class_definition.html">
+   Problem class definition
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -120,6 +137,33 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../2_Temperature/_2T_code_structure.html">
    Two-temperature
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../2_Temperature/_2T_Specie_class_definition.html">
+   Specie class definition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../2_Temperature/_2T_Reaction_class_definition.html">
+   Reaction and sub-reaction classes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../2_Temperature/_2T_Problem_class_definition.html">
+   Problem class definition
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Results
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Results/Results.html">
+   Results
   </a>
  </li>
 </ul>
@@ -279,15 +323,15 @@
 <h1>One temperature<a class="headerlink" href="#one-temperature" title="Permalink to this headline">¶</a></h1>
 <p>The main classes of the code are:</p>
 <ul class="simple">
-<li><p>Specie: contains specie data such as energy level and degeneracy and allows to compute the energy of a specie at a given temperature</p></li>
-<li><p>Reaction and sub-reaction: contain the reaction data such as reactants, products, exponents etc. and allows to compute the forward and backward coefficients</p></li>
-<li><p>Problem: contains the problem information such as initial mixture composition, speed, temperature, etc. and allows to compute the mixture properties for a given state, solve the chemical relaxation problem and plot the results.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\textbf{Specie}\)</span>: contains specie data such as energy level and degeneracy and allows to compute the energy of a specie at a given temperature</p></li>
+<li><p><span class="math notranslate nohighlight">\(\textbf{Reaction}\)</span> and <span class="math notranslate nohighlight">\(\textbf{sub-reaction}\)</span>: contain the reaction data such as reactants, products, exponents etc. and allows to compute the forward and backward coefficients</p></li>
+<li><p><span class="math notranslate nohighlight">\(\textbf{Problem}\)</span>: contains the problem information such as initial mixture composition, speed, temperature, etc. and allows to compute the mixture properties for a given state, solve the chemical relaxation problem and plot the results.</p></li>
 </ul>
 <p>Each of these classes will be explained in details in the following pages.</p>
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="required-packages-and-global-constants">
 <h1>Required packages and global constants<a class="headerlink" href="#required-packages-and-global-constants" title="Permalink to this headline">¶</a></h1>
-<p>Firstly, some relevant python packages are imporoted and some useful constants are set. From the next page on the first lines will be hidden, they usually serve the same purpuse as here and eventually add some tolerance parameter or load the results of the previous page.</p>
+<p>Firstly, some relevant python packages are imporoted and some useful constants are set. From the next page on the first lines will be hidden, they usually serve the same purpose as here and eventually add some tolerance parameter or load the results of the previous page.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -309,8 +353,6 @@
 </pre></div>
 </div>
 </div>
-</div>
-<div class="toctree-wrapper compound">
 </div>
 </div>
 

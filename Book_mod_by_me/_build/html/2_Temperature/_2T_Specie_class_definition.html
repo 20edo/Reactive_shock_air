@@ -106,10 +106,64 @@
   Code description
  </span>
 </p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../1_Temperature/1T_code_structure.html">
+   One temperature
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../1_Temperature/Specie_class_definition.html">
+   Specie class definition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../1_Temperature/Reaction_class_definition.html">
+   Reaction and sub-reaction classes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../1_Temperature/Problem_class_definition.html">
+   Problem class definition
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Two-temperature
+ </span>
+</p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="_2T_code_structure.html">
    Two-temperature
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Specie class definition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="_2T_Reaction_class_definition.html">
+   Reaction and sub-reaction classes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="_2T_Problem_class_definition.html">
+   Problem class definition
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Results
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Results/Results.html">
+   Results
   </a>
  </li>
 </ul>
@@ -216,12 +270,7 @@
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Specie class definition
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#importing-species-data">
    Importing species data
   </a>
@@ -246,12 +295,7 @@
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Specie class definition
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#importing-species-data">
    Importing species data
   </a>
@@ -265,16 +309,16 @@
             
               <div>
                 
-  <div class="cell docutils container">
+  <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> _2T_code_structure.ipynb
 </pre></div>
 </div>
 </div>
 </div>
-<div class="section" id="specie-class-definition">
+<div class="tex2jax_ignore mathjax_ignore section" id="specie-class-definition">
 <h1>Specie class definition<a class="headerlink" href="#specie-class-definition" title="Permalink to this headline">¶</a></h1>
-<p>For each specie a common framework is defined which allows to compute thermodynamic derivatives, energy, temperature and other relevant values for the subsequent calculations starting from the data provided by Park and Zanardi <span id="id1">[]</span> and {cite:p}<code class="docutils literal notranslate"><span class="pre">Zanardi_2020</span></code>.</p>
+<p>In analogy with the one temperature model, for each specie a common framework is defined which allows to compute thermodynamic derivatives, energy, temperature and other relevant values for the subsequent calculations starting from the data provided by Park [1] and Zanardi [2]. However, the distinction between translational-rotational and vibro-electronic temperature shall be highlighted.</p>
 <p>Assuming that the different contributions can be computed indipendently, the energy and CVs are defined as the sum of the translational-rotational, vibrational and electronic contributions which are calculated as:</p>
 <ul>
 <li><p><span class="math notranslate nohighlight">\(\textbf{Translational-rotational}\)</span> :</p>
@@ -282,23 +326,23 @@
 <li><p>If the molecule is monoatomic, it has no rotational dofs, then <span class="math notranslate nohighlight">\( CV^t_s = \frac{3}{2} R_{gas} \)</span> where <span class="math notranslate nohighlight">\(R_{gas} = \frac{\Re_u}{M_s}\)</span></p></li>
 <li><p>If the molecule is not monoatomic, the rotational contribution must be added <span class="math notranslate nohighlight">\( CV^{tr}_s = CV^t_s + R_{gas} \)</span></p></li>
 </ol>
-<p>Then, energy is computed as $<span class="math notranslate nohighlight">\(e^{tr}_s = CV^{rt}_s  T^{tr}\)</span>$</p>
+<p>Then, energy is computed as <span class="math notranslate nohighlight">\(e^{tr}_s = CV^{rt}_s  T^{tr}\)</span></p>
 </li>
 <li><p><span class="math notranslate nohighlight">\(\textbf{Vibrational}\)</span> :
-The contribution of vibrational dofs to energy is computed by assuming armhonic oscillator potential. The energy becomes: $<span class="math notranslate nohighlight">\(e^{v}_s = R_{gas} \frac{\theta^v_s}{e^{\frac{\theta^v_s}{T^v}-1}} \)</span><span class="math notranslate nohighlight">\( 
-  The analytical expression for the specific heat at constant volume is computed by deriving with respect to T, leading to the expression: &lt;br&gt; 
-  \)</span><span class="math notranslate nohighlight">\(CV^{v}_s = R_{gas} \frac{(\theta^v_s/T^v)^2 e^{\theta^v_s/T^v}} {(e^{\theta^v_s/T^v}-1)^2}\)</span>$</p></li>
+The contribution of vibrational dofs to energy is computed by assuming armhonic oscillator potential. The energy becomes: <span class="math notranslate nohighlight">\(e^{v}_s = R_{gas} \frac{\theta^v_s}{e^{\frac{\theta^v_s}{T^v}-1}} \)</span> <br>
+The analytical expression for the specific heat at constant volume is computed by deriving with respect to T, leading to the expression: <br>
+<span class="math notranslate nohighlight">\(CV^{v}_s = R_{gas} \frac{(\theta^v_s/T^v)^2 e^{\theta^v_s/T^v}} {(e^{\theta^v_s/T^v}-1)^2}\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\textbf{Electronic}\)</span> :
-Given the i-th energy level degeneracy <span class="math notranslate nohighlight">\(g_{s,i}\)</span> and the characteristic electronic temperature of specie s for the j-th level <span class="math notranslate nohighlight">\(\theta^{el}_{s,j}\)</span> (Zanardi’s tables), the energy of the electronic energy levels is computed as: $<span class="math notranslate nohighlight">\( e^{el}_s = R_{gas}T^2 \frac{\partial}{\partial T} log(Z) = \frac{R_{gas}}{Z^{el}} \sum_i g_{s,i} \theta^{el}_{s,i} e^{-\frac{\theta^{el}_{s,i}}{T^{el}}}\)</span><span class="math notranslate nohighlight">\(
-  Whereas:  \)</span><span class="math notranslate nohighlight">\(Z^{el} = \sum_i g_{s,i} e^{-\frac{\theta^{el}_{s,i}}{T^{el}}}\)</span>$</p>
-<p>Analogously with the vibrational contribution the expression for the specific heat is obtained deriving the formula with respect to T: $<span class="math notranslate nohighlight">\(CV^{el}_s = \frac{R_{gas}}{(T^{el})^2} \left [ \frac{1}{Z^{el}} \sum_i g_{s,i} \left( \theta^{el}_{s,i}\right)^2 e^{-\frac{\theta^{el}_{s,i}}{T^{el}}} - \left( \frac{e^{el}_s}{R_{gas}} \right)^2 \right ] \)</span>$</p>
+Given the i-th energy level degeneracy <span class="math notranslate nohighlight">\(g_{s,i}\)</span> and the characteristic electronic temperature of specie s for the j-th level <span class="math notranslate nohighlight">\(\theta^{el}_{s,j}\)</span> (Zanardi’s tables), the energy of the electronic energy levels is computed as: <span class="math notranslate nohighlight">\( e^{el}_s = R_{gas}T^2 \frac{\partial}{\partial T} log(Z) = \frac{R_{gas}}{Z^{el}} \sum_i g_{s,i} \theta^{el}_{s,i} e^{-\frac{\theta^{el}_{s,i}}{T^{el}}}\)</span> <br>
+Whereas:  <span class="math notranslate nohighlight">\(Z^{el} = \sum_i g_{s,i} e^{-\frac{\theta^{el}_{s,i}}{T^{el}}}\)</span></p>
+<p>Analogously with the vibrational contribution the expression for the specific heat is obtained deriving the formula with respect to T: <span class="math notranslate nohighlight">\(CV^{el}_s = \frac{R_{gas}}{(T^{el})^2} \left [ \frac{1}{Z^{el}} \sum_i g_{s,i} \left( \theta^{el}_{s,i}\right)^2 e^{-\frac{\theta^{el}_{s,i}}{T^{el}}} - \left( \frac{e^{el}_s}{R_{gas}} \right)^2 \right ] \)</span></p>
 </li>
 </ul>
 <p>All energies are written as energy whose reference temperature is <span class="math notranslate nohighlight">\(T_0 = 298.15 K\)</span>. <br></p>
-<p>In this way the energy associated to each specie <span class="math notranslate nohighlight">\(i\)</span> is computed as:
-$<span class="math notranslate nohighlight">\(
-e^{tot}_i = \int_{T_0}^{T}CV^{(t,r,v,e)}_i dT - R_i T_0 + \Delta h^0_{f,i}
-\)</span>$</p>
+<p>Hence, the energy associated to each specie <span class="math notranslate nohighlight">\(i\)</span> is computed as:
+<span class="math notranslate nohighlight">\(
+e^{tot}_i = \int_{T_0}^{T^t}CV^{t}_i dT + \int_{T_0}^{T^r}CV^{r}_i dT + \int_{T_0}^{T^v}CV^{v}_i dT + \int_{T_0}^{T^e}CV^{e}_i dT - R_i T_0 + \Delta h^0_{f,i}
+\)</span></p>
 <p>For the two-temperature model has been assumed that:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(T^t = T^r = T^{tr} \)</span></p></li>
@@ -393,10 +437,9 @@ e^{tot}_i = \int_{T_0}^{T}CV^{(t,r,v,e)}_i dT - R_i T_0 + \Delta h^0_{f,i}
 </div>
 </div>
 </div>
-</div>
 <div class="section" id="importing-species-data">
-<h1>Importing species data<a class="headerlink" href="#importing-species-data" title="Permalink to this headline">¶</a></h1>
-<p>Species are defined as objects of class specie and properties are defined according to the tables in Zanardi.</p>
+<h2>Importing species data<a class="headerlink" href="#importing-species-data" title="Permalink to this headline">¶</a></h2>
+<p>Species are defined as objects of class specie and properties are defined according to the tables in Zanardi [2].</p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N2</span> <span class="o">=</span> <span class="n">specie</span><span class="p">(</span><span class="mf">28.0134</span><span class="p">,</span> <span class="mi">3395</span><span class="p">,</span> <span class="mf">2.9</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
@@ -464,6 +507,7 @@ e^{tot}_i = \int_{T_0}^{T}CV^{(t,r,v,e)}_i dT - R_i T_0 + \Delta h^0_{f,i}
 <span class="n">em</span><span class="o">.</span><span class="n">electro_th</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">])</span>
 <span class="n">em</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;em&#39;</span>
 </pre></div>
+</div>
 </div>
 </div>
 </div>

@@ -57,7 +57,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Specie class definition" href="_2T_Specie_class_definition.html" />
-    <link rel="prev" title="Introduction" href="../intro.html" />
+    <link rel="prev" title="Problem class definition" href="../1_Temperature/Problem_class_definition.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -106,10 +106,64 @@
   Code description
  </span>
 </p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../1_Temperature/1T_code_structure.html">
+   One temperature
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../1_Temperature/Specie_class_definition.html">
+   Specie class definition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../1_Temperature/Reaction_class_definition.html">
+   Reaction and sub-reaction classes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../1_Temperature/Problem_class_definition.html">
+   Problem class definition
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Two-temperature
+ </span>
+</p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Two-temperature
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="_2T_Specie_class_definition.html">
+   Specie class definition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="_2T_Reaction_class_definition.html">
+   Reaction and sub-reaction classes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="_2T_Problem_class_definition.html">
+   Problem class definition
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Results
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Results/Results.html">
+   Results
   </a>
  </li>
 </ul>
@@ -222,6 +276,11 @@
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Two temperature
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#required-packages-and-global-constants">
    Required packages and global constants
   </a>
@@ -252,6 +311,11 @@
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Two temperature
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#required-packages-and-global-constants">
    Required packages and global constants
   </a>
@@ -274,6 +338,15 @@
 <li><p><span class="math notranslate nohighlight">\(\textbf{Problem}\)</span>: contains the problem information such as initial mixture composition, speed, temperature, etc. and allows to compute the mixture properties for a given state, solve the chemical relaxation problem and plot the results.</p></li>
 </ul>
 <p>Each of these classes will be explained in details in the following pages.</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id1">
+<h1>Two temperature<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>The two temperature extends the classes prepared for the one temperature mixture model distinguishing the effects of roto-translational and vibro-electronic temperatures which represent two different flow variables. <br>
+While in general the energy is a combination of the four energy which thermalize differently, the approximation of tranlational-rotational and vibro-electronic temperatures is common since the themalization of each couple of degrees of freedom. <br></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Appropriate _2T functions are defined just where needed. The correspective one temperature version are still present in general.</p>
+</div>
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="required-packages-and-global-constants">
 <h1>Required packages and global constants<a class="headerlink" href="#required-packages-and-global-constants" title="Permalink to this headline">¶</a></h1>
@@ -327,8 +400,6 @@
 </div>
 </div>
 </div>
-<div class="toctree-wrapper compound">
-</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -356,11 +427,11 @@
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="../intro.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../1_Temperature/Problem_class_definition.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Introduction</p>
+            <p class="prev-next-title">Problem class definition</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="_2T_Specie_class_definition.html" title="next page">

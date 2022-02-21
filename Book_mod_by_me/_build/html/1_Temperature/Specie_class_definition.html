@@ -112,6 +112,21 @@
    One temperature
   </a>
  </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Specie class definition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Reaction_class_definition.html">
+   Reaction and sub-reaction classes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Problem_class_definition.html">
+   Problem class definition
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -122,6 +137,33 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../2_Temperature/_2T_code_structure.html">
    Two-temperature
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../2_Temperature/_2T_Specie_class_definition.html">
+   Specie class definition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../2_Temperature/_2T_Reaction_class_definition.html">
+   Reaction and sub-reaction classes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../2_Temperature/_2T_Problem_class_definition.html">
+   Problem class definition
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Results
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Results/Results.html">
+   Results
   </a>
  </li>
 </ul>
@@ -286,26 +328,26 @@
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="specie-class-definition">
 <h1>Specie class definition<a class="headerlink" href="#specie-class-definition" title="Permalink to this headline">¶</a></h1>
-<p>For each specie a common framework is defined which allows to compute thermodynamic derivatives, energy, temperature and other relevant values for the subsequent calculations starting from the data provided by :cite:p:<code class="docutils literal notranslate"><span class="pre">park_convergence_1985</span></code> and {cite:p}<code class="docutils literal notranslate"><span class="pre">Zanardi_2020</span></code>.</p>
-<p>See :cite:t:<code class="docutils literal notranslate"><span class="pre">1987:nelson</span></code> for an introduction to non-standard analysis.See :cite:t:<code class="docutils literal notranslate"><span class="pre">1987:nelson</span></code> for an introduction to non-standard analysis. \textcolor{red}{Le citazioni non funzionano}</p>
-<p>Assuming that the different contributions can be computed indipendently, the temperature and CVs are defined as the sum of the translational-rotational, vibrational and electronic which are calculated as:</p>
+<p>For each specie a common framework is defined which allows to compute thermodynamic derivatives, energy, temperature and other relevant values for the subsequent calculations starting from the data provided by Park [1] and Zanardi [2].</p>
+<p>Assuming that the different contributions can be computed indipendently, the temperature and CVs are defined as the sum of the translational-rotational, vibrational and electronic components which are calculated as:</p>
 <ul>
-<li><p>Translational-rotational :</p>
+<li><p><span class="math notranslate nohighlight">\( \textbf{Translational-rotational}\)</span> :</p>
 <ol class="simple">
 <li><p>If the molecule is monoatomic, it has no rotational dofs, then <span class="math notranslate nohighlight">\( CV^t = \frac{3}{2} R_{gas} T \)</span></p></li>
 <li><p>If the molecule is not monoatomic, the rotational contribution must be added <span class="math notranslate nohighlight">\( CV^{(rt)} = CV^t + R \)</span></p></li>
 </ol>
 <p>Then, energy is computed as <span class="math notranslate nohighlight">\(e^{tr} = CV  T\)</span>.</p>
 </li>
-<li><p>Vibrational :
-The contribution of vibrational dofs to energy is computed by assuming armhonic oscillator potential. The energy can becomes: <span class="math notranslate nohighlight">\(e^{v} = R_{gas} \frac{\theta_v}{e^{\frac{\theta_v}{T}-1}} \)</span> <br>
-The analytical expression for the heat is computed by deriving with respect to T.</p></li>
-<li><p>Electronic :
-Given the partition function (Zanardi’s tables), the energy due to electronic energy levels is computed as: <span class="math notranslate nohighlight">\( e = R_{gas}T^2 \frac{\partial}{\partial T} log(Z) = \frac{R_gas}{Z} \sum_i g_i \theta_i e^{-\frac{\theta_i}{T}}\)</span>.</p>
-<p>Analogously with the vibrational contribution the expression for the specific heat is obtained deriving the formula with respect to T.</p>
+<li><p><span class="math notranslate nohighlight">\( \textbf{ Vibrational }\)</span> :
+The contribution of vibrational dofs to energy is computed by assuming armhonic oscillator potential. The energy becomes: <span class="math notranslate nohighlight">\(e^{v} = R_{gas} \frac{\theta_v}{e^{\frac{\theta_v}{T}-1}} \)</span> <br>
+The analytical expression for the specific heat is computed by deriving with respect to T, leading to the expression: <br>
+<span class="math notranslate nohighlight">\( CV^{v}_s = R_{gas} \frac{(\theta^v_s/T)^2 e^{\theta^v_s/T}} {(e^{\theta^v_s/T}-1)^2} \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( \textbf{ Electronic } \)</span> :
+Given the partition function [2], the energy due to electronic energy levels is computed as: <span class="math notranslate nohighlight">\( e = R_{gas}T^2 \frac{\partial}{\partial T} log(Z) = \frac{R_gas}{Z} \sum_i g_i \theta_i e^{-\frac{\theta_i}{T}}\)</span>.</p>
+<p>Analogously with the vibrational contribution, the expression for the specific heat is obtained deriving the formula with respect to T.</p>
 </li>
 </ul>
-<p>All energies are written as sensible energy whose reference temperature is <span class="math notranslate nohighlight">\(T_0 = 298.15 K\)</span></p>
+<p>The enthalpy of formation of species i <span class="math notranslate nohighlight">\(\Delta h_{f,i}\)</span> is at <span class="math notranslate nohighlight">\(T_0 = 298.15 K\)</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">specie</span><span class="p">:</span>
@@ -360,7 +402,7 @@ Given the partition function (Zanardi’s tables), the energy due to electronic 
         <span class="c1"># Update Cv and e values</span>
         <span class="n">cv</span> <span class="o">=</span> <span class="n">cv_rot</span> <span class="o">+</span> <span class="n">cv_vib</span> <span class="o">+</span> <span class="n">cv_ele</span>
         <span class="n">e</span>  <span class="o">=</span> <span class="n">e_rot</span>  <span class="o">+</span> <span class="n">e_vib</span>  <span class="o">+</span> <span class="n">e_ele</span> 
-        <span class="n">e</span>  <span class="o">=</span> <span class="n">e</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">R</span> <span class="o">*</span> <span class="n">T0</span>                         <span class="c1"># Additional term to transform in sensible energy</span>
+        <span class="n">e</span>  <span class="o">=</span> <span class="n">e</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">R</span> <span class="o">*</span> <span class="n">T0</span>   
         <span class="n">e</span>  <span class="o">=</span> <span class="n">e</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">h_form</span>
         
         <span class="k">return</span> <span class="n">e</span><span class="p">,</span> <span class="n">cv</span>
@@ -371,7 +413,7 @@ Given the partition function (Zanardi’s tables), the energy due to electronic 
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="specie-variables-definition">
 <h1>Specie variables definition<a class="headerlink" href="#specie-variables-definition" title="Permalink to this headline">¶</a></h1>
-<p>Follows the definition of a number of selected species. The data used can be found in {% cite Zanardi_2020 %}.</p>
+<p>Follows the definition of a number of selected species. The data used can be found in Zanardi [2].</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N2</span> <span class="o">=</span> <span class="n">specie</span><span class="p">(</span><span class="mf">28.0134</span><span class="p">,</span> <span class="mi">3395</span><span class="p">,</span> <span class="mf">2.9</span><span class="p">,</span> <span class="mi">113200</span><span class="p">)</span>
@@ -412,10 +454,6 @@ Given the partition function (Zanardi’s tables), the energy due to electronic 
                          <span class="mf">8.9204062e+04</span><span class="p">,</span> <span class="mf">9.2081613e+04</span><span class="p">,</span> <span class="mf">9.2225490e+04</span><span class="p">,</span> <span class="mf">9.2937684e+04</span><span class="p">,</span> <span class="mf">9.6397938e+04</span><span class="p">,</span> <span class="mf">1.0359181e+05</span><span class="p">])</span>
 <span class="n">N2p</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;N2p&#39;</span>
 
-<span class="c1">#O2p= specie(31.9982514, 2239, 2.1, 59500, 3.6592e+07)</span>
-<span class="c1">#O2p.electro_g = np.array([3, 2, 1, 1, 6, 3, 3])</span>
-<span class="c1">#O2p.electro_th = np.array([0.0, 1.1391560e+04, 1.8984739e+04, 4.7559736e+04, 4.9912421e+04, 5.0922686e+04, 7.1898633e+04])</span>
-<span class="c1">#O2p.name = &#39;O2p&#39;</span>
 <span class="n">O2p</span><span class="o">=</span> <span class="n">specie</span><span class="p">(</span><span class="mf">31.9982514</span><span class="p">,</span> <span class="mi">2239</span><span class="p">,</span> <span class="mf">2.1</span><span class="p">,</span> <span class="mi">59500</span><span class="p">,</span> <span class="mf">3.6592e+07</span><span class="p">)</span>
 <span class="n">O2p</span><span class="o">.</span><span class="n">electro_g</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
 <span class="n">O2p</span><span class="o">.</span><span class="n">electro_th</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">4.7354408e+04</span><span class="p">,</span> <span class="mf">5.8373987e+04</span><span class="p">,</span> <span class="mf">5.8414273e+04</span><span class="p">,</span> <span class="mf">6.2298966e+04</span><span class="p">,</span> <span class="mf">6.7334679e+04</span><span class="p">,</span>

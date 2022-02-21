@@ -7,9 +7,9 @@
 get_ipython().run_line_magic('run', '_2T_code_structure.ipynb')
 
 
-# ## Specie class definition
+# # Specie class definition
 # 
-# For each specie a common framework is defined which allows to compute thermodynamic derivatives, energy, temperature and other relevant values for the subsequent calculations starting from the data provided by Park and Zanardi {cite:p}`park_convergence_1985` and \{cite:p}`Zanardi_2020`.
+# In analogy with the one temperature model, for each specie a common framework is defined which allows to compute thermodynamic derivatives, energy, temperature and other relevant values for the subsequent calculations starting from the data provided by Park [1] and Zanardi [2]. However, the distinction between translational-rotational and vibro-electronic temperature shall be highlighted.
 # 
 # 
 # Assuming that the different contributions can be computed indipendently, the energy and CVs are defined as the sum of the translational-rotational, vibrational and electronic contributions which are calculated as:
@@ -18,25 +18,25 @@ get_ipython().run_line_magic('run', '_2T_code_structure.ipynb')
 #     1. If the molecule is monoatomic, it has no rotational dofs, then $ CV^t_s = \frac{3}{2} R_{gas} $ where $R_{gas} = \frac{\Re_u}{M_s}$
 #     2. If the molecule is not monoatomic, the rotational contribution must be added $ CV^{tr}_s = CV^t_s + R_{gas} $
 #    
-#     Then, energy is computed as $$e^{tr}_s = CV^{rt}_s  T^{tr}$$
+#     Then, energy is computed as $e^{tr}_s = CV^{rt}_s  T^{tr}$
 #     
 # * $\textbf{Vibrational}$ :
-#     The contribution of vibrational dofs to energy is computed by assuming armhonic oscillator potential. The energy becomes: $$e^{v}_s = R_{gas} \frac{\theta^v_s}{e^{\frac{\theta^v_s}{T^v}-1}} $$ 
+#     The contribution of vibrational dofs to energy is computed by assuming armhonic oscillator potential. The energy becomes: $e^{v}_s = R_{gas} \frac{\theta^v_s}{e^{\frac{\theta^v_s}{T^v}-1}} $ <br>
 #     The analytical expression for the specific heat at constant volume is computed by deriving with respect to T, leading to the expression: <br> 
-#     $$CV^{v}_s = R_{gas} \frac{(\theta^v_s/T^v)^2 e^{\theta^v_s/T^v}} {(e^{\theta^v_s/T^v}-1)^2}$$
+#     $CV^{v}_s = R_{gas} \frac{(\theta^v_s/T^v)^2 e^{\theta^v_s/T^v}} {(e^{\theta^v_s/T^v}-1)^2}$
 #     
 # * $\textbf{Electronic}$ :
-#     Given the i-th energy level degeneracy $g_{s,i}$ and the characteristic electronic temperature of specie s for the j-th level $\theta^{el}_{s,j}$ (Zanardi's tables), the energy of the electronic energy levels is computed as: $$ e^{el}_s = R_{gas}T^2 \frac{\partial}{\partial T} log(Z) = \frac{R_{gas}}{Z^{el}} \sum_i g_{s,i} \theta^{el}_{s,i} e^{-\frac{\theta^{el}_{s,i}}{T^{el}}}$$
-#     Whereas:  $$Z^{el} = \sum_i g_{s,i} e^{-\frac{\theta^{el}_{s,i}}{T^{el}}}$$
+#     Given the i-th energy level degeneracy $g_{s,i}$ and the characteristic electronic temperature of specie s for the j-th level $\theta^{el}_{s,j}$ (Zanardi's tables), the energy of the electronic energy levels is computed as: $ e^{el}_s = R_{gas}T^2 \frac{\partial}{\partial T} log(Z) = \frac{R_{gas}}{Z^{el}} \sum_i g_{s,i} \theta^{el}_{s,i} e^{-\frac{\theta^{el}_{s,i}}{T^{el}}}$ <br>
+#     Whereas:  $Z^{el} = \sum_i g_{s,i} e^{-\frac{\theta^{el}_{s,i}}{T^{el}}}$
 #     
-#     Analogously with the vibrational contribution the expression for the specific heat is obtained deriving the formula with respect to T: $$CV^{el}_s = \frac{R_{gas}}{(T^{el})^2} \left [ \frac{1}{Z^{el}} \sum_i g_{s,i} \left( \theta^{el}_{s,i}\right)^2 e^{-\frac{\theta^{el}_{s,i}}{T^{el}}} - \left( \frac{e^{el}_s}{R_{gas}} \right)^2 \right ] $$
+#     Analogously with the vibrational contribution the expression for the specific heat is obtained deriving the formula with respect to T: $CV^{el}_s = \frac{R_{gas}}{(T^{el})^2} \left [ \frac{1}{Z^{el}} \sum_i g_{s,i} \left( \theta^{el}_{s,i}\right)^2 e^{-\frac{\theta^{el}_{s,i}}{T^{el}}} - \left( \frac{e^{el}_s}{R_{gas}} \right)^2 \right ] $
 #     
 # All energies are written as energy whose reference temperature is $T_0 = 298.15 K$. <br>
 # 
-# In this way the energy associated to each specie $i$ is computed as:
-# $$
-# e^{tot}_i = \int_{T_0}^{T}CV^{(t,r,v,e)}_i dT - R_i T_0 + \Delta h^0_{f,i}
-# $$
+# Hence, the energy associated to each specie $i$ is computed as:
+# $
+# e^{tot}_i = \int_{T_0}^{T^t}CV^{t}_i dT + \int_{T_0}^{T^r}CV^{r}_i dT + \int_{T_0}^{T^v}CV^{v}_i dT + \int_{T_0}^{T^e}CV^{e}_i dT - R_i T_0 + \Delta h^0_{f,i}
+# $
 # 
 # For the two-temperature model has been assumed that: 
 # 
@@ -133,7 +133,7 @@ class specie:
 
 
 # ## Importing species data 
-# Species are defined as objects of class specie and properties are defined according to the tables in Zanardi.
+# Species are defined as objects of class specie and properties are defined according to the tables in Zanardi [2].
 
 # In[3]:
 

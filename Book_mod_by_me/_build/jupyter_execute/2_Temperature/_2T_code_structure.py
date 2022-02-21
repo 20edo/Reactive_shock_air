@@ -9,6 +9,14 @@
 # 
 # Each of these classes will be explained in details in the following pages.
 
+# # Two temperature
+# The two temperature extends the classes prepared for the one temperature mixture model distinguishing the effects of roto-translational and vibro-electronic temperatures which represent two different flow variables. <br>
+# While in general the energy is a combination of the four energy which thermalize differently, the approximation of tranlational-rotational and vibro-electronic temperatures is common since the themalization of each couple of degrees of freedom. <br>
+
+# ```{note}
+# Appropriate _2T functions are defined just where needed. The correspective one temperature version are still present in general.
+# ```
+
 # # Required packages and global constants
 # 
 # Firstly, some relevant python packages are imporoted and some useful constants are set. From the next page on the first lines will be hidden, they usually serve the same purpuse as here and eventually add some tolerance parameter or load the results of the previous page.

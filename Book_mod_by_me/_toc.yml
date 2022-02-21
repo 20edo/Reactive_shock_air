@@ -5,17 +5,17 @@ parts:
   - caption: Code description
     chapters:
     - file: 1_Temperature/1T_code_structure
-      sections:
-      - file: 1_Temperature/Specie_class_definition
-      - file: 1_Temperature/Reaction_class_definition
-      - file: 1_Temperature/Problem_class_definition
+    - file: 1_Temperature/Specie_class_definition
+    - file: 1_Temperature/Reaction_class_definition
+    - file: 1_Temperature/Problem_class_definition
   - caption: Two-temperature
     chapters:
     - file: 2_Temperature/_2T_code_structure
-      sections:
-      - file: 2_Temperature/_2T_Specie_class_definition
-      - file: 2_Temperature/_2T_Reaction_class_definition
-      - file: 2_Temperature/_2T_Problem_class_definition
+    - file: 2_Temperature/_2T_Specie_class_definition
+    - file: 2_Temperature/_2T_Reaction_class_definition
+    - file: 2_Temperature/_2T_Problem_class_definition
+  - caption: Results
+    chapters:
+    - file: Results/Results
 
-#bibtex_bibfiles:
-#    - references.bib
+

@@ -8,23 +8,10 @@ get_ipython().run_line_magic('run', '_2T_Reaction_class_definition.ipynb')
 
 
 # # Problem class definition
-# We define a class problem so that several condition can be studied, analyzed, compared and contrasted.
-# 
-# The initial conditions for the shock relaxation region are obtained by assuming frozen chemistry through the shock which, in the Euler equations framework is a discontinuity whose jumps are defined by the Rankine-Hugoniot relations.
-# 
-# The variable are mixture density, velocity, temperature and mixture mass fractions.
-# 
-# For the mixture considered the the following relations hold:
-# * $e_{mixture} = \Sigma_i e_i Y_i $ where $e_i = e_i^{t} + e_i^{r} + e_i^{v} + e_i^{e}$
-# * $CV_{mixture} = \Sigma_i CV_i Y_i $
-# * $R_{mixture} = \Sigma_i R_i Y_i $
+# In the same manner of the one temperature, the problem class is a container for mixture thermodynamics, initial conditions, solution and plot functions. 
 
-# ## Initialization
-# In the following the class is created and the functions to compute the thermodynamic variables are defined.
-# 
-# ```{note}
-# Some variables have a default value when the class is initialized. All of them will be overwritten when defining a problem, but the sigma value that represents the equivalent cross section of pure nitrogen assuming hard sphere potential.
-# ```
+# ## Thermodynamics
+# On one hand many thermodynamic functions are the same as their one temperature equivalent, on the other hand it is necessary to define appropriate functions for the computation of the translational-rotational energy form the translational-rotational temperature and the same for the vibro-electronic.
 
 # In[2]:
 
@@ -119,23 +106,21 @@ class problem:
 
 # ## RH jump relations
 
-# Firstly, the Rankine Hugoniot relations are solved for a perfect gas with the same R of the mixture and the isoentropic coefficient $\gamma = 1.4$. <br>
-# Then, the results obtained are used as guess to initialize the non-linear solver. <br>
-# The Rankine-Hugoniot relations read: <br>
+# The Rankine-Hugoniot relations are the same and read: <br>
 # 
-# \begin{cases} 
-# \rho_0 u_0 = \rho_1 u_1 \\ 
-# \rho_0 u_0^2 + P_0 = \rho_1 u_1^2 + P_1 \\ 
-# h_0^t  = e_0 + \frac{P_0}{\rho_0} + \frac{1}{2}u_0^2 = 
-# e_1 + \frac{P_1}{\rho_1} + \frac{1}{2} u_1^2 = h_1^t  \\
-# Y_{i_0} = Y_{i_1}
-# \end{cases} 
 # 
-# Whereas $P = \rho \sum_{i}^{N_s} Y_i R_i T $ <br>
-# The non-linear equations are written in the "RHsystem" function whose solutions are found through a non-linear. 
+# $ \rho_0 u_0 = \rho_1 u_1 $ <br>
+# $ \rho_0 u_0^2 + P_0 = \rho_1 u_1^2 + P_1 $ <br>
+# $ h_0^t  = e_0 + \frac{P_0}{\rho_0} + \frac{1}{2}u_0^2 = 
+# e_1 + \frac{P_1}{\rho_1} + \frac{1}{2} u_1^2 = h_1^t $ <br>
+# $ Y_{i_0} = Y_{i_1} $ <br>
+# 
+# 
+# Where $P = \rho \sum_{i}^{N_s} Y_i R_i T $ <br>
+# The non-linear equations are written in the "RHsystem" function whose solutions are found through a non-linear solver. 
 
 # ```{note}
-# The shock is solved with the hypothesis of frozen chemistry.
+# The shock is solved with the hypothesis of frozen chemistry and constant vibrational-electronic temperature.
 # ```
 
 # In[3]:
@@ -225,34 +210,9 @@ problem.RHsystem_2T = RHsystem_2T
 problem.RHjump_2T = RHjump_2T
 
 
-# ```{note}
-# In the "RHjump" function a reference mean free path is computed to be able to compare the relaxation length in terms if mean free path for different initial conditions. It represents the mean free path just after the shock and is computed by the cross section defined in the problem class
-# ```
-
-# ```{warning}
-# While the defualt value of sigma is reasonable for air (since the bi-atomical nitrogen is its the first specie in terms of composition both in mass and molar fractions), it is not exact. Furthermore the effects of different composition are not captured by this value, hence it shall be used with caution and only as a reference.
-# ```
-
 # ## Computation of the chemical source terms
 
-# The reactions considered are those for the 11-species air model and they can be subdivided in four groups (see [Chemical reaction class definition](#Chemical-reaction-class-definition)), for a total of 47 reactions. <br>
-# To compute the chemical sources for each specie $\omega_i$, for each reaction the specie mass fraction vector is transformed in "local" molar concentrations $\chi_i = \rho_i/M_i$ which are multiplied by the forward and backward reaction coefficients as defined before to compute the reaction rate. <br>
-# According to the Park's definition of forward and backward coefficients, the reaction rate is computed as: <br>
-# 
-# $$R_{f,r} = k_{f,r} \Pi_{i = 0}^{N_{s}} \chi_i^{\alpha_{i,r}} $$ <br>
-# and <br>
-# $$R_{b,r} = k_{b,r} \Pi_{i = 0}^{N_{s}} \chi_i^{\beta_{i,r}} $$
-# Where $\alpha_{i,r}$ and $\beta_{i,r}$ are the stechiometric mole numbers for reactants and products respectively.
-# 
-# <!-- Finally, the generated/destroyed species are expressed in terms of "global" mass fraction rate and summed for each reaction and sub-reaction. -->
-# 
-# <!-- [Aggiungere] and the released energy is computed -->
-# 
-# The net mass rate of production of the specie $i$ is obtained considering all the $N_r$ possible reactions, and it is defined as:
-# $$
-# \omega_i = M_i \sum_{r}^{N_r} \omega_{i,r} = M_i \sum_{r}^{N_r} \left(\beta_{i,r} - \alpha_{i,r} \right) \left( R_{f,r} - R_{b,r} \right)
-# $$
-# 
+# The chemical source terms are computed in the same manner as the one temperaturee model but the forward and backward reaction rates depend both on the translational-rotational and vibrational-electronic temperature according to Park's model [1].
 
 # In[4]:
 
@@ -343,32 +303,29 @@ problem.compute_Sy_2T = compute_Sy_2T
 
 
 # ```{note}
-# Now the reaction rates R depend on the type of reaction considered as described above 
+# Now the reaction rates $R_{i,j}$ depend on the type of reaction considered as described above 
 # ```
 
 # ## Computation of the Vibrational-Translational Energy transfer and Chemical-Vibrational Coupling
 # 
-# The source term $S_v$ is taken into account in order to study the evolution of the vibrational-elecronic energy term introducted by the two-temperature model.
-# $$ S_v = S_{c-v} + S_{v-t} $$
+# The source term $S_v$ is taken into account in order to study the evolution of the vibrational-elecronic energy term introducted by the two-temperature model.<br>
+# $ S_v = S_{c-v} + S_{v-t} $ <br>
 # Where:
-# * $\mathbf{S_{c-v}}$ is the vibrational energy lost or gained due to the chemical reactions.
-# $$ S_{c-v} = \sum_{i}^{N_s} \omega_i e^{ve}_i $$
+# * $\mathbf{S_{c-v}}$ is the vibrational energy lost or gained due to the chemical reactions. <br>
+# $ S_{c-v} = \sum_{i}^{N_s} \omega_i e^{ve}_i $ <br>
 # 
 # * $\mathbf{S_{v-t}} $ is the vibrational energy relaxation term between vibrational and translational energy modes due to collisions.
-# The energy exchange rate is modeled using the Landau-Teller model as:
-# $$ S_{v-t} = \sum_i \rho_i \frac{e^{ve,*}_i - e^{ve}_i}{\tau_i} $$
-# Where $e^{ve,*}_i$ is the vibrational-electronic energy of species $i$ at the translational-rotational temperature $T^{tr}$ and $\tau_i$ is the characteristic relaxation time. For a mixture:
-# $$ 
-# \tau_i = \frac{\sum_r X_r}{\sum_r X_r/\tau_{ir}} $$
-# $$
-# X_i = \frac{Y_i}{M_i} \left( \sum_{r}\frac{Y_r}{M_r} \right)^{-1}
-# $$
-# $\tau_{ir}$ is obtained from the Millikan and White's semiempirical correlation:
-# $$ \tau_{ir} = \tau_{ir}^{MW} = \frac{101325}{p} exp \left[ A_{ir} \left(\left(T^{tr}\right)^{-1/3} - B_{ir} \right) - 18.42 \right] $$
+# The energy exchange rate is modeled using the Landau-Teller model as: <br>
+# $ S_{v-t} = \sum_i \rho_i \frac{e^{ve,*}_i - e^{ve}_i}{\tau_i} $ <br>
+# Where $e^{ve,*}_i$ is the vibrational-electronic energy of species $i$ at the translational-rotational temperature $T^{tr}$ and $\tau_i$ is the characteristic relaxation time. For a mixture: <br>
+# $ \tau_i = \frac{\sum_r X_r}{\sum_r X_r/\tau_{ir}} $ <br>
+# $ X_i = \frac{Y_i}{M_i} \left( \sum_{r}\frac{Y_r}{M_r} \right)^{-1} $ <br>
+# $\tau_{ir}$ is obtained from the Millikan and White's semiempirical correlation: <br>
+# $ \tau_{ir} = \tau_{ir}^{MW} = \frac{101325}{p} exp \left[ A_{ir} \left(\left(T^{tr}\right)^{-1/3} - B_{ir} \right) - 18.42 \right] $ <br>
 # Where:
-# $$ A_{ir} = 1.16 \cdot 10^{-3} \mu_{ir}^{1/2} \theta_{v,i}^{4/3} $$
-# $$ B_{ir} = 0.015 \mu_{ir}^{1/4} $$
-# $$ \mu_{ir} = \frac{M_i M_r}{M_i + M_r} $$
+# $ A_{ir} = 1.16 \cdot 10^{-3} \mu_{ir}^{1/2} \theta_{v,i}^{4/3} $ <br>
+# $ B_{ir} = 0.015 \mu_{ir}^{1/4} $ <br>
+# $ \mu_{ir} = \frac{M_i M_r}{M_i + M_r} $ <br>
 
 # In[5]:
 
@@ -399,10 +356,10 @@ def compute_Sv(self, rho, T, Y, Tv, Sy):
         # xr = Y[j] / mmol[j] / (np.sum(Y/mmol))
         xr = X
         mu_sr = mmol[j] * mmol / (mmol[j] + mmol)     # reduced molecular weight of colliding species
-        A_sr = 1.16e-3 * mu_sr**(1/2) * th_v**(4/3) # !!!!!!!!!!!!!!!! [j] si / no? CANCELLARE
+        A_sr = 1.16e-3 * mu_sr**(1/2) * th_v**(4/3) 
         B_sr = 0.015 * mu_sr**(1/4)
         tau_sr = 101325 / p * np.exp(A_sr * (T**(-1/3) - B_sr) - 18.42)
-        ts[j] = np.sum(xr) / np.sum(xr / tau_sr)      # CANCELLARE controllare sommatoria (cfr Zanardi 2.124)
+        ts[j] = np.sum(xr) / np.sum(xr / tau_sr)     
         e_v[j] = self.specie[j].energy_vib_2T(Tv)
         e_v_eq[j] = self.specie[j].energy_vib_2T(T)
         Svt[j] = rho * Y[j] * (e_v_eq[j] - e_v[j]) / ts[j]  
@@ -419,70 +376,34 @@ def compute_Sv(self, rho, T, Y, Tv, Sy):
 problem.compute_Sv = compute_Sv
 
 
-# ## Pre-shock relax chemistry funciton
-
-# In general, once the density and temperature of a mixture are known, the equilibrium composition can be computed by the chemical equilibrium constant. In this function, the equilibrium composition of the mixture is computed through the chemical source terms.
-
-# In[6]:
-
-
-def pre_shock_relax_chemistry(self):
-    output = 1
-    Y  = self.Y0
-    Sy = self.compute_Sy(self.rho0, self.T0, Y)
-    
-    while (any(abs(Sy) > 1e-8)):
-        
-        Sy = self.compute_Sy(self.rho0, self.T0, Y)
-    
-        Y += 1e-6 * Sy
-        if output :
-            for i in range(len(_11specie.specie)):
-                print('********************************')
-                print(_11specie.specie[i].name + ' concentration : ' + str(Y[i]) + '    Sorgente : '  + str (Sy[i]))
-                print('********************************')
-            
-        if not (np.sum(Y) - 1 < 1e-8):
-            print('Species not conserved in pre-shock relax')
-            
-        if any(Y < 0):
-            print('Y less than 0 in chemical relax pre - shock')
-            
-    return Y
-
-problem.pre_shock_relax_chemistry = pre_shock_relax_chemistry
-
-
-# ```{warning}
-# Since in general both temperature, density and composition may be unknown or uncertain, this function prints the chemical equilibrium composition BUT DOES NOT UPDATE the inital conditions of the problem.
-# ```
-
 # ## 2 Temperature version (Temperature version)
 
 # ### Euler system of equation, 2 temperature version
 # 
 # The equations read:
-# In
 # * $\textbf{Mass equation}$: <br />
 #     $ \frac{\partial \rho u}{\partial x} = \frac{\partial \rho}{\partial x}u + \rho \frac{\partial u}{\partial x} = 0 \Longrightarrow \frac{\partial \rho}{\partial x} = - \frac{\rho}{u} \frac{\partial u}{\partial x} $
-#     
 #     
 # * $\textbf{Momentum equation}$: <br />
 #     $ \rho u \frac{\partial u}{\partial x} = - \frac{\partial P}{\partial x} $ <br>
 #     Since $ P = P(\rho, T^{tr}, Y) = \rho \Sigma_i Y_i R_i T^{tr} $ , then $ dp = \frac{\partial P}{\partial \rho} d \rho + \frac{\partial P}{\partial T^{tr}} d T^{tr} + \Sigma_i \frac{\partial P}{\partial Y_i} d Y_i $  <br>
 #     The derivatives can be expressed as : <br>
-#     - $ \frac{\partial P}{\partial \rho} = \Sigma_i Y_i R_u T^{tr} $ <br>
+#     - $ \frac{\partial P}{\partial \rho} = \Sigma_i Y_i R_i T^{tr} $ <br>
 #     - $ \frac{\partial P}{\partial T^{tr}} = \rho \Sigma_i Y_i R_i$ <br>
 #     - $ \frac{\partial P}{\partial Y_i} = \rho R_i T^{tr}$ <br>
 #     Hence, the momentum equation can be written as : <br>
 #     $ \rho u \frac{\partial u}{\partial x} = - \frac{\partial P}{\partial x} = \Sigma_i Y_i R_i T^{tr} \frac{\partial \rho}{\partial x} + \rho \Sigma_i Y_i R_i \frac{\partial T^{tr}}{\partial x} + \rho R T^{tr} \Sigma_i \frac{\partial Y_i}{\partial x}$    
 #     
+
+# ```{note}
+# The momentum equation can be rewritten also as:
+# $\frac{\partial u}{\partial x} =\frac{- \sum_i \frac{\partial p}{\partial Y_i} \frac{\partial Y_i}{\partial x} + \frac{\partial p}{\partial T} \left( \sum_i \frac{\partial e}{\partial Y_i} \frac{\partial Y_i}{\partial x} + \frac{\partial e}{\partial T^v} \frac{\partial T^v}{\partial x} \right) \left( \frac{\partial e}{\partial T} \right)^{-1}}{\rho u - \frac{\rho}{u} \frac{\partial P}{\partial \rho} - \frac{p}{\rho u} \frac{\partial P}{\partial T} \left( \frac{\partial e}{\partial T} \right)^{-1}} $
+# ```
+
 # * $\textbf{Energy equation}$: <br />
 #     $ \frac{\partial e}{\partial x} = \frac{P}{\rho^2} \frac{\partial \rho}{\partial x}$ <br>
-#     $ \rho u \frac{\partial e^v}{\partial x} = S_v $ <br>
-#     Expressing the dependence of e on the thermodynamic variables: $ e = e (T, T^v, Y_i) $ and $e^v = e^v (T^v, Y_i)$, then <br>
+#     Expressing the dependence of e on the thermodynamic variables: $ e = e (T, T^v, Y_i) $, then <br>
 #     $ de = \frac{\partial e }{\partial T} dT + \frac{\partial e }{\partial T^v} dT^v + \Sigma \frac{\partial e }{\partial Y_i} dY_i$ <br>
-#     $ de^v = \frac{\partial e^v }{\partial T^v} dT^v + \Sigma \frac{\partial e^v }{\partial Y_i} dY_i$ <br>
 #     
 #     The derivatives can be expressed as : <br>
 #     - $ \frac{\partial e}{\partial T} = cv^{tr} (T, Y_i) $ <br>
@@ -491,19 +412,17 @@ problem.pre_shock_relax_chemistry = pre_shock_relax_chemistry
 #     - $ \frac{\partial e^v}{\partial Y_i} = e^v_i(T^v) $ <br>
 #     Hence, the energy equation can be written as : <br>
 #     $ \frac{\partial T}{\partial x} = \left [ \frac{P}{\rho^2} \frac{\partial \rho}{\partial x} - \frac{\partial e}{\partial T^v} \frac{\partial T^v}{\partial x} - \Sigma_i \frac{\partial e}{\partial Y_i} \frac{\partial Y_i}{\partial x} \right ] \left( \frac{\partial e}{\partial T} \right)^{-1}$ <br>
+#     
+# * $\textbf{Vibrational energy equation}$: <br>
+#     $ \rho u \frac{\partial e^v}{\partial x} = S_v $ <br>
+#     Expressing the dependence of $e^v = e^v (T^v, Y_i)$ on the thermodynamic variables: 
+#     $ de^v = \frac{\partial e^v }{\partial T^v} dT^v + \Sigma \frac{\partial e^v }{\partial Y_i} dY_i$ <br>
 #     $ \frac{\partial T^v}{\partial x} = \left [ \frac{S_v}{\rho u} - \Sigma_i \frac{\partial e^v}{\partial Y_i} \frac{\partial Y_i}{\partial x} \right ] \left( \frac{\partial e^v}{\partial T^v} \right)^{-1}$
 #     
 # * $\textbf{Species transport equation}$: <br />
 #     $ \rho u \frac{\partial Y_i }{\partial x} = \omega_i \qquad for \; i = 1 ... N_s $
 
-# ````{margin}
-# ```{note}
-# The momentum equation can be rewritten also as:
-# $\frac{\partial u}{\partial x} =\frac{- \sum_i \frac{\partial p}{\partial Y_i} \frac{\partial Y_i}{\partial x} + \frac{\partial p}{\partial T} \left( \sum_i \frac{\partial e}{\partial Y_i} \frac{\partial Y_i}{\partial x} + \frac{\partial e}{\partial T^v} \frac{\partial T^v}{\partial x} \right) \left( \frac{\partial e}{\partial T} \right)^{-1}}{\rho u - \frac{\rho}{u} \frac{\partial P}{\partial \rho} - \frac{p}{\rho u} \frac{\partial P}{\partial T} \left( \frac{\partial e}{\partial T} \right)^{-1}} $
-# ```
-# ````
-
-# In[7]:
+# In[6]:
 
 
 def Euler_system_2T(self, x, x_x):
@@ -559,11 +478,7 @@ def Euler_system_2T(self, x, x_x):
     # u_xc  = -  p_x / rho / u
     u_xc  = (- np.inner(p_Y, Y_x) + p_T / e_tr_T * (np.inner(e_Y_tot, Y_x) + e_ve_Tv * Tv_x) )/             (rho * u - rho / u * p_rho - p / (rho * u) * p_T / e_tr_T )
     
-    # print('Svt =' + str(Svt))
-    # Svt = 0
-    
     # Energy equation                                           # new term : de_ve/dTv * dTv/dx
-    # T_xc  = (p / rho ** 2 * rho_x - np.sum(e_Y_tot * Y_x) - cv_ve * Tv_x) / cv_tr
     T_xc  = (p / (rho ** 2) * rho_x - np.sum(e_Y_tot * Y_x) - e_ve_Tv * Tv_x) / e_tr_T
     Tv_xc = (Svt / (rho * u) - np.sum(e_Y_v * Y_x)) / e_ve_Tv
     
@@ -600,7 +515,8 @@ def Euler_x_2T(self, x_spatial, x, x0 = None):
                 print('State values  = ' + str(x))
         
         if x0 == None:
-            x0 = [self.rho1, self.u1, self.T1, self.T0]
+            a = 0.2
+            x0 = [self.rho1, self.u1, self.T1, ( a * self.T1 + (1-a) * self.T0)]
             for i in self.Y0:
                 x0.append(i)
         
@@ -625,13 +541,9 @@ problem.Euler_x_2T = Euler_x_2T
 
 # ### Solve, 2 temperature version
 
-# The solve function resolves the shock and then computes the state varibles by integration of the derivatives in the spatial coordinate x.
-# 
-# ```{note}
-# The problem is stiff, thus an appropriate method must be chosen. In this code an implicit multi-step variable-order (1 to 5) method based on a backward differentiation formula for the derivative approximation has been chosen. The first step is a fraction of the reference post-shock mean free path.
-# ```
+# The solve function is analogous to the one temperature version.
 
-# In[8]:
+# In[7]:
 
 
 def solve_2T(self, xf = 1):
@@ -674,7 +586,7 @@ problem.solve_2T = solve_2T
 # 
 # Once the result in terms of state variables have been computed, the pressure, energy and molar mass fractions are recovered to be used for the visualization and analysis of the results.
 
-# In[9]:
+# In[8]:
 
 
 def postprocess(self):
@@ -700,17 +612,16 @@ def postprocess(self):
     self.sol_e = e
     self.sol_p = p
     
-problem.solve = solve
 problem.postprocess = postprocess
 
 
-# # Plot
+# ## Plot
 
 # Several plot functions have been prepared to ease analysis and comparisons. These function plot the outcome of the analysis with a double x-axis: the upper values represent the number of reference mean free path while the lower is the distance measured in meters from the shock.
 
-# ## Temperature plot
+# ### Temperature plot
 
-# In[ ]:
+# In[9]:
 
 
 def plot_2T(self, ax = None, xmax = None, xmax_l = None, ls='-'):
@@ -754,7 +665,7 @@ def plot_2T(self, ax = None, xmax = None, xmax_l = None, ls='-'):
 
 # ### Density plot
 
-# In[ ]:
+# In[10]:
 
 
 def plot_rho(self, ax = None, xmax = None, xmax_l = None, ls='-'):
@@ -797,7 +708,7 @@ def plot_rho(self, ax = None, xmax = None, xmax_l = None, ls='-'):
 
 # ### Velocity plot
 
-# In[ ]:
+# In[11]:
 
 
 def plot_u(self, ax = None, xmax = None, xmax_l = None, ls='-'):
@@ -840,7 +751,7 @@ def plot_u(self, ax = None, xmax = None, xmax_l = None, ls='-'):
 
 # ### Mass fractions plot
 
-# In[ ]:
+# In[12]:
 
 
 def plot_Y(self, ax = None, xmax = None, xmax_l = None, ls = '-'):
@@ -891,7 +802,7 @@ def plot_Y(self, ax = None, xmax = None, xmax_l = None, ls = '-'):
 
 # ### Molar fractions plot
 
-# In[ ]:
+# In[13]:
 
 
 def plot_X(self, ax = None, xmax = None, xmax_l = None, ls = '-'):
@@ -942,7 +853,7 @@ def plot_X(self, ax = None, xmax = None, xmax_l = None, ls = '-'):
 
 # ### Mass fractions log-plot
 
-# In[ ]:
+# In[14]:
 
 
 def logplot_Y(self, ax = None, xmax = None, xmax_l = None, ls = '-'):
@@ -995,7 +906,7 @@ def logplot_Y(self, ax = None, xmax = None, xmax_l = None, ls = '-'):
 
 # ### Molar fractions log-plot
 
-# In[ ]:
+# In[15]:
 
 
 def logplot_X(self, ax = None, xmax = None, xmax_l = None, ls = '-'):
@@ -1054,7 +965,7 @@ def logplot_X(self, ax = None, xmax = None, xmax_l = None, ls = '-'):
 # * Momentum flux: $ \rho u^2 + P $
 # * Energy flux: $ ( \rho ( e + \frac{1}{2} u ^ 2 ) + P ) u $ 
 
-# In[ ]:
+# In[16]:
 
 
 def validate_2T(self, xmax = None, xmax_l = None, ls = '-', print_max = True):
@@ -1084,13 +995,13 @@ def validate_2T(self, xmax = None, xmax_l = None, ls = '-', print_max = True):
     subaxes_mass2.set_xlim(0, xmax / self.mfp)
     subaxes_mass.set_xlabel('x [m]')
     subaxes_mass2.set_xlabel('x / reference mfp [-]')
-    subaxes_mass.set_ylabel('Mass flux [Kg/s]')
+    subaxes_mass.set_ylabel('Mass flux [-]')
     subaxes_mass2.grid()
     subaxes_mass.yaxis.grid(True)
     
     # Compute and plot momentum flux
     subaxes_momentum   = plt.subplot(4, 1, 2)
-    momentum_flux = self.sol_rho * self.sol_u ** 2 + self.sol_p # CANCELLARE multiply per u to obtain a flux
+    momentum_flux = self.sol_rho * self.sol_u ** 2 + self.sol_p 
     error_momentum_flux = ( momentum_flux - momentum_flux[0] ) / momentum_flux[0]
     subaxes_momentum.plot(self.sol_x, error_momentum_flux, ls)
     
@@ -1102,12 +1013,12 @@ def validate_2T(self, xmax = None, xmax_l = None, ls = '-', print_max = True):
     subaxes_momentum2.set_xlim(0, xmax / self.mfp)
     subaxes_momentum.set_xlabel('x [m]')
     subaxes_momentum2.set_xlabel('x / reference mfp [-]')
-    subaxes_momentum.set_ylabel('Momentum flux [Pa * m / s]')  # CANCELLARE controllare unità di misura o toglierle
+    subaxes_momentum.set_ylabel('Momentum flux [-]') 
     subaxes_momentum2.grid()
     subaxes_momentum.yaxis.grid(True)
     
     # Compute and plot total enthalpy flux
-    subaxes_enthalpy     = plt.subplot(5, 1, 3)
+    subaxes_enthalpy     = plt.subplot(4, 1, 3)
     enthalpy_flux = (self.sol_rho * ( self.sol_e_tr + self.sol_e_ve + 1 / 2 * self.sol_u ** 2 ) + self.sol_p) * self.sol_u 
     error_enthalpy_flux = ( enthalpy_flux - enthalpy_flux[0] ) / enthalpy_flux[0]
     subaxes_enthalpy.plot(self.sol_x, error_enthalpy_flux, ls)
@@ -1120,13 +1031,13 @@ def validate_2T(self, xmax = None, xmax_l = None, ls = '-', print_max = True):
     subaxes_enthalpy2.set_xlim(0, xmax / self.mfp)
     subaxes_enthalpy.set_xlabel('x [m]')
     subaxes_enthalpy2.set_xlabel('x / reference mfp [-]')
-    subaxes_enthalpy.set_ylabel('enthalpy flux [J/ms]') # CANCELLARE controllare unità di misura o toglierle
+    subaxes_enthalpy.set_ylabel('enthalpy flux [-]') 
     subaxes_enthalpy2.grid()
     subaxes_enthalpy.yaxis.grid(True)
     
     # Compute and plot sum of mass fractions
     subaxes_mass_frac     = plt.subplot(4, 1, 4)
-    mass_frac_flux = np.sum(self.sol_Y,axis=0) # CANCELLARE multiply per u to obtain a flux
+    mass_frac_flux = np.sum(self.sol_Y,axis=0) 
     error_mass_frac_flux = ( mass_frac_flux - mass_frac_flux[0] ) / mass_frac_flux[0]
     subaxes_mass_frac.plot(self.sol_x, error_mass_frac_flux, ls)
     
@@ -1138,7 +1049,7 @@ def validate_2T(self, xmax = None, xmax_l = None, ls = '-', print_max = True):
     subaxes_mass_frac2.set_xlim(0, xmax / self.mfp)
     subaxes_mass_frac.set_xlabel('x [m]')
     subaxes_mass_frac2.set_xlabel('x / reference mfp [-]')
-    subaxes_mass_frac.set_ylabel('Sum of mass fractions [-]') # CANCELLARE controllare unità di misura o toglierle
+    subaxes_mass_frac.set_ylabel('Sum of mass fractions [-]')
     subaxes_mass_frac2.grid()
     subaxes_mass_frac.yaxis.grid(True)
     
@@ -1151,7 +1062,7 @@ def validate_2T(self, xmax = None, xmax_l = None, ls = '-', print_max = True):
         print('Ymin                          : ' + str(np.min(self.sol_Y)))
 
 
-# In[ ]:
+# In[17]:
 
 
 problem.plot_2T = plot_2T

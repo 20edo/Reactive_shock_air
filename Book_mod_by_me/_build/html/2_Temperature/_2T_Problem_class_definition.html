@@ -56,6 +56,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Results" href="../Results/Results.html" />
     <link rel="prev" title="Reaction and sub-reaction classes" href="_2T_Reaction_class_definition.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -105,10 +106,64 @@
   Code description
  </span>
 </p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../1_Temperature/1T_code_structure.html">
+   One temperature
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../1_Temperature/Specie_class_definition.html">
+   Specie class definition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../1_Temperature/Reaction_class_definition.html">
+   Reaction and sub-reaction classes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../1_Temperature/Problem_class_definition.html">
+   Problem class definition
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Two-temperature
+ </span>
+</p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="_2T_code_structure.html">
    Two-temperature
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="_2T_Specie_class_definition.html">
+   Specie class definition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="_2T_Reaction_class_definition.html">
+   Reaction and sub-reaction classes
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Problem class definition
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Results
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Results/Results.html">
+   Results
   </a>
  </li>
 </ul>
@@ -215,108 +270,94 @@
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Problem class definition
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#thermodynamics">
+   Thermodynamics
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#initialization">
-     Initialization
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rh-jump-relations">
+   RH jump relations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#computation-of-the-chemical-source-terms">
+   Computation of the chemical source terms
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#computation-of-the-vibrational-translational-energy-transfer-and-chemical-vibrational-coupling">
+   Computation of the Vibrational-Translational Energy transfer and Chemical-Vibrational Coupling
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#temperature-version-temperature-version">
+   2 Temperature version (Temperature version)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#euler-system-of-equation-2-temperature-version">
+     Euler system of equation, 2 temperature version
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#rh-jump-relations">
-     RH jump relations
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#computation-of-the-chemical-source-terms">
-     Computation of the chemical source terms
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#computation-of-the-vibrational-translational-energy-transfer-and-chemical-vibrational-coupling">
-     Computation of the Vibrational-Translational Energy transfer and Chemical-Vibrational Coupling
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#pre-shock-relax-chemistry-funciton">
-     Pre-shock relax chemistry funciton
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#temperature-version-temperature-version">
-     2 Temperature version (Temperature version)
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#euler-system-of-equation-2-temperature-version">
-       Euler system of equation, 2 temperature version
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#solve-2-temperature-version">
-       Solve, 2 temperature version
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#post-processing">
-     Post-processing
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solve-2-temperature-version">
+     Solve, 2 temperature version
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#post-processing">
+   Post-processing
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#plot">
    Plot
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#temperature-plot">
      Temperature plot
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#density-plot">
-       Density plot
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#velocity-plot">
-       Velocity plot
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#mass-fractions-plot">
-       Mass fractions plot
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#molar-fractions-plot">
-       Molar fractions plot
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#mass-fractions-log-plot">
-       Mass fractions log-plot
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#molar-fractions-log-plot">
-       Molar fractions log-plot
-      </a>
-     </li>
-    </ul>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#validation">
-     Validation
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#density-plot">
+     Density plot
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#velocity-plot">
+     Velocity plot
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mass-fractions-plot">
+     Mass fractions plot
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#molar-fractions-plot">
+     Molar fractions plot
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mass-fractions-log-plot">
+     Mass fractions log-plot
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#molar-fractions-log-plot">
+     Molar fractions log-plot
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#validation">
+   Validation
+  </a>
  </li>
 </ul>
 
@@ -338,108 +379,94 @@
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Problem class definition
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#thermodynamics">
+   Thermodynamics
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#initialization">
-     Initialization
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rh-jump-relations">
+   RH jump relations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#computation-of-the-chemical-source-terms">
+   Computation of the chemical source terms
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#computation-of-the-vibrational-translational-energy-transfer-and-chemical-vibrational-coupling">
+   Computation of the Vibrational-Translational Energy transfer and Chemical-Vibrational Coupling
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#temperature-version-temperature-version">
+   2 Temperature version (Temperature version)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#euler-system-of-equation-2-temperature-version">
+     Euler system of equation, 2 temperature version
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#rh-jump-relations">
-     RH jump relations
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#computation-of-the-chemical-source-terms">
-     Computation of the chemical source terms
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#computation-of-the-vibrational-translational-energy-transfer-and-chemical-vibrational-coupling">
-     Computation of the Vibrational-Translational Energy transfer and Chemical-Vibrational Coupling
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#pre-shock-relax-chemistry-funciton">
-     Pre-shock relax chemistry funciton
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#temperature-version-temperature-version">
-     2 Temperature version (Temperature version)
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#euler-system-of-equation-2-temperature-version">
-       Euler system of equation, 2 temperature version
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#solve-2-temperature-version">
-       Solve, 2 temperature version
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#post-processing">
-     Post-processing
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solve-2-temperature-version">
+     Solve, 2 temperature version
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#post-processing">
+   Post-processing
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#plot">
    Plot
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#temperature-plot">
      Temperature plot
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#density-plot">
-       Density plot
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#velocity-plot">
-       Velocity plot
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#mass-fractions-plot">
-       Mass fractions plot
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#molar-fractions-plot">
-       Molar fractions plot
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#mass-fractions-log-plot">
-       Mass fractions log-plot
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#molar-fractions-log-plot">
-       Molar fractions log-plot
-      </a>
-     </li>
-    </ul>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#validation">
-     Validation
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#density-plot">
+     Density plot
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#velocity-plot">
+     Velocity plot
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mass-fractions-plot">
+     Mass fractions plot
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#molar-fractions-plot">
+     Molar fractions plot
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mass-fractions-log-plot">
+     Mass fractions log-plot
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#molar-fractions-log-plot">
+     Molar fractions log-plot
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#validation">
+   Validation
+  </a>
  </li>
 </ul>
 
@@ -450,7 +477,7 @@
             
               <div>
                 
-  <div class="cell docutils container">
+  <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> _2T_Reaction_class_definition.ipynb
 </pre></div>
@@ -459,22 +486,10 @@
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="problem-class-definition">
 <h1>Problem class definition<a class="headerlink" href="#problem-class-definition" title="Permalink to this headline">¶</a></h1>
-<p>We define a class problem so that several condition can be studied, analyzed, compared and contrasted.</p>
-<p>The initial conditions for the shock relaxation region are obtained by assuming frozen chemistry through the shock which, in the Euler equations framework is a discontinuity whose jumps are defined by the Rankine-Hugoniot relations.</p>
-<p>The variable are mixture density, velocity, temperature and mixture mass fractions.</p>
-<p>For the mixture considered the the following relations hold:</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(e_{mixture} = \Sigma_i e_i Y_i \)</span> where <span class="math notranslate nohighlight">\(e_i = e_i^{t} + e_i^{r} + e_i^{v} + e_i^{e}\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(CV_{mixture} = \Sigma_i CV_i Y_i \)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(R_{mixture} = \Sigma_i R_i Y_i \)</span></p></li>
-</ul>
-<div class="section" id="initialization">
-<h2>Initialization<a class="headerlink" href="#initialization" title="Permalink to this headline">¶</a></h2>
-<p>In the following the class is created and the functions to compute the thermodynamic variables are defined.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Some variables have a default value when the class is initialized. All of them will be overwritten when defining a problem, but the sigma value that represents the equivalent cross section of pure nitrogen assuming hard sphere potential.</p>
-</div>
+<p>In the same manner of the one temperature, the problem class is a container for mixture thermodynamics, initial conditions, solution and plot functions.</p>
+<div class="section" id="thermodynamics">
+<h2>Thermodynamics<a class="headerlink" href="#thermodynamics" title="Permalink to this headline">¶</a></h2>
+<p>On one hand many thermodynamic functions are the same as their one temperature equivalent, on the other hand it is necessary to define appropriate functions for the computation of the translational-rotational energy form the translational-rotational temperature and the same for the vibro-electronic.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">problem</span><span class="p">:</span>
@@ -570,21 +585,17 @@
 </div>
 <div class="section" id="rh-jump-relations">
 <h2>RH jump relations<a class="headerlink" href="#rh-jump-relations" title="Permalink to this headline">¶</a></h2>
-<p>Firstly, the Rankine Hugoniot relations are solved for a perfect gas with the same R of the mixture and the isoentropic coefficient <span class="math notranslate nohighlight">\(\gamma = 1.4\)</span>. <br>
-Then, the results obtained are used as guess to initialize the non-linear solver. <br>
-The Rankine-Hugoniot relations read: <br></p>
-<p>\begin{cases}
-\rho_0 u_0 = \rho_1 u_1 \
-\rho_0 u_0^2 + P_0 = \rho_1 u_1^2 + P_1 \
-h_0^t  = e_0 + \frac{P_0}{\rho_0} + \frac{1}{2}u_0^2 =
-e_1 + \frac{P_1}{\rho_1} + \frac{1}{2} u_1^2 = h_1^t  \
-Y_{i_0} = Y_{i_1}
-\end{cases}</p>
-<p>Whereas <span class="math notranslate nohighlight">\(P = \rho \sum_{i}^{N_s} Y_i R_i T \)</span> <br>
-The non-linear equations are written in the “RHsystem” function whose solutions are found through a non-linear.</p>
+<p>The Rankine-Hugoniot relations are the same and read: <br></p>
+<p><span class="math notranslate nohighlight">\( \rho_0 u_0 = \rho_1 u_1 \)</span> <br>
+<span class="math notranslate nohighlight">\( \rho_0 u_0^2 + P_0 = \rho_1 u_1^2 + P_1 \)</span> <br>
+<span class="math notranslate nohighlight">\( h_0^t  = e_0 + \frac{P_0}{\rho_0} + \frac{1}{2}u_0^2 = 
+e_1 + \frac{P_1}{\rho_1} + \frac{1}{2} u_1^2 = h_1^t \)</span> <br>
+<span class="math notranslate nohighlight">\( Y_{i_0} = Y_{i_1} \)</span> <br></p>
+<p>Where <span class="math notranslate nohighlight">\(P = \rho \sum_{i}^{N_s} Y_i R_i T \)</span> <br>
+The non-linear equations are written in the “RHsystem” function whose solutions are found through a non-linear solver.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The shock is solved with the hypothesis of frozen chemistry.</p>
+<p>The shock is solved with the hypothesis of frozen chemistry and constant vibrational-electronic temperature.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -675,31 +686,10 @@ The non-linear equations are written in the “RHsystem” function whose soluti
 </div>
 </div>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>In the “RHjump” function a reference mean free path is computed to be able to compare the relaxation length in terms if mean free path for different initial conditions. It represents the mean free path just after the shock and is computed by the cross section defined in the problem class</p>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>While the defualt value of sigma is reasonable for air (since the bi-atomical nitrogen is its the first specie in terms of composition both in mass and molar fractions), it is not exact. Furthermore the effects of different composition are not captured by this value, hence it shall be used with caution and only as a reference.</p>
-</div>
 </div>
 <div class="section" id="computation-of-the-chemical-source-terms">
 <h2>Computation of the chemical source terms<a class="headerlink" href="#computation-of-the-chemical-source-terms" title="Permalink to this headline">¶</a></h2>
-<p>The reactions considered are those for the 11-species air model and they can be subdivided in four groups (see <a class="reference external" href="#Chemical-reaction-class-definition">Chemical reaction class definition</a>), for a total of 47 reactions. <br>
-To compute the chemical sources for each specie <span class="math notranslate nohighlight">\(\omega_i\)</span>, for each reaction the specie mass fraction vector is transformed in “local” molar concentrations <span class="math notranslate nohighlight">\(\chi_i = \rho_i/M_i\)</span> which are multiplied by the forward and backward reaction coefficients as defined before to compute the reaction rate. <br>
-According to the Park’s definition of forward and backward coefficients, the reaction rate is computed as: <br></p>
-<div class="math notranslate nohighlight">
-\[R_{f,r} = k_{f,r} \Pi_{i = 0}^{N_{s}} \chi_i^{\alpha_{i,r}} $$ &lt;br&gt;
-and &lt;br&gt;
-$$R_{b,r} = k_{b,r} \Pi_{i = 0}^{N_{s}} \chi_i^{\beta_{i,r}} \]</div>
-<p>Where <span class="math notranslate nohighlight">\(\alpha_{i,r}\)</span> and <span class="math notranslate nohighlight">\(\beta_{i,r}\)</span> are the stechiometric mole numbers for reactants and products respectively.</p>
-<!-- Finally, the generated/destroyed species are expressed in terms of "global" mass fraction rate and summed for each reaction and sub-reaction. -->
-<!-- [Aggiungere] and the released energy is computed -->
-<p>The net mass rate of production of the specie <span class="math notranslate nohighlight">\(i\)</span> is obtained considering all the <span class="math notranslate nohighlight">\(N_r\)</span> possible reactions, and it is defined as:
-$<span class="math notranslate nohighlight">\(
-\omega_i = M_i \sum_{r}^{N_r} \omega_{i,r} = M_i \sum_{r}^{N_r} \left(\beta_{i,r} - \alpha_{i,r} \right) \left( R_{f,r} - R_{b,r} \right)
-\)</span>$</p>
+<p>The chemical source terms are computed in the same manner as the one temperaturee model but the forward and backward reaction rates depend both on the translational-rotational and vibrational-electronic temperature according to Park’s model [1].</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compute_Sy_2T</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Tv</span><span class="p">):</span>
@@ -791,32 +781,29 @@ $<span class="math notranslate nohighlight">\(
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Now the reaction rates R depend on the type of reaction considered as described above</p>
+<p>Now the reaction rates <span class="math notranslate nohighlight">\(R_{i,j}\)</span> depend on the type of reaction considered as described above</p>
 </div>
 </div>
 <div class="section" id="computation-of-the-vibrational-translational-energy-transfer-and-chemical-vibrational-coupling">
 <h2>Computation of the Vibrational-Translational Energy transfer and Chemical-Vibrational Coupling<a class="headerlink" href="#computation-of-the-vibrational-translational-energy-transfer-and-chemical-vibrational-coupling" title="Permalink to this headline">¶</a></h2>
-<p>The source term <span class="math notranslate nohighlight">\(S_v\)</span> is taken into account in order to study the evolution of the vibrational-elecronic energy term introducted by the two-temperature model.
-$<span class="math notranslate nohighlight">\( S_v = S_{c-v} + S_{v-t} \)</span>$
+<p>The source term <span class="math notranslate nohighlight">\(S_v\)</span> is taken into account in order to study the evolution of the vibrational-elecronic energy term introducted by the two-temperature model.<br>
+<span class="math notranslate nohighlight">\( S_v = S_{c-v} + S_{v-t} \)</span> <br>
 Where:</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\mathbf{S_{c-v}}\)</span> is the vibrational energy lost or gained due to the chemical reactions.
-$<span class="math notranslate nohighlight">\( S_{c-v} = \sum_{i}^{N_s} \omega_i e^{ve}_i \)</span>$</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{S_{c-v}}\)</span> is the vibrational energy lost or gained due to the chemical reactions. <br>
+<span class="math notranslate nohighlight">\( S_{c-v} = \sum_{i}^{N_s} \omega_i e^{ve}_i \)</span> <br></p></li>
 <li><p><span class="math notranslate nohighlight">\(\mathbf{S_{v-t}} \)</span> is the vibrational energy relaxation term between vibrational and translational energy modes due to collisions.
-The energy exchange rate is modeled using the Landau-Teller model as:
-$<span class="math notranslate nohighlight">\( S_{v-t} = \sum_i \rho_i \frac{e^{ve,*}_i - e^{ve}_i}{\tau_i} \)</span><span class="math notranslate nohighlight">\(
-Where \)</span>e^{ve,*}<em>i<span class="math notranslate nohighlight">\( is the vibrational-electronic energy of species \)</span>i<span class="math notranslate nohighlight">\( at the translational-rotational temperature \)</span>T^{tr}<span class="math notranslate nohighlight">\( and \)</span>\tau_i<span class="math notranslate nohighlight">\( is the characteristic relaxation time. For a mixture:
-\)</span><span class="math notranslate nohighlight">\( 
-\tau_i = \frac{\sum_r X_r}{\sum_r X_r/\tau_{ir}} \)</span><span class="math notranslate nohighlight">\(
-\)</span><span class="math notranslate nohighlight">\(
-X_i = \frac{Y_i}{M_i} \left( \sum_{r}\frac{Y_r}{M_r} \right)^{-1}
-\)</span><span class="math notranslate nohighlight">\(
-\)</span>\tau</em>{ir}<span class="math notranslate nohighlight">\( is obtained from the Millikan and White's semiempirical correlation:
-\)</span><span class="math notranslate nohighlight">\( \tau_{ir} = \tau_{ir}^{MW} = \frac{101325}{p} exp \left[ A_{ir} \left(\left(T^{tr}\right)^{-1/3} - B_{ir} \right) - 18.42 \right] \)</span><span class="math notranslate nohighlight">\(
+The energy exchange rate is modeled using the Landau-Teller model as: <br>
+<span class="math notranslate nohighlight">\( S_{v-t} = \sum_i \rho_i \frac{e^{ve,*}_i - e^{ve}_i}{\tau_i} \)</span> <br>
+Where <span class="math notranslate nohighlight">\(e^{ve,*}_i\)</span> is the vibrational-electronic energy of species <span class="math notranslate nohighlight">\(i\)</span> at the translational-rotational temperature <span class="math notranslate nohighlight">\(T^{tr}\)</span> and <span class="math notranslate nohighlight">\(\tau_i\)</span> is the characteristic relaxation time. For a mixture: <br>
+<span class="math notranslate nohighlight">\( \tau_i = \frac{\sum_r X_r}{\sum_r X_r/\tau_{ir}} \)</span> <br>
+<span class="math notranslate nohighlight">\( X_i = \frac{Y_i}{M_i} \left( \sum_{r}\frac{Y_r}{M_r} \right)^{-1} \)</span> <br>
+<span class="math notranslate nohighlight">\(\tau_{ir}\)</span> is obtained from the Millikan and White’s semiempirical correlation: <br>
+<span class="math notranslate nohighlight">\( \tau_{ir} = \tau_{ir}^{MW} = \frac{101325}{p} exp \left[ A_{ir} \left(\left(T^{tr}\right)^{-1/3} - B_{ir} \right) - 18.42 \right] \)</span> <br>
 Where:
-\)</span><span class="math notranslate nohighlight">\( A_{ir} = 1.16 \cdot 10^{-3} \mu_{ir}^{1/2} \theta_{v,i}^{4/3} \)</span><span class="math notranslate nohighlight">\(
-\)</span><span class="math notranslate nohighlight">\( B_{ir} = 0.015 \mu_{ir}^{1/4} \)</span><span class="math notranslate nohighlight">\(
-\)</span><span class="math notranslate nohighlight">\( \mu_{ir} = \frac{M_i M_r}{M_i + M_r} \)</span>$</p></li>
+<span class="math notranslate nohighlight">\( A_{ir} = 1.16 \cdot 10^{-3} \mu_{ir}^{1/2} \theta_{v,i}^{4/3} \)</span> <br>
+<span class="math notranslate nohighlight">\( B_{ir} = 0.015 \mu_{ir}^{1/4} \)</span> <br>
+<span class="math notranslate nohighlight">\( \mu_{ir} = \frac{M_i M_r}{M_i + M_r} \)</span> <br></p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -846,10 +833,10 @@ Where:
         <span class="c1"># xr = Y[j] / mmol[j] / (np.sum(Y/mmol))</span>
         <span class="n">xr</span> <span class="o">=</span> <span class="n">X</span>
         <span class="n">mu_sr</span> <span class="o">=</span> <span class="n">mmol</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">mmol</span> <span class="o">/</span> <span class="p">(</span><span class="n">mmol</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">mmol</span><span class="p">)</span>     <span class="c1"># reduced molecular weight of colliding species</span>
-        <span class="n">A_sr</span> <span class="o">=</span> <span class="mf">1.16e-3</span> <span class="o">*</span> <span class="n">mu_sr</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">th_v</span><span class="o">**</span><span class="p">(</span><span class="mi">4</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span> <span class="c1"># !!!!!!!!!!!!!!!! [j] si / no? CANCELLARE</span>
+        <span class="n">A_sr</span> <span class="o">=</span> <span class="mf">1.16e-3</span> <span class="o">*</span> <span class="n">mu_sr</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">th_v</span><span class="o">**</span><span class="p">(</span><span class="mi">4</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span> 
         <span class="n">B_sr</span> <span class="o">=</span> <span class="mf">0.015</span> <span class="o">*</span> <span class="n">mu_sr</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span>
         <span class="n">tau_sr</span> <span class="o">=</span> <span class="mi">101325</span> <span class="o">/</span> <span class="n">p</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">A_sr</span> <span class="o">*</span> <span class="p">(</span><span class="n">T</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span> <span class="o">-</span> <span class="n">B_sr</span><span class="p">)</span> <span class="o">-</span> <span class="mf">18.42</span><span class="p">)</span>
-        <span class="n">ts</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">xr</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">xr</span> <span class="o">/</span> <span class="n">tau_sr</span><span class="p">)</span>      <span class="c1"># CANCELLARE controllare sommatoria (cfr Zanardi 2.124)</span>
+        <span class="n">ts</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">xr</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">xr</span> <span class="o">/</span> <span class="n">tau_sr</span><span class="p">)</span>     
         <span class="n">e_v</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">specie</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">energy_vib_2T</span><span class="p">(</span><span class="n">Tv</span><span class="p">)</span>
         <span class="n">e_v_eq</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">specie</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">energy_vib_2T</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
         <span class="n">Svt</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">rho</span> <span class="o">*</span> <span class="n">Y</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">e_v_eq</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">-</span> <span class="n">e_v</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="o">/</span> <span class="n">ts</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>  
@@ -869,72 +856,37 @@ Where:
 </div>
 </div>
 </div>
-<div class="section" id="pre-shock-relax-chemistry-funciton">
-<h2>Pre-shock relax chemistry funciton<a class="headerlink" href="#pre-shock-relax-chemistry-funciton" title="Permalink to this headline">¶</a></h2>
-<p>In general, once the density and temperature of a mixture are known, the equilibrium composition can be computed by the chemical equilibrium constant. In this function, the equilibrium composition of the mixture is computed through the chemical source terms.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">pre_shock_relax_chemistry</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="n">output</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="n">Y</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Y0</span>
-    <span class="n">Sy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">compute_Sy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rho0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">T0</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
-    
-    <span class="k">while</span> <span class="p">(</span><span class="nb">any</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">Sy</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">1e-8</span><span class="p">)):</span>
-        
-        <span class="n">Sy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">compute_Sy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rho0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">T0</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
-    
-        <span class="n">Y</span> <span class="o">+=</span> <span class="mf">1e-6</span> <span class="o">*</span> <span class="n">Sy</span>
-        <span class="k">if</span> <span class="n">output</span> <span class="p">:</span>
-            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">_11specie</span><span class="o">.</span><span class="n">specie</span><span class="p">)):</span>
-                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;********************************&#39;</span><span class="p">)</span>
-                <span class="nb">print</span><span class="p">(</span><span class="n">_11specie</span><span class="o">.</span><span class="n">specie</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s1">&#39; concentration : &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">Y</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">+</span> <span class="s1">&#39;    Sorgente : &#39;</span>  <span class="o">+</span> <span class="nb">str</span> <span class="p">(</span><span class="n">Sy</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
-                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;********************************&#39;</span><span class="p">)</span>
-            
-        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="mf">1e-8</span><span class="p">):</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Species not conserved in pre-shock relax&#39;</span><span class="p">)</span>
-            
-        <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">Y</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">):</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Y less than 0 in chemical relax pre - shock&#39;</span><span class="p">)</span>
-            
-    <span class="k">return</span> <span class="n">Y</span>
-
-<span class="n">problem</span><span class="o">.</span><span class="n">pre_shock_relax_chemistry</span> <span class="o">=</span> <span class="n">pre_shock_relax_chemistry</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Since in general both temperature, density and composition may be unknown or uncertain, this function prints the chemical equilibrium composition BUT DOES NOT UPDATE the inital conditions of the problem.</p>
-</div>
-</div>
 <div class="section" id="temperature-version-temperature-version">
 <h2>2 Temperature version (Temperature version)<a class="headerlink" href="#temperature-version-temperature-version" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="euler-system-of-equation-2-temperature-version">
 <h3>Euler system of equation, 2 temperature version<a class="headerlink" href="#euler-system-of-equation-2-temperature-version" title="Permalink to this headline">¶</a></h3>
-<p>The equations read:
-In</p>
-<ul>
+<p>The equations read:</p>
+<ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\textbf{Mass equation}\)</span>: <br />
 <span class="math notranslate nohighlight">\( \frac{\partial \rho u}{\partial x} = \frac{\partial \rho}{\partial x}u + \rho \frac{\partial u}{\partial x} = 0 \Longrightarrow \frac{\partial \rho}{\partial x} = - \frac{\rho}{u} \frac{\partial u}{\partial x} \)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\textbf{Momentum equation}\)</span>: <br />
 <span class="math notranslate nohighlight">\( \rho u \frac{\partial u}{\partial x} = - \frac{\partial P}{\partial x} \)</span> <br>
 Since <span class="math notranslate nohighlight">\( P = P(\rho, T^{tr}, Y) = \rho \Sigma_i Y_i R_i T^{tr} \)</span> , then <span class="math notranslate nohighlight">\( dp = \frac{\partial P}{\partial \rho} d \rho + \frac{\partial P}{\partial T^{tr}} d T^{tr} + \Sigma_i \frac{\partial P}{\partial Y_i} d Y_i \)</span>  <br>
 The derivatives can be expressed as : <br></p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\( \frac{\partial P}{\partial \rho} = \Sigma_i Y_i R_u T^{tr} \)</span> <br></p></li>
+<ul>
+<li><p><span class="math notranslate nohighlight">\( \frac{\partial P}{\partial \rho} = \Sigma_i Y_i R_i T^{tr} \)</span> <br></p></li>
 <li><p><span class="math notranslate nohighlight">\( \frac{\partial P}{\partial T^{tr}} = \rho \Sigma_i Y_i R_i\)</span> <br></p></li>
 <li><p><span class="math notranslate nohighlight">\( \frac{\partial P}{\partial Y_i} = \rho R_i T^{tr}\)</span> <br>
 Hence, the momentum equation can be written as : <br>
 <span class="math notranslate nohighlight">\( \rho u \frac{\partial u}{\partial x} = - \frac{\partial P}{\partial x} = \Sigma_i Y_i R_i T^{tr} \frac{\partial \rho}{\partial x} + \rho \Sigma_i Y_i R_i \frac{\partial T^{tr}}{\partial x} + \rho R T^{tr} \Sigma_i \frac{\partial Y_i}{\partial x}\)</span></p></li>
 </ul>
 </li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The momentum equation can be rewritten also as:
+<span class="math notranslate nohighlight">\(\frac{\partial u}{\partial x} =\frac{- \sum_i \frac{\partial p}{\partial Y_i} \frac{\partial Y_i}{\partial x} + \frac{\partial p}{\partial T} \left( \sum_i \frac{\partial e}{\partial Y_i} \frac{\partial Y_i}{\partial x} + \frac{\partial e}{\partial T^v} \frac{\partial T^v}{\partial x} \right) \left( \frac{\partial e}{\partial T} \right)^{-1}}{\rho u - \frac{\rho}{u} \frac{\partial P}{\partial \rho} - \frac{p}{\rho u} \frac{\partial P}{\partial T} \left( \frac{\partial e}{\partial T} \right)^{-1}} \)</span></p>
+</div>
+<ul>
 <li><p><span class="math notranslate nohighlight">\(\textbf{Energy equation}\)</span>: <br />
 <span class="math notranslate nohighlight">\( \frac{\partial e}{\partial x} = \frac{P}{\rho^2} \frac{\partial \rho}{\partial x}\)</span> <br>
-<span class="math notranslate nohighlight">\( \rho u \frac{\partial e^v}{\partial x} = S_v \)</span> <br>
-Expressing the dependence of e on the thermodynamic variables: <span class="math notranslate nohighlight">\( e = e (T, T^v, Y_i) \)</span> and <span class="math notranslate nohighlight">\(e^v = e^v (T^v, Y_i)\)</span>, then <br>
-<span class="math notranslate nohighlight">\( de = \frac{\partial e }{\partial T} dT + \frac{\partial e }{\partial T^v} dT^v + \Sigma \frac{\partial e }{\partial Y_i} dY_i\)</span> <br>
-<span class="math notranslate nohighlight">\( de^v = \frac{\partial e^v }{\partial T^v} dT^v + \Sigma \frac{\partial e^v }{\partial Y_i} dY_i\)</span> <br></p>
+Expressing the dependence of e on the thermodynamic variables: <span class="math notranslate nohighlight">\( e = e (T, T^v, Y_i) \)</span>, then <br>
+<span class="math notranslate nohighlight">\( de = \frac{\partial e }{\partial T} dT + \frac{\partial e }{\partial T^v} dT^v + \Sigma \frac{\partial e }{\partial Y_i} dY_i\)</span> <br></p>
 <p>The derivatives can be expressed as : <br></p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\( \frac{\partial e}{\partial T} = cv^{tr} (T, Y_i) \)</span> <br></p></li>
@@ -942,21 +894,17 @@ Expressing the dependence of e on the thermodynamic variables: <span class="math
 <li><p><span class="math notranslate nohighlight">\( \frac{\partial e}{\partial Y_i} = e_i(T) \)</span> <br></p></li>
 <li><p><span class="math notranslate nohighlight">\( \frac{\partial e^v}{\partial Y_i} = e^v_i(T^v) \)</span> <br>
 Hence, the energy equation can be written as : <br>
-<span class="math notranslate nohighlight">\( \frac{\partial T}{\partial x} = \left [ \frac{P}{\rho^2} \frac{\partial \rho}{\partial x} - \frac{\partial e}{\partial T^v} \frac{\partial T^v}{\partial x} - \Sigma_i \frac{\partial e}{\partial Y_i} \frac{\partial Y_i}{\partial x} \right ] \left( \frac{\partial e}{\partial T} \right)^{-1}\)</span> <br>
-<span class="math notranslate nohighlight">\( \frac{\partial T^v}{\partial x} = \left [ \frac{S_v}{\rho u} - \Sigma_i \frac{\partial e^v}{\partial Y_i} \frac{\partial Y_i}{\partial x} \right ] \left( \frac{\partial e^v}{\partial T^v} \right)^{-1}\)</span></p></li>
+<span class="math notranslate nohighlight">\( \frac{\partial T}{\partial x} = \left [ \frac{P}{\rho^2} \frac{\partial \rho}{\partial x} - \frac{\partial e}{\partial T^v} \frac{\partial T^v}{\partial x} - \Sigma_i \frac{\partial e}{\partial Y_i} \frac{\partial Y_i}{\partial x} \right ] \left( \frac{\partial e}{\partial T} \right)^{-1}\)</span> <br></p></li>
 </ul>
 </li>
+<li><p><span class="math notranslate nohighlight">\(\textbf{Vibrational energy equation}\)</span>: <br>
+<span class="math notranslate nohighlight">\( \rho u \frac{\partial e^v}{\partial x} = S_v \)</span> <br>
+Expressing the dependence of <span class="math notranslate nohighlight">\(e^v = e^v (T^v, Y_i)\)</span> on the thermodynamic variables:
+<span class="math notranslate nohighlight">\( de^v = \frac{\partial e^v }{\partial T^v} dT^v + \Sigma \frac{\partial e^v }{\partial Y_i} dY_i\)</span> <br>
+<span class="math notranslate nohighlight">\( \frac{\partial T^v}{\partial x} = \left [ \frac{S_v}{\rho u} - \Sigma_i \frac{\partial e^v}{\partial Y_i} \frac{\partial Y_i}{\partial x} \right ] \left( \frac{\partial e^v}{\partial T^v} \right)^{-1}\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\textbf{Species transport equation}\)</span>: <br />
 <span class="math notranslate nohighlight">\( \rho u \frac{\partial Y_i }{\partial x} = \omega_i \qquad for \; i = 1 ... N_s \)</span></p></li>
 </ul>
-<div class="margin sidebar">
-<p class="sidebar-title"></p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The momentum equation can be rewritten also as:
-<span class="math notranslate nohighlight">\(\frac{\partial u}{\partial x} =\frac{- \sum_i \frac{\partial p}{\partial Y_i} \frac{\partial Y_i}{\partial x} + \frac{\partial p}{\partial T} \left( \sum_i \frac{\partial e}{\partial Y_i} \frac{\partial Y_i}{\partial x} + \frac{\partial e}{\partial T^v} \frac{\partial T^v}{\partial x} \right) \left( \frac{\partial e}{\partial T} \right)^{-1}}{\rho u - \frac{\rho}{u} \frac{\partial P}{\partial \rho} - \frac{p}{\rho u} \frac{\partial P}{\partial T} \left( \frac{\partial e}{\partial T} \right)^{-1}} \)</span></p>
-</div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">Euler_system_2T</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">x_x</span><span class="p">):</span>
@@ -1015,11 +963,7 @@ Hence, the energy equation can be written as : <br>
     <span class="n">u_xc</span>  <span class="o">=</span> <span class="p">(</span><span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">inner</span><span class="p">(</span><span class="n">p_Y</span><span class="p">,</span> <span class="n">Y_x</span><span class="p">)</span> <span class="o">+</span> <span class="n">p_T</span> <span class="o">/</span> <span class="n">e_tr_T</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">inner</span><span class="p">(</span><span class="n">e_Y_tot</span><span class="p">,</span> <span class="n">Y_x</span><span class="p">)</span> <span class="o">+</span> <span class="n">e_ve_Tv</span> <span class="o">*</span> <span class="n">Tv_x</span><span class="p">)</span> <span class="p">)</span><span class="o">/</span> \
             <span class="p">(</span><span class="n">rho</span> <span class="o">*</span> <span class="n">u</span> <span class="o">-</span> <span class="n">rho</span> <span class="o">/</span> <span class="n">u</span> <span class="o">*</span> <span class="n">p_rho</span> <span class="o">-</span> <span class="n">p</span> <span class="o">/</span> <span class="p">(</span><span class="n">rho</span> <span class="o">*</span> <span class="n">u</span><span class="p">)</span> <span class="o">*</span> <span class="n">p_T</span> <span class="o">/</span> <span class="n">e_tr_T</span> <span class="p">)</span>
     
-    <span class="c1"># print(&#39;Svt =&#39; + str(Svt))</span>
-    <span class="c1"># Svt = 0</span>
-    
     <span class="c1"># Energy equation                                           # new term : de_ve/dTv * dTv/dx</span>
-    <span class="c1"># T_xc  = (p / rho ** 2 * rho_x - np.sum(e_Y_tot * Y_x) - cv_ve * Tv_x) / cv_tr</span>
     <span class="n">T_xc</span>  <span class="o">=</span> <span class="p">(</span><span class="n">p</span> <span class="o">/</span> <span class="p">(</span><span class="n">rho</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">rho_x</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">e_Y_tot</span> <span class="o">*</span> <span class="n">Y_x</span><span class="p">)</span> <span class="o">-</span> <span class="n">e_ve_Tv</span> <span class="o">*</span> <span class="n">Tv_x</span><span class="p">)</span> <span class="o">/</span> <span class="n">e_tr_T</span>
     <span class="n">Tv_xc</span> <span class="o">=</span> <span class="p">(</span><span class="n">Svt</span> <span class="o">/</span> <span class="p">(</span><span class="n">rho</span> <span class="o">*</span> <span class="n">u</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">e_Y_v</span> <span class="o">*</span> <span class="n">Y_x</span><span class="p">))</span> <span class="o">/</span> <span class="n">e_ve_Tv</span>
     
@@ -1056,7 +1000,8 @@ Hence, the energy equation can be written as : <br>
                 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;State values  = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
         
         <span class="k">if</span> <span class="n">x0</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">x0</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">rho1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">u1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">T1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">T0</span><span class="p">]</span>
+            <span class="n">a</span> <span class="o">=</span> <span class="mf">0.2</span>
+            <span class="n">x0</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">rho1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">u1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">T1</span><span class="p">,</span> <span class="p">(</span> <span class="n">a</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">T1</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">a</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">T0</span><span class="p">)]</span>
             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">Y0</span><span class="p">:</span>
                 <span class="n">x0</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
         
@@ -1084,11 +1029,7 @@ Hence, the energy equation can be written as : <br>
 </div>
 <div class="section" id="solve-2-temperature-version">
 <h3>Solve, 2 temperature version<a class="headerlink" href="#solve-2-temperature-version" title="Permalink to this headline">¶</a></h3>
-<p>The solve function resolves the shock and then computes the state varibles by integration of the derivatives in the spatial coordinate x.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The problem is stiff, thus an appropriate method must be chosen. In this code an implicit multi-step variable-order (1 to 5) method based on a backward differentiation formula for the derivative approximation has been chosen. The first step is a fraction of the reference post-shock mean free path.</p>
-</div>
+<p>The solve function is analogous to the one temperature version.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">solve_2T</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xf</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span>
@@ -1159,33 +1100,18 @@ Hence, the energy equation can be written as : <br>
     <span class="bp">self</span><span class="o">.</span><span class="n">sol_e</span> <span class="o">=</span> <span class="n">e</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">sol_p</span> <span class="o">=</span> <span class="n">p</span>
     
-<span class="n">problem</span><span class="o">.</span><span class="n">solve</span> <span class="o">=</span> <span class="n">solve</span>
 <span class="n">problem</span><span class="o">.</span><span class="n">postprocess</span> <span class="o">=</span> <span class="n">postprocess</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_66950</span><span class="o">/</span><span class="mf">1425501620.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">22</span>     <span class="bp">self</span><span class="o">.</span><span class="n">sol_p</span> <span class="o">=</span> <span class="n">p</span>
-<span class="g g-Whitespace">     </span><span class="mi">23</span> 
-<span class="ne">---&gt; </span><span class="mi">24</span> <span class="n">problem</span><span class="o">.</span><span class="n">solve</span> <span class="o">=</span> <span class="n">solve</span>
-<span class="g g-Whitespace">     </span><span class="mi">25</span> <span class="n">problem</span><span class="o">.</span><span class="n">postprocess</span> <span class="o">=</span> <span class="n">postprocess</span>
-
-<span class="ne">NameError</span>: name &#39;solve&#39; is not defined
-</pre></div>
 </div>
 </div>
-</div>
-</div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="plot">
-<h1>Plot<a class="headerlink" href="#plot" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="plot">
+<h2>Plot<a class="headerlink" href="#plot" title="Permalink to this headline">¶</a></h2>
 <p>Several plot functions have been prepared to ease analysis and comparisons. These function plot the outcome of the analysis with a double x-axis: the upper values represent the number of reference mean free path while the lower is the distance measured in meters from the shock.</p>
 <div class="section" id="temperature-plot">
-<h2>Temperature plot<a class="headerlink" href="#temperature-plot" title="Permalink to this headline">¶</a></h2>
-<div class="cell docutils container">
+<h3>Temperature plot<a class="headerlink" href="#temperature-plot" title="Permalink to this headline">¶</a></h3>
+<div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_2T</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">xmax_l</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">):</span>
     <span class="c1"># Set axes</span>
@@ -1228,9 +1154,10 @@ Hence, the energy equation can be written as : <br>
 </div>
 </div>
 </div>
+</div>
 <div class="section" id="density-plot">
 <h3>Density plot<a class="headerlink" href="#density-plot" title="Permalink to this headline">¶</a></h3>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_rho</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">xmax_l</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">):</span>
     <span class="c1"># Set axes</span>
@@ -1275,7 +1202,7 @@ Hence, the energy equation can be written as : <br>
 </div>
 <div class="section" id="velocity-plot">
 <h3>Velocity plot<a class="headerlink" href="#velocity-plot" title="Permalink to this headline">¶</a></h3>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_u</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">xmax_l</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">):</span>
     <span class="c1"># Set axes</span>
@@ -1320,7 +1247,7 @@ Hence, the energy equation can be written as : <br>
 </div>
 <div class="section" id="mass-fractions-plot">
 <h3>Mass fractions plot<a class="headerlink" href="#mass-fractions-plot" title="Permalink to this headline">¶</a></h3>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_Y</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">xmax_l</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">ls</span> <span class="o">=</span> <span class="s1">&#39;-&#39;</span><span class="p">):</span>
     <span class="c1"># Set axes</span>
@@ -1373,7 +1300,7 @@ Hence, the energy equation can be written as : <br>
 </div>
 <div class="section" id="molar-fractions-plot">
 <h3>Molar fractions plot<a class="headerlink" href="#molar-fractions-plot" title="Permalink to this headline">¶</a></h3>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_X</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">xmax_l</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">ls</span> <span class="o">=</span> <span class="s1">&#39;-&#39;</span><span class="p">):</span>
     <span class="c1"># Set axes</span>
@@ -1426,7 +1353,7 @@ Hence, the energy equation can be written as : <br>
 </div>
 <div class="section" id="mass-fractions-log-plot">
 <h3>Mass fractions log-plot<a class="headerlink" href="#mass-fractions-log-plot" title="Permalink to this headline">¶</a></h3>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">logplot_Y</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">xmax_l</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">ls</span> <span class="o">=</span> <span class="s1">&#39;-&#39;</span><span class="p">):</span>
     <span class="c1"># Set axes</span>
@@ -1481,7 +1408,7 @@ Hence, the energy equation can be written as : <br>
 </div>
 <div class="section" id="molar-fractions-log-plot">
 <h3>Molar fractions log-plot<a class="headerlink" href="#molar-fractions-log-plot" title="Permalink to this headline">¶</a></h3>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">logplot_X</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">xmax_l</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">ls</span> <span class="o">=</span> <span class="s1">&#39;-&#39;</span><span class="p">):</span>
     <span class="c1"># Set axes</span>
@@ -1573,13 +1500,13 @@ The conservative fluxes are:</p>
     <span class="n">subaxes_mass2</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">mfp</span><span class="p">)</span>
     <span class="n">subaxes_mass</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x [m]&#39;</span><span class="p">)</span>
     <span class="n">subaxes_mass2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x / reference mfp [-]&#39;</span><span class="p">)</span>
-    <span class="n">subaxes_mass</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Mass flux [Kg/s]&#39;</span><span class="p">)</span>
+    <span class="n">subaxes_mass</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Mass flux [-]&#39;</span><span class="p">)</span>
     <span class="n">subaxes_mass2</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
     <span class="n">subaxes_mass</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
     
     <span class="c1"># Compute and plot momentum flux</span>
     <span class="n">subaxes_momentum</span>   <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-    <span class="n">momentum_flux</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sol_rho</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">sol_u</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">sol_p</span> <span class="c1"># CANCELLARE multiply per u to obtain a flux</span>
+    <span class="n">momentum_flux</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sol_rho</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">sol_u</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">sol_p</span> 
     <span class="n">error_momentum_flux</span> <span class="o">=</span> <span class="p">(</span> <span class="n">momentum_flux</span> <span class="o">-</span> <span class="n">momentum_flux</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span> <span class="o">/</span> <span class="n">momentum_flux</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">subaxes_momentum</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sol_x</span><span class="p">,</span> <span class="n">error_momentum_flux</span><span class="p">,</span> <span class="n">ls</span><span class="p">)</span>
     
@@ -1591,12 +1518,12 @@ The conservative fluxes are:</p>
     <span class="n">subaxes_momentum2</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">mfp</span><span class="p">)</span>
     <span class="n">subaxes_momentum</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x [m]&#39;</span><span class="p">)</span>
     <span class="n">subaxes_momentum2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x / reference mfp [-]&#39;</span><span class="p">)</span>
-    <span class="n">subaxes_momentum</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Momentum flux [Pa * m / s]&#39;</span><span class="p">)</span>  <span class="c1"># CANCELLARE controllare unità di misura o toglierle</span>
+    <span class="n">subaxes_momentum</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Momentum flux [-]&#39;</span><span class="p">)</span> 
     <span class="n">subaxes_momentum2</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
     <span class="n">subaxes_momentum</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
     
     <span class="c1"># Compute and plot total enthalpy flux</span>
-    <span class="n">subaxes_enthalpy</span>     <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">subaxes_enthalpy</span>     <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
     <span class="n">enthalpy_flux</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sol_rho</span> <span class="o">*</span> <span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">sol_e_tr</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">sol_e_ve</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">sol_u</span> <span class="o">**</span> <span class="mi">2</span> <span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">sol_p</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">sol_u</span> 
     <span class="n">error_enthalpy_flux</span> <span class="o">=</span> <span class="p">(</span> <span class="n">enthalpy_flux</span> <span class="o">-</span> <span class="n">enthalpy_flux</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span> <span class="o">/</span> <span class="n">enthalpy_flux</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">subaxes_enthalpy</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sol_x</span><span class="p">,</span> <span class="n">error_enthalpy_flux</span><span class="p">,</span> <span class="n">ls</span><span class="p">)</span>
@@ -1609,13 +1536,13 @@ The conservative fluxes are:</p>
     <span class="n">subaxes_enthalpy2</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">mfp</span><span class="p">)</span>
     <span class="n">subaxes_enthalpy</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x [m]&#39;</span><span class="p">)</span>
     <span class="n">subaxes_enthalpy2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x / reference mfp [-]&#39;</span><span class="p">)</span>
-    <span class="n">subaxes_enthalpy</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;enthalpy flux [J/ms]&#39;</span><span class="p">)</span> <span class="c1"># CANCELLARE controllare unità di misura o toglierle</span>
+    <span class="n">subaxes_enthalpy</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;enthalpy flux [-]&#39;</span><span class="p">)</span> 
     <span class="n">subaxes_enthalpy2</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
     <span class="n">subaxes_enthalpy</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
     
     <span class="c1"># Compute and plot sum of mass fractions</span>
     <span class="n">subaxes_mass_frac</span>     <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-    <span class="n">mass_frac_flux</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sol_Y</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># CANCELLARE multiply per u to obtain a flux</span>
+    <span class="n">mass_frac_flux</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sol_Y</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> 
     <span class="n">error_mass_frac_flux</span> <span class="o">=</span> <span class="p">(</span> <span class="n">mass_frac_flux</span> <span class="o">-</span> <span class="n">mass_frac_flux</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span> <span class="o">/</span> <span class="n">mass_frac_flux</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">subaxes_mass_frac</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sol_x</span><span class="p">,</span> <span class="n">error_mass_frac_flux</span><span class="p">,</span> <span class="n">ls</span><span class="p">)</span>
     
@@ -1627,7 +1554,7 @@ The conservative fluxes are:</p>
     <span class="n">subaxes_mass_frac2</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">mfp</span><span class="p">)</span>
     <span class="n">subaxes_mass_frac</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x [m]&#39;</span><span class="p">)</span>
     <span class="n">subaxes_mass_frac2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x / reference mfp [-]&#39;</span><span class="p">)</span>
-    <span class="n">subaxes_mass_frac</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Sum of mass fractions [-]&#39;</span><span class="p">)</span> <span class="c1"># CANCELLARE controllare unità di misura o toglierle</span>
+    <span class="n">subaxes_mass_frac</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Sum of mass fractions [-]&#39;</span><span class="p">)</span>
     <span class="n">subaxes_mass_frac2</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
     <span class="n">subaxes_mass_frac</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
     
@@ -1690,6 +1617,13 @@ The conservative fluxes are:</p>
             <p class="prev-next-subtitle">previous</p>
             <p class="prev-next-title">Reaction and sub-reaction classes</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="../Results/Results.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Results</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             
