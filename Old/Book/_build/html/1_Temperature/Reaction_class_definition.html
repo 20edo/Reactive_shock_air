@@ -1,0 +1,613 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reaction and sub-reaction classes &#8212; Reactive air shock assignment</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Specie class definition" href="Specie_class_definition.html" />
+    <link rel="prev" title="One temperature" href="code_structure.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/Logo_Politecnico_Milano.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Reactive air shock assignment</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  1 Temperature
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="code_structure.html">
+   One temperature
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Reaction and sub-reaction classes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Specie_class_definition.html">
+   Specie class definition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Problem_class_definition.html">
+   Problem class definition
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/1_Temperature/Reaction_class_definition.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/20edo/Reactive_shock_air"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/20edo/Reactive_shock_air/issues/new?title=Issue%20on%20page%20%2F1_Temperature/Reaction_class_definition.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/20edo/Reactive_shock_air/master?urlpath=tree/Book/1_Temperature/Reaction_class_definition.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Reaction and sub-reaction classes
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sub-reaction-class-definition">
+   Sub-reaction class definition
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reaction-class-definition">
+   Reaction class definition
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reaction-variables-definition">
+   Reaction variables definition
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Reaction and sub-reaction classes</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Reaction and sub-reaction classes
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sub-reaction-class-definition">
+   Sub-reaction class definition
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reaction-class-definition">
+   Reaction class definition
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reaction-variables-definition">
+   Reaction variables definition
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="cell tag_hide-cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> Specie_class_definition.ipynb
+</pre></div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="reaction-and-sub-reaction-classes">
+<h1>Reaction and sub-reaction classes<a class="headerlink" href="#reaction-and-sub-reaction-classes" title="Permalink to this headline">¶</a></h1>
+<p>Two classes for the modeling of the chemical reactions have been defined:</p>
+<ol class="simple">
+<li><p>The reactions which have the same reactants and products but a molecule that triggers the reaction (such as exchange or dissociation reactions) have been grouped together in a single reaction made of many sub-reactions.</p></li>
+<li><p>On the other hand some reactions do not involve a cathalitic body and are made by a single sub-reaction.</p></li>
+</ol>
+<p>While there is no real need for this division, this worklow allows to group together the reactions that somehow “do the same thing” to be able to include or exclude one of them by just a line of code. Despite that, all reactions may be re-written to be one or many variables of class sub-reaction with no effect on the code execution.</p>
+<p>The definition of the parameters used to model the two classes is a little tricky and may be more user-friendly.</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="sub-reaction-class-definition">
+<h1>Sub-reaction class definition<a class="headerlink" href="#sub-reaction-class-definition" title="Permalink to this headline">¶</a></h1>
+<p>A subreaction is defined by the soichometric coefficients, the reactants, the products and the reaction rate coefficients. The latter are computed as follows:</p>
+<ul class="simple">
+<li><p>Forward reaction coefficient :       <span class="math notranslate nohighlight">\(k_f\)</span> is expressed as <span class="math notranslate nohighlight">\(k_f = C_f T ^{\eta_f}e^{\frac{\theta_d}{T}}\)</span> (coefficients from Park’s tables)</p></li>
+<li><p>Equilibrium reaction coefficient :   <span class="math notranslate nohighlight">\(k_c\)</span> is computed from the polynomial interpolation by Park</p></li>
+<li><p>Backward reaction coefficient:       <span class="math notranslate nohighlight">\(k_b\)</span> is computed as <span class="math notranslate nohighlight">\(k_b = \frac{k_f}{k_c}\)</span></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">subreaction</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reactants</span><span class="p">,</span> <span class="n">products</span><span class="p">,</span> <span class="n">stoichr</span><span class="p">,</span> <span class="n">stoichp</span><span class="p">,</span> <span class="n">Cf</span><span class="p">,</span> <span class="n">nf</span><span class="p">,</span> <span class="n">th_d</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reactants</span> <span class="o">=</span> <span class="n">reactants</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">products</span>  <span class="o">=</span> <span class="n">products</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stoichr</span>   <span class="o">=</span> <span class="n">stoichr</span> <span class="c1"># Stoichometric coefficient of the reactants</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stoichp</span>   <span class="o">=</span> <span class="n">stoichp</span> <span class="c1"># Stoichometric coefficient of the products</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Cf</span>        <span class="o">=</span> <span class="n">Cf</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nf</span>        <span class="o">=</span> <span class="n">nf</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">th_d</span>      <span class="o">=</span> <span class="n">th_d</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">A</span>         <span class="o">=</span> <span class="kc">None</span> <span class="c1"># Coefficients of the polynomial used to compute Kc</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">e_mol</span>     <span class="o">=</span> <span class="kc">None</span>
+
+        
+    <span class="k">def</span> <span class="nf">kf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">T</span><span class="p">):</span>
+        <span class="n">kf</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Cf</span> <span class="o">*</span> <span class="n">T</span> <span class="o">**</span> <span class="bp">self</span><span class="o">.</span><span class="n">nf</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">th_d</span> <span class="o">/</span> <span class="n">T</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">kf</span>
+        
+    <span class="k">def</span> <span class="nf">kb</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">T</span><span class="p">):</span>
+        <span class="n">kb</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">kf</span><span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">kc</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">kb</span>
+    
+    <span class="k">def</span> <span class="nf">kc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">T</span><span class="p">):</span>
+        <span class="n">Z</span> <span class="o">=</span> <span class="mi">10000</span> <span class="o">/</span> <span class="n">T</span> <span class="c1"># from Zanardi&#39;s 2.5.1 Chemical Kinetic Model</span>
+        <span class="c1"># kc = np.exp(np.dot(Z ** np.arange(0,5), self.A))</span>
+        <span class="c1"># kc = np.exp(self.A[0] + self.A[1]*Z + self.A[2]*Z**2 + self.A[3]*Z**3 + self.A[4]*Z**4)</span>
+        <span class="c1"># if kc == 0:</span>
+        <span class="c1">#     kc = 1e-15</span>
+        <span class="n">exponent</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">Z</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">A</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">Z</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">A</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">*</span><span class="n">Z</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">A</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">*</span><span class="n">Z</span><span class="o">**</span><span class="mi">4</span>
+        
+        <span class="k">if</span> <span class="n">exponent</span> <span class="o">&lt;</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">kc_min</span><span class="p">):</span>
+            <span class="n">kc</span> <span class="o">=</span> <span class="n">kc_min</span>
+        <span class="k">elif</span> <span class="n">exponent</span> <span class="o">&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">kc_max</span><span class="p">):</span>
+            <span class="n">kc</span> <span class="o">=</span> <span class="n">kc_max</span>
+        <span class="k">else</span> <span class="p">:</span>
+            <span class="n">kc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">exponent</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">kc</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="reaction-class-definition">
+<h1>Reaction class definition<a class="headerlink" href="#reaction-class-definition" title="Permalink to this headline">¶</a></h1>
+<p>A reaction is just a list of sub-reactions that is defined according to what explained above. However, since the coefficient of the polynomial used to compute the equilibrium reaction coefficient do not depend on the impaction body, they do not need to be repeated for every sub-reaction but are stored in the reaction class and automatically updated in each newly created sub-reaction.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">reaction</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">e_mol</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">subreactions</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">A</span>            <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">e_mol</span>        <span class="o">=</span> <span class="n">e_mol</span>
+    
+    
+    <span class="k">def</span> <span class="nf">add_subreaction</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">subr</span><span class="p">):</span>
+        <span class="n">subr</span><span class="o">.</span><span class="n">A</span>     <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">A</span>
+        <span class="n">subr</span><span class="o">.</span><span class="n">e_mol</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">e_mol</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">subreactions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">subr</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="reaction-variables-definition">
+<h1>Reaction variables definition<a class="headerlink" href="#reaction-variables-definition" title="Permalink to this headline">¶</a></h1>
+<p>The reactions for the 11 species air model are defined below, data are extracted from Park’s tables.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># I devide the constant rate Cf for 1e6 to convert from cm3/mol to m3/mol</span>
+<span class="c1"># I also multiplicate e_mol for 4184 in order to convert Kcal/mol in J/mol</span>
+
+<span class="c1">###O2diss = reaction([1.335, -4.127, 0.616, 0.093, -0.005], -117.98*4184)</span>
+<span class="n">O2diss</span> <span class="o">=</span> <span class="n">reaction</span><span class="p">([</span><span class="mf">1.335</span><span class="p">,</span> <span class="o">-</span><span class="mf">4.127</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.616</span><span class="p">,</span> <span class="mf">0.093</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.005</span><span class="p">],</span> <span class="o">-</span><span class="mf">117.98</span><span class="o">*</span><span class="mi">4184</span><span class="p">)</span>
+<span class="n">O2diss</span><span class="o">.</span><span class="n">add_subreaction</span><span class="p">(</span><span class="n">subreaction</span><span class="p">([</span><span class="n">O2</span><span class="p">,</span> <span class="n">N</span><span class="p">],</span> <span class="p">[</span><span class="n">O</span><span class="p">,</span> <span class="n">N</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="mf">8.25e19</span><span class="o">/</span><span class="mf">1e6</span><span class="p">,</span>
+                                  <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">59500</span><span class="p">))</span>
+<span class="n">O2diss</span><span class="o">.</span><span class="n">add_subreaction</span><span class="p">(</span><span class="n">subreaction</span><span class="p">([</span><span class="n">O2</span><span class="p">,</span> <span class="n">O</span><span class="p">],</span> <span class="p">[</span><span class="n">O</span><span class="p">,</span> <span class="n">O</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="mf">8.25e19</span><span class="o">/</span><span class="mf">1e6</span><span class="p">,</span>
+                                  <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">59500</span><span class="p">))</span>
+<span class="n">O2diss</span><span class="o">.</span><span class="n">add_subreaction</span><span class="p">(</span><span class="n">subreaction</span><span class="p">([</span><span class="n">O2</span><span class="p">,</span> <span class="n">Np</span><span class="p">],</span> <span class="p">[</span><span class="n">O</span><span class="p">,</span> <span class="n">Np</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="mf">8.25e19</span><span class="o">/</span><span class="mf">1e6</span><span class="p">,</span>
+                                  <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">59500</span><span class="p">))</span>
+<span class="n">O2diss</span><span class="o">.</span><span class="n">add_subreaction</span><span class="p">(</span><span class="n">subreaction</span><span class="p">([</span><span class="n">O2</span><span class="p">,</span> <span class="n">Op</span><span class="p">],</span> <span class="p">[</span><span class="n">O</span><span class="p">,</span> <span class="n">Op</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="mf">8.25e19</span><span class="o">/</span><span class="mf">1e6</span><span class="p">,</span>
+                                  <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">59500</span><span class="p">))</span>
+<span class="n">O2diss</span><span class="o">.</span><span class="n">add_subreaction</span><span class="p">(</span><span class="n">subreaction</span><span class="p">([</span><span class="n">O2</span><span class="p">,</span> <span class="n">N2</span><span class="p">],</span> <span class="p">[</span><span class="n">O</span><span class="p">,</span> <span class="n">N2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="mf">2.75e19</span><span class="o">/</span><span class="mf">1e6</span><span class="p">,</span>
+                                  <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">59500</span><span class="p">))</span>
+<span class="n">O2diss</span><span class="o">.</span><span class="n">add_subreaction</span><span class="p">(</span><span class="n">subreaction</span><span class="p">([</span><span class="n">O2</span><span class="p">,</span> <span class="n">O2</span><span class="p">],</span> <span class="p">[</span><span class="n">O</span><span class="p">,</span> <span class="n">O2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="mf">2.75e19</span><span class="o">/</span><span class="mf">1e6</span><span class="p">,</span>
+                                  <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">59500</span><span class="p">))</span>
+<span class="n">O2diss</span><span class="o">.</span><span class="n">add_subreaction</span><span class="p">(</span><span class="n">subreaction</span><span class="p">([</span><span class="n">O2</span><span class="p">,</span> <span class="n">NO</span><span class="p">],</span> <span class="p">[</span><span class="n">O</span><span class="p">,</span> <span class="n">NO</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="mf">2.75e19</span><span class="o">/</span><span class="mf">1e6</span><span class="p">,</span>
+                                  <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">59500</span><span class="p">))</span>
+<span class="n">O2diss</span><span class="o">.</span><span class="n">add_subreaction</span><span class="p">(</span><span class="n">subreaction</span><span class="p">([</span><span class="n">O2</span><span class="p">,</span> <span class="n">N2p</span><span class="p">],</span> <span class="p">[</span><span class="n">O</span><span class="p">,</span> <span class="n">N2p</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="mf">2.75e19</span><span class="o">/</span><span class="mf">1e6</span><span class="p">,</span>
+                                  <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">59500</span><span class="p">))</span>
+<span class="n">O2diss</span><span class="o">.</span><span class="n">add_subreaction</span><span class="p">(</span><span class="n">subreaction</span><span class="p">([</span><span class="n">O2</span><span class="p">,</span> <span class="n">O2p</span><span class="p">],</span> <span class="p">[</span><span class="n">O</span><span class="p">,</span> <span class="n">O2p</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="mf">2.75e19</span><span class="o">/</span><span class="mf">1e6</span><span class="p">,</span>
+                                  <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">59500</span><span class="p">))</span>
+<span class="n">O2diss</span><span class="o">.</span><span class="n">add_subreaction</span><span class="p">(</span><span class="n">subreaction</span><span class="p">([</span><span class="n">O2</span><span class="p">,</span> <span class="n">NOp</span><span class="p">],</span> <span class="p">[</span><span class="n">O</span><span class="p">,</span> <span class="n">NOp</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="mf">2.75e19</span><span class="o">/</span><span class="mf">1e6</span><span class="p">,</span>
+                                  <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">59500</span><span class="p">))</span>
+<span class="n">O2diss</span><span class="o">.</span><span class="n">add_subreaction</span><span class="p">(</span><span class="n">subreaction</span><span class="p">([</span><span class="n">O2</span><span class="p">,</span> <span class="n">em</span><span class="p">],</span> <span class="p">[</span><span class="n">O</span><span class="p">,</span> <span class="n">em</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="mf">1.32e22</span><span class="o">/</span><span class="mf">1e6</span><span class="p">,</span>
+                                  <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">59500</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N2diss</span> <span class="o">=</span> <span class="n">reaction</span><span class="p">([</span> <span class="mf">3.898</span><span class="p">,</span> <span class="o">-</span><span class="mf">12.611</span><span class="p">,</span> <span class="mf">0.683</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.118</span><span class="p">,</span> <span class="mf">0.006</span><span class="p">],</span> <span class="o">-</span><span class="mf">225.00</span><span class="o">*</span><span class="mi">4184</span><span class="p">)</span>
+<span class="n">N2diss</span><span class="o">.</span><span class="n">add_subreaction</span><span class="p">(</span><span class="n">subreaction</span><span class="p">([</span><span class="n">N2</span><span class="p">,</span> <span class="n">N</span><span class="p">],</span> <span class="p">[</span><span class="n">N</span><span class="p">,</span> <span class="n">N</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="mf">1.11e22</span><span class="o">/</span><span class="mf">1e6</span><span class="p">,</span>
+                                  <span class="o">-</span><span class="mf">1.6</span><span class="p">,</span> <span class="mi">113200</span><span class="p">))</span>
+<span class="n">N2diss</span><span class="o">.</span><span class="n">add_subreaction</span><span class="p">(</span><span class="n">subreaction</span><span class="p">([</span><span class="n">N2</span><span class="p">,</span> <span class="n">O</span><span class="p">],</span> <span class="p">[</span><span class="n">N</span><span class="p">,</span> <span class="n">O</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="mf">1.11e22</span><span class="o">/</span><span class="mf">1e6</span><span class="p">,</span>
+                                  <span class="o">-</span><span class="mf">1.6</span><span class="p">,</span> <span class="mi">113200</span><span class="p">))</span>
+<span class="n">N2diss</span><span class="o">.</span><span class="n">add_subreaction</span><span class="p">(</span><span class="n">subreaction</span><span class="p">([</span><span class="n">N2</span><span class="p">,</span> <span class="n">Np</span><span class="p">],</span> <span class="p">[</span><span class="n">N</span><span class="p">,</span> <span class="n">Np</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="mf">1.11e22</span><span class="o">/</span><span class="mf">1e6</span><span class="p">,</span>
+                                  <span class="o">-</span><span class="mf">1.6</span><span class="p">,</span> <span class="mi">113200</span><span class="p">))</span>
+<span class="n">N2diss</span><span class="o">.</span><span class="n">add_subreaction</span><span class="p">(</span><span class="n">subreaction</span><span class="p">([</span><span class="n">N2</span><span class="p">,</span> <span class="n">Op</span><span class="p">],</span> <span class="p">[</span><span class="n">N</span><span class="p">,</span> <span class="n">Op</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="mf">1.10e22</span><span class="o">/</span><span class="mf">1e6</span><span class="p">,</span>
+                                  <span class="o">-</span><span class="mf">1.6</span><span class="p">,</span> <span class="mi">113200</span><span class="p">))</span>
+<span class="n">N2diss</span><span class="o">.</span><span class="n">add_subreaction</span><span class="p">(</span><span class="n">subreaction</span><span class="p">([</span><span class="n">N2</span><span class="p">,</span> <span class="n">N2</span><span class="p">],</span> <span class="p">[</span><span class="n">N</span><span class="p">,</span> <span class="n">N2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="mf">3.7e21</span><span class="o">/</span><span class="mf">1e6</span><span class="p">,</span>
+                                  <span class="o">-</span><span class="mf">1.6</span><span class="p">,</span> <span class="mi">113200</span><span class="p">))</span>
+<span class="n">N2diss</span><span class="o">.</span><span class="n">add_subreaction</span><span class="p">(</span><span class="n">subreaction</span><span class="p">([</span><span class="n">N2</span><span class="p">,</span> <span class="n">O2</span><span class="p">],</span> <span class="p">[</span><span class="n">N</span><span class="p">,</span> <span class="n">O2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="mf">3.7e21</span><span class="o">/</span><span class="mf">1e6</span><span class="p">,</span>
+                                  <span class="o">-</span><span class="mf">1.6</span><span class="p">,</span> <span class="mi">113200</span><span class="p">))</span>
+<span class="n">N2diss</span><span class="o">.</span><span class="n">add_subreaction</span><span class="p">(</span><span class="n">subreaction</span><span class="p">([</span><span class="n">N2</span><span class="p">,</span> <span class="n">NO</span><span class="p">],</span> <span class="p">[</span><span class="n">N</span><span class="p">,</span> <span class="n">NO</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="mf">3.7e21</span><span class="o">/</span><span class="mf">1e6</span><span class="p">,</span>
+                                  <span class="o">-</span><span class="mf">1.6</span><span class="p">,</span> <span class="mi">113200</span><span class="p">))</span>
+<span class="n">N2diss</span><span class="o">.</span><span class="n">add_subreaction</span><span class="p">(</span><span class="n">subreaction</span><span class="p">([</span><span class="n">N2</span><span class="p">,</span> <span class="n">N2p</span><span class="p">],</span> <span class="p">[</span><span class="n">N</span><span class="p">,</span> <span class="n">N2p</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="mf">3.7e21</span><span class="o">/</span><span class="mf">1e6</span><span class="p">,</span>
+                                  <span class="o">-</span><span class="mf">1.6</span><span class="p">,</span> <span class="mi">113200</span><span class="p">))</span>
+<span class="n">N2diss</span><span class="o">.</span><span class="n">add_subreaction</span><span class="p">(</span><span class="n">subreaction</span><span class="p">([</span><span class="n">N2</span><span class="p">,</span> <span class="n">O2p</span><span class="p">],</span> <span class="p">[</span><span class="n">N</span><span class="p">,</span> <span class="n">O2p</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="mf">3.7e21</span><span class="o">/</span><span class="mf">1e6</span><span class="p">,</span>
+                                  <span class="o">-</span><span class="mf">1.6</span><span class="p">,</span> <span class="mi">113200</span><span class="p">))</span>
+<span class="n">N2diss</span><span class="o">.</span><span class="n">add_subreaction</span><span class="p">(</span><span class="n">subreaction</span><span class="p">([</span><span class="n">N2</span><span class="p">,</span> <span class="n">NOp</span><span class="p">],</span> <span class="p">[</span><span class="n">N</span><span class="p">,</span> <span class="n">NOp</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="mf">3.7e21</span><span class="o">/</span><span class="mf">1e6</span><span class="p">,</span>
+                                  <span class="o">-</span><span class="mf">1.6</span><span class="p">,</span> <span class="mi">113200</span><span class="p">))</span>
+<span class="n">N2diss</span><span class="o">.</span><span class="n">add_subreaction</span><span class="p">(</span><span class="n">subreaction</span><span class="p">([</span><span class="n">N2</span><span class="p">,</span> <span class="n">em</span><span class="p">],</span> <span class="p">[</span><span class="n">N</span><span class="p">,</span> <span class="n">em</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="mf">1.11e24</span><span class="o">/</span><span class="mf">1e6</span><span class="p">,</span>
+                                  <span class="o">-</span><span class="mf">1.6</span><span class="p">,</span> <span class="mi">113200</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">NOdiss</span> <span class="o">=</span> <span class="n">reaction</span><span class="p">([</span><span class="mf">1.549</span><span class="p">,</span> <span class="o">-</span><span class="mf">7.784</span><span class="p">,</span> <span class="mf">0.228</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.043</span><span class="p">,</span> <span class="mf">0.002</span><span class="p">],</span> <span class="o">-</span><span class="mf">150.03</span><span class="o">*</span><span class="mi">4184</span><span class="p">)</span> 
+<span class="c1">###NOdiss.add_subreaction(subreaction([NO, N], [N, O, N], [1, 1], [1, 1, 1], 4.6e17/1e6,</span>
+<span class="c1">###                                  -0.5, 75500))</span>
+<span class="c1">###NOdiss.add_subreaction(subreaction([NO, O], [N, O, O], [1, 1], [1, 1, 1], 4.6e17/1e6,</span>
+<span class="c1">###                                  -0.5, 75500))</span>
+<span class="n">NOdiss</span><span class="o">.</span><span class="n">add_subreaction</span><span class="p">(</span><span class="n">subreaction</span><span class="p">([</span><span class="n">NO</span><span class="p">,</span> <span class="n">N</span><span class="p">],</span> <span class="p">[</span><span class="n">N</span><span class="p">,</span> <span class="n">O</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="mf">4.6e17</span><span class="o">/</span><span class="mf">1e6</span><span class="p">,</span>
+                                  <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">75500</span><span class="p">))</span>
+<span class="n">NOdiss</span><span class="o">.</span><span class="n">add_subreaction</span><span class="p">(</span><span class="n">subreaction</span><span class="p">([</span><span class="n">NO</span><span class="p">,</span> <span class="n">O</span><span class="p">],</span> <span class="p">[</span><span class="n">N</span><span class="p">,</span> <span class="n">O</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="mf">4.6e17</span><span class="o">/</span><span class="mf">1e6</span><span class="p">,</span>
+                                  <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">75500</span><span class="p">))</span>
+<span class="n">NOdiss</span><span class="o">.</span><span class="n">add_subreaction</span><span class="p">(</span><span class="n">subreaction</span><span class="p">([</span><span class="n">NO</span><span class="p">,</span> <span class="n">Np</span><span class="p">],</span> <span class="p">[</span><span class="n">N</span><span class="p">,</span> <span class="n">O</span><span class="p">,</span> <span class="n">Np</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="mf">4.6e17</span><span class="o">/</span><span class="mf">1e6</span><span class="p">,</span>
+                                  <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">75500</span><span class="p">))</span>
+<span class="n">NOdiss</span><span class="o">.</span><span class="n">add_subreaction</span><span class="p">(</span><span class="n">subreaction</span><span class="p">([</span><span class="n">NO</span><span class="p">,</span> <span class="n">Op</span><span class="p">],</span> <span class="p">[</span><span class="n">N</span><span class="p">,</span> <span class="n">O</span><span class="p">,</span> <span class="n">Op</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="mf">4.6e17</span><span class="o">/</span><span class="mf">1e6</span><span class="p">,</span>
+                                  <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">75500</span><span class="p">))</span>
+<span class="n">NOdiss</span><span class="o">.</span><span class="n">add_subreaction</span><span class="p">(</span><span class="n">subreaction</span><span class="p">([</span><span class="n">NO</span><span class="p">,</span> <span class="n">N2</span><span class="p">],</span> <span class="p">[</span><span class="n">N</span><span class="p">,</span> <span class="n">O</span><span class="p">,</span> <span class="n">N2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="mf">2.3e17</span><span class="o">/</span><span class="mf">1e6</span><span class="p">,</span>
+                                  <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">75500</span><span class="p">))</span>
+<span class="n">NOdiss</span><span class="o">.</span><span class="n">add_subreaction</span><span class="p">(</span><span class="n">subreaction</span><span class="p">([</span><span class="n">NO</span><span class="p">,</span> <span class="n">O2</span><span class="p">],</span> <span class="p">[</span><span class="n">N</span><span class="p">,</span> <span class="n">O</span><span class="p">,</span> <span class="n">O2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="mf">2.3e17</span><span class="o">/</span><span class="mf">1e6</span><span class="p">,</span>
+                                  <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">75500</span><span class="p">))</span>
+<span class="n">NOdiss</span><span class="o">.</span><span class="n">add_subreaction</span><span class="p">(</span><span class="n">subreaction</span><span class="p">([</span><span class="n">NO</span><span class="p">,</span> <span class="n">NO</span><span class="p">],</span> <span class="p">[</span><span class="n">N</span><span class="p">,</span> <span class="n">O</span><span class="p">,</span> <span class="n">NO</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="mf">2.3e17</span><span class="o">/</span><span class="mf">1e6</span><span class="p">,</span>
+                                  <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">75500</span><span class="p">))</span>
+<span class="n">NOdiss</span><span class="o">.</span><span class="n">add_subreaction</span><span class="p">(</span><span class="n">subreaction</span><span class="p">([</span><span class="n">NO</span><span class="p">,</span> <span class="n">N2p</span><span class="p">],</span> <span class="p">[</span><span class="n">N</span><span class="p">,</span> <span class="n">O</span><span class="p">,</span> <span class="n">N2p</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="mf">2.3e17</span><span class="o">/</span><span class="mf">1e6</span><span class="p">,</span>
+                                  <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">75500</span><span class="p">))</span>
+<span class="n">NOdiss</span><span class="o">.</span><span class="n">add_subreaction</span><span class="p">(</span><span class="n">subreaction</span><span class="p">([</span><span class="n">NO</span><span class="p">,</span> <span class="n">O2p</span><span class="p">],</span> <span class="p">[</span><span class="n">N</span><span class="p">,</span> <span class="n">O</span><span class="p">,</span> <span class="n">O2p</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="mf">2.3e17</span><span class="o">/</span><span class="mf">1e6</span><span class="p">,</span>
+                                  <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">75500</span><span class="p">))</span>
+<span class="n">NOdiss</span><span class="o">.</span><span class="n">add_subreaction</span><span class="p">(</span><span class="n">subreaction</span><span class="p">([</span><span class="n">NO</span><span class="p">,</span> <span class="n">NOp</span><span class="p">],</span> <span class="p">[</span><span class="n">N</span><span class="p">,</span> <span class="n">O</span><span class="p">,</span> <span class="n">NOp</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="mf">2.3e17</span><span class="o">/</span><span class="mf">1e6</span><span class="p">,</span>
+                                  <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">75500</span><span class="p">))</span>
+<span class="n">NOdiss</span><span class="o">.</span><span class="n">add_subreaction</span><span class="p">(</span><span class="n">subreaction</span><span class="p">([</span><span class="n">NO</span><span class="p">,</span> <span class="n">em</span><span class="p">],</span> <span class="p">[</span><span class="n">N</span><span class="p">,</span> <span class="n">O</span><span class="p">,</span> <span class="n">em</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="mf">7.36e19</span><span class="o">/</span><span class="mf">1e6</span><span class="p">,</span>
+                                  <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">75500</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Exchange reactions</span>
+<span class="n">NO_O</span>       <span class="o">=</span> <span class="n">subreaction</span><span class="p">([</span><span class="n">NO</span><span class="p">,</span> <span class="n">O</span><span class="p">],</span> <span class="p">[</span><span class="n">N</span><span class="p">,</span> <span class="n">O2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="mf">2.16e8</span><span class="o">/</span><span class="mf">1e6</span><span class="p">,</span> <span class="mf">1.29</span><span class="p">,</span> <span class="mi">19220</span><span class="p">)</span>
+<span class="n">NO_O</span><span class="o">.</span><span class="n">A</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.215</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.657</span><span class="p">,</span> <span class="mf">0.843</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.136</span><span class="p">,</span> <span class="mf">0.007</span><span class="p">])</span>
+<span class="n">NO_O</span><span class="o">.</span><span class="n">e_mol</span> <span class="o">=</span> <span class="o">-</span><span class="mf">32.05</span><span class="o">*</span><span class="mi">4184</span>
+
+<span class="n">O_N2</span>       <span class="o">=</span> <span class="n">subreaction</span><span class="p">([</span><span class="n">O</span><span class="p">,</span> <span class="n">N2</span><span class="p">],</span> <span class="p">[</span><span class="n">N</span><span class="p">,</span> <span class="n">NO</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="mf">3.18e13</span><span class="o">/</span><span class="mf">1e6</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">37700</span><span class="p">)</span>
+<span class="n">O_N2</span><span class="o">.</span><span class="n">A</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">2.349</span><span class="p">,</span> <span class="o">-</span><span class="mf">4.828</span><span class="p">,</span> <span class="mf">0.455</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.075</span><span class="p">,</span> <span class="mf">0.004</span><span class="p">])</span>
+<span class="n">O_N2</span><span class="o">.</span><span class="n">e_mol</span> <span class="o">=</span> <span class="o">-</span><span class="mf">74.97</span><span class="o">*</span><span class="mi">4184</span>
+
+<span class="n">O_O2p</span>      <span class="o">=</span> <span class="n">subreaction</span><span class="p">([</span><span class="n">O</span><span class="p">,</span> <span class="n">O2p</span><span class="p">],</span> <span class="p">[</span><span class="n">O2</span><span class="p">,</span> <span class="n">Op</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="mf">6.85e13</span><span class="o">/</span><span class="mf">1e6</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.520</span><span class="p">,</span> <span class="mi">18600</span><span class="p">)</span>
+<span class="n">O_O2p</span><span class="o">.</span><span class="n">A</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">0.411</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.998</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.002</span><span class="p">,</span> <span class="mf">0.005</span><span class="p">,</span> <span class="mf">0.00</span><span class="p">])</span>
+<span class="n">O_O2p</span><span class="o">.</span><span class="n">e_mol</span><span class="o">=</span> <span class="o">-</span><span class="mf">36.88</span><span class="o">*</span><span class="mi">4184</span>
+
+<span class="n">N2_Np</span>       <span class="o">=</span> <span class="n">subreaction</span><span class="p">([</span><span class="n">N2</span><span class="p">,</span> <span class="n">Np</span><span class="p">],</span> <span class="p">[</span><span class="n">N</span><span class="p">,</span> <span class="n">N2p</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="mf">9.85e12</span><span class="o">/</span><span class="mf">1e6</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.180</span><span class="p">,</span> <span class="mi">12100</span><span class="p">)</span>
+<span class="n">N2_Np</span><span class="o">.</span><span class="n">A</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.963</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.116</span><span class="p">,</span> <span class="mf">0.692</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.103</span><span class="p">,</span> <span class="mf">0.005</span><span class="p">])</span>
+<span class="n">N2_Np</span><span class="o">.</span><span class="n">e_mol</span> <span class="o">=</span> <span class="o">-</span><span class="mf">24.06</span><span class="o">*</span><span class="mi">4184</span>
+
+<span class="n">O_NOp</span>      <span class="o">=</span> <span class="n">subreaction</span><span class="p">([</span><span class="n">O</span><span class="p">,</span> <span class="n">NOp</span><span class="p">],</span> <span class="p">[</span><span class="n">NO</span><span class="p">,</span> <span class="n">Op</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="mf">2.75e13</span><span class="o">/</span><span class="mf">1e6</span><span class="p">,</span> <span class="mf">0.010</span><span class="p">,</span> <span class="mi">51000</span><span class="p">)</span>
+<span class="n">O_NOp</span><span class="o">.</span><span class="n">A</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.705</span><span class="p">,</span> <span class="o">-</span><span class="mf">6.223</span><span class="p">,</span> <span class="mf">0.522</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.090</span><span class="p">,</span> <span class="mf">0.005</span><span class="p">])</span>
+<span class="n">O_NOp</span><span class="o">.</span><span class="n">e_mol</span><span class="o">=</span> <span class="o">-</span><span class="mf">101.34</span><span class="o">*</span><span class="mi">4184</span>
+
+<span class="n">N2_Op</span>       <span class="o">=</span> <span class="n">subreaction</span><span class="p">([</span><span class="n">N2</span><span class="p">,</span> <span class="n">Op</span><span class="p">],</span> <span class="p">[</span><span class="n">O</span><span class="p">,</span> <span class="n">N2p</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="mf">6.33e16</span><span class="o">/</span><span class="mf">1e6</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.210</span><span class="p">,</span> <span class="mi">22200</span><span class="p">)</span>
+<span class="n">N2_Op</span><span class="o">.</span><span class="n">A</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">2.391</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.443</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.080</span><span class="p">,</span> <span class="mf">0.027</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.002</span><span class="p">])</span>
+<span class="n">N2_Op</span><span class="o">.</span><span class="n">e_mol</span> <span class="o">=</span> <span class="o">-</span><span class="mf">44.23</span><span class="o">*</span><span class="mi">4184</span>
+
+<span class="n">N_NOp</span>       <span class="o">=</span> <span class="n">subreaction</span><span class="p">([</span><span class="n">N</span><span class="p">,</span> <span class="n">NOp</span><span class="p">],</span> <span class="p">[</span><span class="n">NO</span><span class="p">,</span> <span class="n">Np</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="mf">2.21e15</span><span class="o">/</span><span class="mf">1e6</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.020</span><span class="p">,</span> <span class="mi">61100</span><span class="p">)</span>
+<span class="n">N_NOp</span><span class="o">.</span><span class="n">A</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">2.132</span><span class="p">,</span> <span class="o">-</span><span class="mf">5.550</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.249</span><span class="p">,</span> <span class="mf">0.041</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.002</span><span class="p">])</span>
+<span class="n">N_NOp</span><span class="o">.</span><span class="n">e_mol</span> <span class="o">=</span> <span class="o">-</span><span class="mf">121.51</span><span class="o">*</span><span class="mi">4184</span>
+
+<span class="n">O2_NOp</span>      <span class="o">=</span> <span class="n">subreaction</span><span class="p">([</span><span class="n">O2</span><span class="p">,</span> <span class="n">NOp</span><span class="p">],</span> <span class="p">[</span><span class="n">NO</span><span class="p">,</span> <span class="n">O2p</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="mf">1.03e16</span><span class="o">/</span><span class="mf">1e6</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.170</span><span class="p">,</span> <span class="mi">32400</span><span class="p">)</span>
+<span class="n">O2_NOp</span><span class="o">.</span><span class="n">A</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">2.115</span><span class="p">,</span> <span class="o">-</span><span class="mf">4.225</span><span class="p">,</span> <span class="mf">0.524</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.095</span><span class="p">,</span> <span class="mf">0.005</span><span class="p">])</span>
+<span class="n">O2_NOp</span><span class="o">.</span><span class="n">e_mol</span><span class="o">=</span> <span class="o">-</span><span class="mf">64.46</span><span class="o">*</span><span class="mi">4184</span>
+
+<span class="n">NOp_N</span>       <span class="o">=</span> <span class="n">subreaction</span><span class="p">([</span><span class="n">NOp</span><span class="p">,</span> <span class="n">N</span><span class="p">],</span> <span class="p">[</span><span class="n">N2p</span><span class="p">,</span> <span class="n">O</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="mf">1.7e13</span><span class="o">/</span><span class="mf">1e6</span><span class="p">,</span> <span class="mf">0.400</span><span class="p">,</span> <span class="mi">35500</span><span class="p">)</span>
+<span class="n">NOp_N</span><span class="o">.</span><span class="n">A</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.746</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.838</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.013</span><span class="p">,</span> <span class="mf">0.013</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.001</span><span class="p">])</span>
+<span class="n">NOp_N</span><span class="o">.</span><span class="n">e_mol</span> <span class="o">=</span> <span class="o">-</span><span class="mf">70.60</span><span class="o">*</span><span class="mi">4184</span>
+
+<span class="c1"># Associative ionization</span>
+<span class="n">O___N</span>       <span class="o">=</span> <span class="n">subreaction</span><span class="p">([</span><span class="n">O</span><span class="p">,</span> <span class="n">N</span><span class="p">],</span> <span class="p">[</span><span class="n">NOp</span><span class="p">,</span> <span class="n">em</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="mf">1.53e11</span><span class="o">/</span><span class="mf">1e6</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.370</span><span class="p">,</span> <span class="mi">32000</span><span class="p">)</span>
+<span class="n">O___N</span><span class="o">.</span><span class="n">A</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">6.234</span><span class="p">,</span> <span class="o">-</span><span class="mf">5.536</span><span class="p">,</span> <span class="mf">0.494</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.058</span><span class="p">,</span> <span class="mf">0.003</span><span class="p">])</span>
+<span class="n">O___N</span><span class="o">.</span><span class="n">e_mol</span> <span class="o">=</span> <span class="o">-</span><span class="mf">63.69</span><span class="o">*</span><span class="mi">4184</span>
+
+<span class="n">O___O</span>       <span class="o">=</span> <span class="n">subreaction</span><span class="p">([</span><span class="n">O</span><span class="p">,</span> <span class="n">O</span><span class="p">],</span> <span class="p">[</span><span class="n">O2p</span><span class="p">,</span> <span class="n">em</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="mf">3.85e11</span><span class="o">/</span><span class="mf">1e6</span><span class="p">,</span> <span class="mf">0.490</span><span class="p">,</span> <span class="mi">80600</span><span class="p">)</span>
+<span class="n">O___O</span><span class="o">.</span><span class="n">A</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">3.904</span><span class="p">,</span> <span class="o">-</span><span class="mf">13.418</span><span class="p">,</span> <span class="mf">1.861</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.288</span><span class="p">,</span> <span class="mf">0.015</span><span class="p">])</span>
+<span class="n">O___O</span><span class="o">.</span><span class="n">e_mol</span> <span class="o">=</span> <span class="o">-</span><span class="mf">160.20</span><span class="o">*</span><span class="mi">4184</span>
+
+<span class="n">N___N</span>       <span class="o">=</span> <span class="n">subreaction</span><span class="p">([</span><span class="n">N</span><span class="p">,</span> <span class="n">N</span><span class="p">],</span> <span class="p">[</span><span class="n">N2p</span><span class="p">,</span> <span class="n">em</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="mf">1.79e11</span><span class="o">/</span><span class="mf">1e6</span><span class="p">,</span> <span class="mf">0.770</span><span class="p">,</span> <span class="mi">67500</span><span class="p">)</span>
+<span class="n">N___N</span><span class="o">.</span><span class="n">A</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">4.488</span><span class="p">,</span> <span class="o">-</span><span class="mf">9.374</span><span class="p">,</span> <span class="mf">0.481</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.044</span><span class="p">,</span> <span class="mf">0.002</span><span class="p">])</span>
+<span class="n">N___N</span><span class="o">.</span><span class="n">e_mol</span> <span class="o">=</span> <span class="o">-</span><span class="mf">134.29</span><span class="o">*</span><span class="mi">4184</span>
+
+<span class="c1"># Electron impact ionization</span>
+<span class="n">O_ion</span>       <span class="o">=</span> <span class="n">subreaction</span><span class="p">([</span><span class="n">O</span><span class="p">,</span> <span class="n">em</span><span class="p">],</span> <span class="p">[</span><span class="n">Op</span><span class="p">,</span> <span class="n">em</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="mf">3.9e33</span><span class="o">/</span><span class="mf">1e6</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.780</span><span class="p">,</span> <span class="mi">158500</span><span class="p">)</span>
+<span class="n">O_ion</span><span class="o">.</span><span class="n">A</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">2.980</span><span class="p">,</span> <span class="o">-</span><span class="mf">19.534</span><span class="p">,</span> <span class="mf">1.244</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.190</span><span class="p">,</span> <span class="mf">0.010</span><span class="p">])</span>
+<span class="n">O_ion</span><span class="o">.</span><span class="n">e_mol</span> <span class="o">=</span> <span class="o">-</span><span class="mf">315.06</span><span class="o">*</span><span class="mi">4184</span>
+
+<span class="n">N_ion</span>       <span class="o">=</span> <span class="n">subreaction</span><span class="p">([</span><span class="n">N</span><span class="p">,</span> <span class="n">em</span><span class="p">],</span> <span class="p">[</span><span class="n">Np</span><span class="p">,</span> <span class="n">em</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="mf">2.5e34</span><span class="o">/</span><span class="mf">1e6</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.820</span><span class="p">,</span> <span class="mi">168600</span><span class="p">)</span>
+<span class="n">N_ion</span><span class="o">.</span><span class="n">A</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">2.553</span><span class="p">,</span> <span class="o">-</span><span class="mf">18.870</span><span class="p">,</span> <span class="mf">0.472</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.060</span><span class="p">,</span> <span class="mf">0.003</span><span class="p">])</span>
+<span class="n">N_ion</span><span class="o">.</span><span class="n">e_mol</span> <span class="o">=</span> <span class="o">-</span><span class="mf">335.23</span><span class="o">*</span><span class="mi">4184</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./1_Temperature"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="code_structure.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">One temperature</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="Specie_class_definition.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Specie class definition</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Venti Edoardo, Zucchelli Umberto<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

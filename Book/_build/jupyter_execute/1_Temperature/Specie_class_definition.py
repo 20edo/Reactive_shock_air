@@ -4,33 +4,32 @@
 # In[1]:
 
 
-get_ipython().run_line_magic('run', 'code_structure.ipynb')
+get_ipython().run_line_magic('run', '1T_code_structure.ipynb')
 
 
 # # Specie class definition
 # 
-# For each specie a common framework is defined which allows to compute thermodynamic derivatives, energy, temperature and other relevant values for the subsequent calculations starting from the data provided by :cite:p:`park_convergence_1985` and \{cite:p}`Zanardi_2020`.
+# For each specie a common framework is defined which allows to compute thermodynamic derivatives, energy, temperature and other relevant values for the subsequent calculations starting from the data provided by Park [1] and Zanardi [2].
 # 
-# See :cite:t:`1987:nelson` for an introduction to non-standard analysis.See :cite:t:`1987:nelson` for an introduction to non-standard analysis. \textcolor{red}{Le citazioni non funzionano}
+# Assuming that the different contributions can be computed indipendently, the temperature and CVs are defined as the sum of the translational-rotational, vibrational and electronic components which are calculated as:
 # 
-# Assuming that the different contributions can be computed indipendently, the temperature and CVs are defined as the sum of the translational-rotational, vibrational and electronic which are calculated as:
-# 
-# * Translational-rotational : 
+# * $ \textbf{Translational-rotational}$ : 
 #     1. If the molecule is monoatomic, it has no rotational dofs, then $ CV^t = \frac{3}{2} R_{gas} T $
 #     2. If the molecule is not monoatomic, the rotational contribution must be added $ CV^{(rt)} = CV^t + R $
 #     
 #     Then, energy is computed as $e^{tr} = CV  T$.
 #     
-# * Vibrational :
-#     The contribution of vibrational dofs to energy is computed by assuming armhonic oscillator potential. The energy can becomes: $e^{v} = R_{gas} \frac{\theta_v}{e^{\frac{\theta_v}{T}-1}} $ <br>
-#     The analytical expression for the heat is computed by deriving with respect to T.
+# * $ \textbf{ Vibrational }$ :
+#     The contribution of vibrational dofs to energy is computed by assuming armhonic oscillator potential. The energy becomes: $e^{v} = R_{gas} \frac{\theta_v}{e^{\frac{\theta_v}{T}-1}} $ <br>
+#     The analytical expression for the specific heat is computed by deriving with respect to T, leading to the expression: <br> 
+#     $ CV^{v}_s = R_{gas} \frac{(\theta^v_s/T)^2 e^{\theta^v_s/T}} {(e^{\theta^v_s/T}-1)^2} $
 #     
-# * Electronic :
-#     Given the partition function (Zanardi's tables), the energy due to electronic energy levels is computed as: $ e = R_{gas}T^2 \frac{\partial}{\partial T} log(Z) = \frac{R_gas}{Z} \sum_i g_i \theta_i e^{-\frac{\theta_i}{T}}$.
+# * $ \textbf{ Electronic } $ :
+#     Given the partition function [2], the energy due to electronic energy levels is computed as: $ e = R_{gas}T^2 \frac{\partial}{\partial T} log(Z) = \frac{R_gas}{Z} \sum_i g_i \theta_i e^{-\frac{\theta_i}{T}}$.
 #     
-#     Analogously with the vibrational contribution the expression for the specific heat is obtained deriving the formula with respect to T.
+#     Analogously with the vibrational contribution, the expression for the specific heat is obtained deriving the formula with respect to T.
 #     
-# All energies are written as sensible energy whose reference temperature is $T_0 = 298.15 K$
+# The enthalpy of formation of species i $\Delta h_{f,i}$ is at $T_0 = 298.15 K$
 
 # In[2]:
 
@@ -87,14 +86,14 @@ class specie:
         # Update Cv and e values
         cv = cv_rot + cv_vib + cv_ele
         e  = e_rot  + e_vib  + e_ele 
-        e  = e - self.R * T0                         # Additional term to transform in sensible energy
+        e  = e - self.R * T0   
         e  = e + self.h_form
         
         return e, cv
 
 
 # # Specie variables definition
-# Follows the definition of a number of selected species. The data used can be found in {% cite Zanardi_2020 %}.
+# Follows the definition of a number of selected species. The data used can be found in Zanardi [2].
 
 # In[3]:
 
@@ -137,10 +136,6 @@ N2p.electro_th= np.array([0.0, 1.3189972e+04, 3.6633231e+04, 3.6688768e+04, 5.98
                          8.9204062e+04, 9.2081613e+04, 9.2225490e+04, 9.2937684e+04, 9.6397938e+04, 1.0359181e+05])
 N2p.name = 'N2p'
 
-#O2p= specie(31.9982514, 2239, 2.1, 59500, 3.6592e+07)
-#O2p.electro_g = np.array([3, 2, 1, 1, 6, 3, 3])
-#O2p.electro_th = np.array([0.0, 1.1391560e+04, 1.8984739e+04, 4.7559736e+04, 4.9912421e+04, 5.0922686e+04, 7.1898633e+04])
-#O2p.name = 'O2p'
 O2p= specie(31.9982514, 2239, 2.1, 59500, 3.6592e+07)
 O2p.electro_g = np.array([4, 8, 4, 6, 4, 2, 4, 4, 4, 4, 8, 4, 2, 2, 4])
 O2p.electro_th = np.array([0.0, 4.7354408e+04, 5.8373987e+04, 5.8414273e+04, 6.2298966e+04, 6.7334679e+04,

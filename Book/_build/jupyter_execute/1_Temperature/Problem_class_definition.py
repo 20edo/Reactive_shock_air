@@ -8,11 +8,11 @@ get_ipython().run_line_magic('run', 'Reaction_class_definition.ipynb')
 
 
 # # Problem class definition
-# We define a class problem so that several condition can be studied, analyzed, compared and contrasted.
+# A problem class is defined so that several condition can be studied, analyzed, compared and contrasted.
 # 
 # The initial conditions for the post-shock relaxation region are obtained by assuming frozen chemistry through the shock which, in the Euler equations framework is a discontinuity whose jumps are defined by the Rankine-Hugoniot relations.
 # 
-# The variable are mixture density, velocity, energy and mixture mass fractions.
+# The variable are mixture density, velocity, temperature and mass fractions.
 # 
 # For the mixture model considered the the following relations hold:
 # * $e_{mixture} = \Sigma_i e_i Y_i $
@@ -99,14 +99,12 @@ class problem:
 # 
 # The Rankine-Hugoniot relations read: <br>
 # 
-# \begin{cases} 
-# \rho_0 u_0 = \rho_1 u \\ 
-# \rho_0 u_0^2 + P_0 = \rho_1 u_1^2 + P_1 \\ 
-# h_0^t  = e_0 + \frac{P_0}{\rho_0} + \frac{1}{2}u_0^2 = 
-# e_1 + \frac{P_1}{\rho_1} + \frac{1}{2} u_1^2 = h_1^t 
-# \end{cases} 
+# $ \rho_0 u_0 = \rho_1 u $ <br>
+# $ \rho_0 u_0^2 + P_0 = \rho_1 u_1^2 + P_1 $ <br>
+# $ h_0^t  = e_0 + \frac{P_0}{\rho_0} + \frac{1}{2}u_0^2 = 
+# e_1 + \frac{P_1}{\rho_1} + \frac{1}{2} u_1^2 = h_1^t  $
 # 
-# The non-linear equations are written in the "RHsystem" function whose solutions are found through a non-linear. 
+# The non-linear equations are written in the "RHsystem" function whose solutions are found through a non-linear solver. 
 
 # ```{note}
 # The shock is solved with the hypothesis of frozen chemistry.
@@ -151,7 +149,7 @@ def RHjump(self):
         
     # Solve RH relations
     x, infodict, ier, mesg = opt.fsolve(lambda x : self.RHsystem(x), x0 = [rho2, T2, u2], xtol=atol*1e-2, 
-                                     full_output=1) # , epsfcn=1e-8, factor = 0.1
+                                     full_output=1)
 
     if not ier:
         print('RH not converged')
@@ -208,17 +206,26 @@ problem.RHjump = RHjump
 
 # ## Computation of the chemical source terms
 
-# The computations for the chemical source terms are performed in "local" coordinates for each reaction, so first the incidence matrix to transform form global to local variables and viceversa are computed, then the specie mass fraction vector is transformed in "local" number densities which are furthermore multiplied by the forward and backward reaction coefficients as defined before to compute the reaction rate. <br>
-# 
+# To compute the chemical sources for each specie $\omega_i$, for each reaction the specie mass fraction vector is transformed by an incidence matrix in "local" molar concentrations $\chi_i = \rho_i/M_i$ which are multiplied by the forward and backward reaction coefficients as defined before to compute the reaction rate. <br>
 # According to the Park's definition of forward and backward coefficients, the reaction rate is computed as: <br>
 # 
-# $ K_f \Pi_{i = 0}^{N_{reactants}} $
-# Manca un pezzo
+# $R_{f,r} = k_{f,r} \Pi_{i = 0}^{N_{s}} \chi_i^{\alpha_{i,r}} $ <br>
+# and <br>
+# $R_{b,r} = k_{b,r} \Pi_{i = 0}^{N_{s}} \chi_i^{\beta_{i,r}} $ <br>
+# Where $\alpha_{i,r}$ and $\beta_{i,r}$ are the stechiometric mole numbers for reactants and products respectively.
 # 
-# Finally, the generated/destroyed species are expressed in terms of "global" mass fraction rate and summed for each reaction and sub-reaction.
+# <!-- Finally, the generated/destroyed species are expressed in terms of "global" mass fraction rate and summed for each reaction and sub-reaction. -->
+# 
+# <!-- [Aggiungere] and the released energy is computed -->
+# 
+# The net mass rate of production of the specie $i$ is obtained considering all the $N_r$ possible reactions, and it is defined as: <br>
+# $
+# \omega_i = M_i \sum_{r}^{N_r} \omega_{i,r} = M_i \sum_{r}^{N_r} \left(\beta_{i,r} - \alpha_{i,r} \right) \left( R_{f,r} - R_{b,r} \right)
+# $
+# 
 
 # ```{note}
-# Altough the energy released by the reaction is computed, it is no of practical use for the way the mixture energy have been written.
+# Altough the energy released by the reaction is computed, it is no of practical use for the way the mixture energy has been written.
 # ```
 
 # In[4]:
@@ -264,7 +271,6 @@ def compute_Sy(self, rho, T, Y):
                 S += mmol * (np.matmul(obj.stoichp, omegap) - np.matmul( obj.stoichr, omegar)) * w_s
                 #Update the energy source term
                 Se = obj.e_mol * w_s
-                # S += mmol * (np.matmul(np.transpose(omegap), obj.stoichp) - np.matmul(  np.transpose(omegar), obj.stoichr)) * w_s
                 
         elif isinstance(self.reaction[i], subreaction):
                 obj = self.reaction[i]
@@ -346,9 +352,13 @@ problem.pre_shock_relax_chemistry = pre_shock_relax_chemistry
 # Since in general both temperature, density and composition may be unknown or uncertain, this function prints the chemical equilibrium composition BUT DOES NOT UPDATE the inital conditions of the problem.
 # ```
 
+# ```{Note}
+# This is not the most efficient way to compute chemical equilibrium composition, but given the code already written, it's the easiest to implement.
+# ```
+
 # ## Euler system of equation
 # 
-# The primary variables considered are density, velocity, mass fractions and temperature. \\
+# The primary variables considered are density, velocity, mass fractions and temperature. <br>
 # 
 # The Euler equations read:
 # 
@@ -361,9 +371,9 @@ problem.pre_shock_relax_chemistry = pre_shock_relax_chemistry
 #     $ \rho u \frac{\partial u}{\partial x} = - \frac{\partial P}{\partial x} $ <br>
 #     Since $ P = P(\rho, T, Y) = \rho \Sigma_i Y_i R T $ , then $ dp = \frac{\partial P}{\partial \rho} d \rho + \frac{\partial P}{\partial T} d T + \Sigma_i \frac{\partial P}{\partial Y_i} d Y_i $  <br>
 #     The derivatives can be expressed as : <br>
-#     - $ \frac{\partial P}{\partial \rho} = \Sigma_i Y_i R_u T $ <br>
-#     - $ \frac{\partial P}{\partial T} = \rho \Sigma_i Y_i R_u$ <br>
-#     - $ \frac{\partial P}{\partial Y_i} = \rho R_u T$ <br>
+#     - $ \frac{\partial P}{\partial \rho} = \Sigma_i Y_i R_i T $ <br>
+#     - $ \frac{\partial P}{\partial T} = \rho \Sigma_i Y_i R_i$ <br>
+#     - $ \frac{\partial P}{\partial Y_i} = \rho R_i T$ <br>
 #     Hence, the momentum equation can be written as : <br>
 #     $ \rho u \frac{\partial u}{\partial x} = - \frac{\partial P}{\partial x} = \Sigma_i Y_i R T \frac{\partial \rho}{\partial x} + \rho \Sigma_i Y_i R_u \frac{\partial T}{\partial x} + \rho R T \Sigma_i \frac{Y_i}{x}$    
 #     
@@ -374,7 +384,7 @@ problem.pre_shock_relax_chemistry = pre_shock_relax_chemistry
 #     - $ \frac{\partial e}{\partial T} = cv(T, Y_i) $ <br>
 #     - $ \frac{\partial e}{\partial Y_i} = e_i(T) $ <br>
 #     Hence, the energy equation can be written as : <br>
-#     $ \frac{\partial T}{\partial x} = \frac{1}{cv}  \frac{P}{\rho^2} \frac{\partial \rho}{\partial x} - \Sigma_i e_i(T) \frac{\partialY_i} $ Controllare per quale strano motivo latex non compila
+#     $ \frac{\partial T}{\partial x} = \frac{1}{cv} \left[ \frac{P}{\rho^2} \frac{\partial \rho}{\partial x} - \Sigma_i e_i(T) \frac{\partial Y_i}{\partial x} \right] $ 
 #     
 # * Species transport equation: <br />
 #     $ \rho u \frac{\partial Y_i }{\partial x} = \omega_i \qquad for \; i = 1 ... N_s $
@@ -906,7 +916,7 @@ problem.logplot_X = logplot_X
 # The conservative fluxes are:
 # * Mass flux : $ \rho u$
 # * Momentum flux: $ \rho u^2 + P $
-# * Energy flux: $ ( \rho ( e + \frac{1}{2} u ^ 2 ) + P ) u $ 
+# * Energy flux: $ \left[ \rho \left( e + \frac{1}{2} u ^ 2 \right) + P \right] u $ 
 
 # In[16]:
 
@@ -925,7 +935,7 @@ def validate(self, xmax = None, xmax_l = None, ls = '-', print_max = True):
     
     # Compute and plot mass flux
 
-    subaxes_mass       = plt.subplot(5, 1, 1)
+    subaxes_mass       = plt.subplot(4, 1, 1)
     mass_flux = self.sol_rho * self.sol_u
     error_mass_flux = ( mass_flux - mass_flux[0] ) / mass_flux[0]
     subaxes_mass.plot(self.sol_x, error_mass_flux, ls)
@@ -938,12 +948,12 @@ def validate(self, xmax = None, xmax_l = None, ls = '-', print_max = True):
     subaxes_mass2.set_xlim(0, xmax / self.mfp)
     subaxes_mass.set_xlabel('x [m]')
     subaxes_mass2.set_xlabel('x / reference mfp [-]')
-    subaxes_mass.set_ylabel('Mass flux [Kg/s]')
+    subaxes_mass.set_ylabel('Mass flux [-]')
     subaxes_mass2.grid()
     subaxes_mass.yaxis.grid(True)
     
     # Compute and plot momentum flux
-    subaxes_momentum   = plt.subplot(5, 1, 2)
+    subaxes_momentum   = plt.subplot(4, 1, 2)
     momentum_flux = self.sol_rho * self.sol_u ** 2 + self.sol_p 
     error_momentum_flux = ( momentum_flux - momentum_flux[0] ) / momentum_flux[0]
     subaxes_momentum.plot(self.sol_x, error_momentum_flux, ls)
@@ -956,12 +966,12 @@ def validate(self, xmax = None, xmax_l = None, ls = '-', print_max = True):
     subaxes_momentum2.set_xlim(0, xmax / self.mfp)
     subaxes_momentum.set_xlabel('x [m]')
     subaxes_momentum2.set_xlabel('x / reference mfp [-]')
-    subaxes_momentum.set_ylabel('Momentum flux [Pa * m / s]')  # CANCELLARE controllare unità di misura o toglierle
+    subaxes_momentum.set_ylabel('Momentum flux [-]') 
     subaxes_momentum2.grid()
     subaxes_momentum.yaxis.grid(True)
     
     # Compute and plot total enthalpy flux
-    subaxes_enthalpy     = plt.subplot(5, 1, 3)
+    subaxes_enthalpy     = plt.subplot(4, 1, 3)
     enthalpy_flux = (self.sol_rho * ( self.sol_e + 1 / 2 * self.sol_u ** 2 ) + self.sol_p) * self.sol_u 
     error_enthalpy_flux = ( enthalpy_flux - enthalpy_flux[0] ) / enthalpy_flux[0]
     subaxes_enthalpy.plot(self.sol_x, error_enthalpy_flux, ls)
@@ -974,12 +984,12 @@ def validate(self, xmax = None, xmax_l = None, ls = '-', print_max = True):
     subaxes_enthalpy2.set_xlim(0, xmax / self.mfp)
     subaxes_enthalpy.set_xlabel('x [m]')
     subaxes_enthalpy2.set_xlabel('x / reference mfp [-]')
-    subaxes_enthalpy.set_ylabel('enthalpy flux [J/ms]') # CANCELLARE controllare unità di misura o toglierle
+    subaxes_enthalpy.set_ylabel('enthalpy flux [-]') 
     subaxes_enthalpy2.grid()
     subaxes_enthalpy.yaxis.grid(True)
     
     # Compute and plot sum of mass fractions
-    subaxes_mass_frac     = plt.subplot(5, 1, 5)
+    subaxes_mass_frac     = plt.subplot(4, 1, 5)
     mass_frac_flux = np.sum(self.sol_Y,axis=0) 
     error_mass_frac_flux = ( mass_frac_flux - mass_frac_flux[0] ) / mass_frac_flux[0]
     subaxes_mass_frac.plot(self.sol_x, error_mass_frac_flux, ls)
@@ -1000,7 +1010,6 @@ def validate(self, xmax = None, xmax_l = None, ls = '-', print_max = True):
         print('Maximum mass flux error       : ' + str(np.max(np.abs(error_mass_flux))))
         print('Maximum momentum flux error   : ' + str(np.max(np.abs(error_momentum_flux))))
         print('Maximum enthalpy flux error   : ' + str(np.max(np.abs(error_enthalpy_flux))))
-        # print('Maximum energy flux error     : ' + str(np.max(np.abs(error_energy_flux))))
         print('Maximum mass frac error       : ' + str(np.max(np.abs(error_mass_frac_flux))))
         print('Last value of mass flux       : ' + str(mass_flux[-1]))
         print('Ymin                          : ' + str(np.min(self.sol_Y)))

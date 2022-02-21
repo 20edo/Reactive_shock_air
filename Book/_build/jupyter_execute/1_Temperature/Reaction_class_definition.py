@@ -10,9 +10,9 @@ get_ipython().run_line_magic('run', 'Specie_class_definition.ipynb')
 # # Reaction and sub-reaction classes
 # Two classes for the modeling of the chemical reactions have been defined:
 # 
-# 1. The reactions which have the same reactants and products but a molecule that triggers the reaction (such as exchange or dissociation reactions) have been grouped together in a single reaction made of many sub-reactions.
+# 1. The dissociation reactions are grouped in classes made by many sub-reactions where the difference between them is the inert molecule triggering the process.
 # 
-# 2. On the other hand some reactions do not involve a cathalitic body and are made by a single sub-reaction.
+# 2. On the other hand some chemical reactions are written as single sub-reaction.
 # 
 # While there is no real need for this division, this worklow allows to group together the reactions that somehow "do the same thing" to be able to include or exclude one of them by just a line of code. Despite that, all reactions may be re-written to be one or many variables of class sub-reaction with no effect on the code execution.
 # 
@@ -20,8 +20,8 @@ get_ipython().run_line_magic('run', 'Specie_class_definition.ipynb')
 
 # # Sub-reaction class definition
 # A subreaction is defined by the soichometric coefficients, the reactants, the products and the reaction rate coefficients. The latter are computed as follows:
-# * Forward reaction coefficient : &nbsp; &nbsp; &nbsp; $k_f$ is expressed as $k_f = C_f T ^{\eta_f}e^{\frac{\theta_d}{T}}$ (coefficients from Park's tables)
-# * Equilibrium reaction coefficient : &nbsp; $k_c$ is computed from the polynomial interpolation by Park
+# * Forward reaction coefficient : &nbsp; &nbsp; &nbsp; $k_f$ is expressed as $k_f = C_f T ^{\eta_f}e^{\frac{\theta_d}{T}}$ (coefficients from Park's tables [1])
+# * Equilibrium reaction coefficient : &nbsp; $k_c$ is computed from the polynomial interpolation by Park [1]
 # * Backward reaction coefficient: &nbsp; &nbsp; &nbsp; $k_b$ is computed as $k_b = \frac{k_f}{k_c}$
 
 # In[2]:
@@ -49,11 +49,7 @@ class subreaction:
         return kb
     
     def kc(self, T):
-        Z = 10000 / T # from Zanardi's 2.5.1 Chemical Kinetic Model
-        # kc = np.exp(np.dot(Z ** np.arange(0,5), self.A))
-        # kc = np.exp(self.A[0] + self.A[1]*Z + self.A[2]*Z**2 + self.A[3]*Z**3 + self.A[4]*Z**4)
-        # if kc == 0:
-        #     kc = 1e-15
+        Z = 10000 / T 
         exponent = self.A[0] + self.A[1]*Z + self.A[2]*Z**2 + self.A[3]*Z**3 + self.A[4]*Z**4
         
         if exponent < np.log(kc_min):
@@ -66,7 +62,7 @@ class subreaction:
 
 
 # # Reaction class definition
-# A reaction is just a list of sub-reactions that is defined according to what explained above. However, since the coefficient of the polynomial used to compute the equilibrium reaction coefficient do not depend on the impaction body, they do not need to be repeated for every sub-reaction but are stored in the reaction class and automatically updated in each newly created sub-reaction.
+# A reaction is a list of sub-reactions that is defined according to what explained above. However, since the coefficient of the polynomial used to compute the equilibrium reaction coefficient do not depend on the impact body, they do not need to be repeated for every sub-reaction but are stored in the reaction class and automatically updated in each newly created sub-reaction.
 
 # In[3]:
 
@@ -85,15 +81,14 @@ class reaction:
 
 
 # # Reaction variables definition
-# The reactions for the 11 species air model are defined below, data are extracted from Park's tables.
+# The reactions for the 11 species air model are defined below, data are extracted from Park's tables [1].
 
 # In[4]:
 
 
 # I devide the constant rate Cf for 1e6 to convert from cm3/mol to m3/mol
-# I also multiplicate e_mol for 4184 in order to convert Kcal/mol in J/mol
+# I multiplicate e_mol for 4184 in order to convert Kcal/mol in J/mol
 
-###O2diss = reaction([1.335, -4.127, 0.616, 0.093, -0.005], -117.98*4184)
 O2diss = reaction([1.335, -4.127, -0.616, 0.093, -0.005], -117.98*4184)
 O2diss.add_subreaction(subreaction([O2, N], [O, N], [1, 1], [2,1], 8.25e19/1e6,
                                   -1, 59500))
@@ -151,10 +146,6 @@ N2diss.add_subreaction(subreaction([N2, em], [N, em], [1, 1], [2,1], 1.11e24/1e6
 
 
 NOdiss = reaction([1.549, -7.784, 0.228, -0.043, 0.002], -150.03*4184) 
-###NOdiss.add_subreaction(subreaction([NO, N], [N, O, N], [1, 1], [1, 1, 1], 4.6e17/1e6,
-###                                  -0.5, 75500))
-###NOdiss.add_subreaction(subreaction([NO, O], [N, O, O], [1, 1], [1, 1, 1], 4.6e17/1e6,
-###                                  -0.5, 75500))
 NOdiss.add_subreaction(subreaction([NO, N], [N, O], [1, 1], [2, 1], 4.6e17/1e6,
                                   -0.5, 75500))
 NOdiss.add_subreaction(subreaction([NO, O], [N, O], [1, 1], [1, 2], 4.6e17/1e6,
@@ -241,13 +232,65 @@ N_ion       = subreaction([N, em], [Np, em], [1, 1], [1, 2], 2.5e34/1e6, -3.820,
 N_ion.A     = np.array([-2.553, -18.870, 0.472, -0.060, 0.003])
 N_ion.e_mol = -335.23*4184
 
-# Manca l'elettrone ai prodotti? Questa reazione è sbagliata
-N2_Op       = subreaction([N2, Op], [O, N2p], [1, 1], [1, 1], 9.85e12/1e6, -0.180, 12100)
-N2_Op.A     = np.array([1.963, -3.116, 0.692, -0.103, 0.005])
-N2_Op.e_mol = -24.06*4184
 
-# Controllare come trattare O- e compilare perchè così è sbagliata
-O_NOp       = subreaction([N2, Np], [N, N2p], [1, 1], [1, 1], 9.85e12/1e6, -0.180, 12100)
-O_NOp.A     = np.array([1.963, -3.116, 0.692, -0.103, 0.005])
-O_NOp.e_mol = -24.06*4184
-# Mancano tutti gli exchange che generano specie con il -
+# While sub-reactions are somehow general, reactions include the possible impact with all other species, thus the sub-reactions to be included in each reaction depend on the mixture model considered. In the following, the reactions for the 7 specie air model are defined.
+
+# In[8]:
+
+
+O2diss_7s = reaction([1.335, -4.127, -0.616, 0.093, -0.005], -117.98*4184)
+O2diss_7s.add_subreaction(subreaction([O2, N], [O, N], [1, 1], [2,1], 8.25e19/1e6,
+                                  -1, 59500))
+O2diss_7s.add_subreaction(subreaction([O2, O], [O, O], [1, 1], [2,1], 8.25e19/1e6,
+                                  -1, 59500))
+O2diss_7s.add_subreaction(subreaction([O2, N2], [O, N2], [1, 1], [2,1], 2.75e19/1e6,
+                                  -1, 59500))
+O2diss_7s.add_subreaction(subreaction([O2, O2], [O, O2], [1, 1], [2,1], 2.75e19/1e6,
+                                  -1, 59500))
+O2diss_7s.add_subreaction(subreaction([O2, NO], [O, NO], [1, 1], [2,1], 2.75e19/1e6,
+                                  -1, 59500))
+O2diss_7s.add_subreaction(subreaction([O2, NOp], [O, NOp], [1, 1], [2,1], 2.75e19/1e6,
+                                  -1, 59500))
+O2diss_7s.add_subreaction(subreaction([O2, em], [O, em], [1, 1], [2,1], 1.32e22/1e6,
+                                  -1, 59500))
+
+
+# In[9]:
+
+
+N2diss_7s = reaction([ 3.898, -12.611, 0.683, -0.118, 0.006], -225.00*4184)
+N2diss_7s.add_subreaction(subreaction([N2, N], [N, N], [1, 1], [2,1], 1.11e22/1e6,
+                                  -1.6, 113200))
+N2diss_7s.add_subreaction(subreaction([N2, O], [N, O], [1, 1], [2,1], 1.11e22/1e6,
+                                  -1.6, 113200))
+N2diss_7s.add_subreaction(subreaction([N2, N2], [N, N2], [1, 1], [2,1], 3.7e21/1e6,
+                                  -1.6, 113200))
+N2diss_7s.add_subreaction(subreaction([N2, O2], [N, O2], [1, 1], [2,1], 3.7e21/1e6,
+                                  -1.6, 113200))
+N2diss_7s.add_subreaction(subreaction([N2, NO], [N, NO], [1, 1], [2,1], 3.7e21/1e6,
+                                  -1.6, 113200))
+N2diss_7s.add_subreaction(subreaction([N2, NOp], [N, NOp], [1, 1], [2,1], 3.7e21/1e6,
+                                  -1.6, 113200))
+N2diss_7s.add_subreaction(subreaction([N2, em], [N, em], [1, 1], [2,1], 1.11e24/1e6,
+                                  -1.6, 113200))
+
+
+# In[10]:
+
+
+NOdiss_7s = reaction([1.549, -7.784, 0.228, -0.043, 0.002], -150.03*4184) 
+NOdiss_7s.add_subreaction(subreaction([NO, N], [N, O], [1, 1], [2, 1], 4.6e17/1e6,
+                                  -0.5, 75500))
+NOdiss_7s.add_subreaction(subreaction([NO, O], [N, O], [1, 1], [1, 2], 4.6e17/1e6,
+                                  -0.5, 75500))
+NOdiss_7s.add_subreaction(subreaction([NO, N2], [N, O, N2], [1, 1], [1, 1, 1], 2.3e17/1e6,
+                                  -0.5, 75500))
+NOdiss_7s.add_subreaction(subreaction([NO, O2], [N, O, O2], [1, 1], [1, 1, 1], 2.3e17/1e6,
+                                  -0.5, 75500))
+NOdiss_7s.add_subreaction(subreaction([NO, NO], [N, O, NO], [1, 1], [1, 1, 1], 2.3e17/1e6,
+                                  -0.5, 75500))
+NOdiss_7s.add_subreaction(subreaction([NO, NOp], [N, O, NOp], [1, 1], [1, 1, 1], 2.3e17/1e6,
+                                  -0.5, 75500))
+NOdiss_7s.add_subreaction(subreaction([NO, em], [N, O, em], [1, 1], [1, 1, 1], 7.36e19/1e6,
+                                  -0.5, 75500))
+

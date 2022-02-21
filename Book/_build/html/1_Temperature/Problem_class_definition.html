@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -33,19 +33,22 @@
     
   <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -53,7 +56,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Specie class definition" href="Specie_class_definition.html" />
+    <link rel="next" title="Two-temperature" href="../2_Temperature/_2T_code_structure.html" />
+    <link rel="prev" title="Reaction and sub-reaction classes" href="Reaction_class_definition.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -87,7 +91,7 @@
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Cerca in questo libro ..." aria-label="Cerca in questo libro ..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
@@ -97,20 +101,15 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  1 Temperature
+  Code description
  </span>
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="code_structure.html">
+  <a class="reference internal" href="1T_code_structure.html">
    One temperature
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Reaction_class_definition.html">
-   Reaction and sub-reaction classes
   </a>
  </li>
  <li class="toctree-l1">
@@ -118,9 +117,53 @@
    Specie class definition
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Reaction_class_definition.html">
+   Reaction and sub-reaction classes
+  </a>
+ </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Problem class definition
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Two-temperature
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../2_Temperature/_2T_code_structure.html">
+   Two-temperature
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../2_Temperature/_2T_Specie_class_definition.html">
+   Specie class definition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../2_Temperature/_2T_Reaction_class_definition.html">
+   Reaction and sub-reaction classes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../2_Temperature/_2T_Problem_class_definition.html">
+   Problem class definition
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Results
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Results/Results.html">
+   Results
   </a>
  </li>
 </ul>
@@ -148,8 +191,8 @@
             
             <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
                 data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                aria-expanded="true" aria-label="Attiva / disattiva la navigazione" aria-controls="site-navigation"
+                title="Attiva / disattiva la navigazione" data-toggle="tooltip" data-placement="left">
                 <i class="fas fa-bars"></i>
                 <i class="fas fa-arrow-left"></i>
                 <i class="fas fa-arrow-up"></i>
@@ -157,7 +200,7 @@
             
             
 <div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Scarica questa pagina"><i
             class="fas fa-download"></i></button>
 
     <div class="dropdown-buttons">
@@ -165,10 +208,10 @@
         
         <!-- Download raw file -->
         <a class="dropdown-buttons" href="../_sources/1_Temperature/Problem_class_definition.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                class="btn btn-secondary topbarbtn" title="Scarica il file sorgente" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Stampa in PDF"
                 onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
@@ -181,12 +224,12 @@
     <div class="dropdown-buttons sourcebuttons">
         <a class="repository-button"
             href="https://github.com/20edo/Reactive_shock_air"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                data-toggle="tooltip" data-placement="left" title="Repository di origine"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
             href="https://github.com/20edo/Reactive_shock_air/issues/new?title=Issue%20on%20page%20%2F1_Temperature/Problem_class_definition.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+                title="Apri un problema"><i class="fas fa-lightbulb"></i>questione aperta</button></a>
         
     </div>
 </div>
@@ -194,8 +237,8 @@
             <!-- Full screen (wrap in <a> to have style consistency -->
 
 <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Modalità schermo intero"
+        title="Modalità schermo intero"><i
             class="fas fa-expand"></i></button></a>
 
             <!-- Launch buttons -->
@@ -206,7 +249,7 @@
     <div class="dropdown-buttons">
         
         <a class="binder-button" href="https://mybinder.org/v2/gh/20edo/Reactive_shock_air/master?urlpath=tree/Book/1_Temperature/Problem_class_definition.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                class="btn btn-secondary topbarbtn" title="Lanciare Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
                     alt="Interact on binder">Binder</button></a>
@@ -223,7 +266,7 @@
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+                <i class="fas fa-list"></i> Contenuti
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -325,7 +368,7 @@
                     <div id="jb-print-toc">
                         
                         <div>
-                            <h2> Contents </h2>
+                            <h2> Contenuti </h2>
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
@@ -429,9 +472,9 @@
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="problem-class-definition">
 <h1>Problem class definition<a class="headerlink" href="#problem-class-definition" title="Permalink to this headline">¶</a></h1>
-<p>We define a class problem so that several condition can be studied, analyzed, compared and contrasted.</p>
+<p>A problem class is defined so that several condition can be studied, analyzed, compared and contrasted.</p>
 <p>The initial conditions for the post-shock relaxation region are obtained by assuming frozen chemistry through the shock which, in the Euler equations framework is a discontinuity whose jumps are defined by the Rankine-Hugoniot relations.</p>
-<p>The variable are mixture density, velocity, energy and mixture mass fractions.</p>
+<p>The variable are mixture density, velocity, temperature and mass fractions.</p>
 <p>For the mixture model considered the the following relations hold:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(e_{mixture} = \Sigma_i e_i Y_i \)</span></p></li>
@@ -516,13 +559,11 @@
 <p>At first, the Rankine Hugoniot relations are solved for a perfect gas with the same R of the mixture and the isoentropic coefficient <span class="math notranslate nohighlight">\(\gamma = 1.4\)</span>. <br>
 Then, the results obtained are used as guess to initialize the non-linear solver.</p>
 <p>The Rankine-Hugoniot relations read: <br></p>
-<p>\begin{cases}
-\rho_0 u_0 = \rho_1 u \
-\rho_0 u_0^2 + P_0 = \rho_1 u_1^2 + P_1 \
-h_0^t  = e_0 + \frac{P_0}{\rho_0} + \frac{1}{2}u_0^2 =
-e_1 + \frac{P_1}{\rho_1} + \frac{1}{2} u_1^2 = h_1^t
-\end{cases}</p>
-<p>The non-linear equations are written in the “RHsystem” function whose solutions are found through a non-linear.</p>
+<p><span class="math notranslate nohighlight">\( \rho_0 u_0 = \rho_1 u \)</span> <br>
+<span class="math notranslate nohighlight">\( \rho_0 u_0^2 + P_0 = \rho_1 u_1^2 + P_1 \)</span> <br>
+<span class="math notranslate nohighlight">\( h_0^t  = e_0 + \frac{P_0}{\rho_0} + \frac{1}{2}u_0^2 = 
+e_1 + \frac{P_1}{\rho_1} + \frac{1}{2} u_1^2 = h_1^t  \)</span></p>
+<p>The non-linear equations are written in the “RHsystem” function whose solutions are found through a non-linear solver.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The shock is solved with the hypothesis of frozen chemistry.</p>
@@ -566,7 +607,7 @@ e_1 + \frac{P_1}{\rho_1} + \frac{1}{2} u_1^2 = h_1^t
         
     <span class="c1"># Solve RH relations</span>
     <span class="n">x</span><span class="p">,</span> <span class="n">infodict</span><span class="p">,</span> <span class="n">ier</span><span class="p">,</span> <span class="n">mesg</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">fsolve</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span> <span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">RHsystem</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">x0</span> <span class="o">=</span> <span class="p">[</span><span class="n">rho2</span><span class="p">,</span> <span class="n">T2</span><span class="p">,</span> <span class="n">u2</span><span class="p">],</span> <span class="n">xtol</span><span class="o">=</span><span class="n">atol</span><span class="o">*</span><span class="mf">1e-2</span><span class="p">,</span> 
-                                     <span class="n">full_output</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># , epsfcn=1e-8, factor = 0.1</span>
+                                     <span class="n">full_output</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">ier</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;RH not converged&#39;</span><span class="p">)</span>
@@ -626,14 +667,21 @@ e_1 + \frac{P_1}{\rho_1} + \frac{1}{2} u_1^2 = h_1^t
 </div>
 <div class="section" id="computation-of-the-chemical-source-terms">
 <h2>Computation of the chemical source terms<a class="headerlink" href="#computation-of-the-chemical-source-terms" title="Permalink to this headline">¶</a></h2>
-<p>The computations for the chemical source terms are performed in “local” coordinates for each reaction, so first the incidence matrix to transform form global to local variables and viceversa are computed, then the specie mass fraction vector is transformed in “local” number densities which are furthermore multiplied by the forward and backward reaction coefficients as defined before to compute the reaction rate. <br></p>
-<p>According to the Park’s definition of forward and backward coefficients, the reaction rate is computed as: <br></p>
-<p><span class="math notranslate nohighlight">\( K_f \Pi_{i = 0}^{N_{reactants}} \)</span>
-Manca un pezzo</p>
-<p>Finally, the generated/destroyed species are expressed in terms of “global” mass fraction rate and summed for each reaction and sub-reaction.</p>
+<p>To compute the chemical sources for each specie <span class="math notranslate nohighlight">\(\omega_i\)</span>, for each reaction the specie mass fraction vector is transformed by an incidence matrix in “local” molar concentrations <span class="math notranslate nohighlight">\(\chi_i = \rho_i/M_i\)</span> which are multiplied by the forward and backward reaction coefficients as defined before to compute the reaction rate. <br>
+According to the Park’s definition of forward and backward coefficients, the reaction rate is computed as: <br></p>
+<p><span class="math notranslate nohighlight">\(R_{f,r} = k_{f,r} \Pi_{i = 0}^{N_{s}} \chi_i^{\alpha_{i,r}} \)</span> <br>
+and <br>
+<span class="math notranslate nohighlight">\(R_{b,r} = k_{b,r} \Pi_{i = 0}^{N_{s}} \chi_i^{\beta_{i,r}} \)</span> <br>
+Where <span class="math notranslate nohighlight">\(\alpha_{i,r}\)</span> and <span class="math notranslate nohighlight">\(\beta_{i,r}\)</span> are the stechiometric mole numbers for reactants and products respectively.</p>
+<!-- Finally, the generated/destroyed species are expressed in terms of "global" mass fraction rate and summed for each reaction and sub-reaction. -->
+<!-- [Aggiungere] and the released energy is computed -->
+<p>The net mass rate of production of the specie <span class="math notranslate nohighlight">\(i\)</span> is obtained considering all the <span class="math notranslate nohighlight">\(N_r\)</span> possible reactions, and it is defined as: <br>
+<span class="math notranslate nohighlight">\(
+\omega_i = M_i \sum_{r}^{N_r} \omega_{i,r} = M_i \sum_{r}^{N_r} \left(\beta_{i,r} - \alpha_{i,r} \right) \left( R_{f,r} - R_{b,r} \right)
+\)</span></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Altough the energy released by the reaction is computed, it is no of practical use for the way the mixture energy have been written.</p>
+<p>Altough the energy released by the reaction is computed, it is no of practical use for the way the mixture energy has been written.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -677,7 +725,6 @@ Manca un pezzo</p>
                 <span class="n">S</span> <span class="o">+=</span> <span class="n">mmol</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">stoichp</span><span class="p">,</span> <span class="n">omegap</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span> <span class="n">obj</span><span class="o">.</span><span class="n">stoichr</span><span class="p">,</span> <span class="n">omegar</span><span class="p">))</span> <span class="o">*</span> <span class="n">w_s</span>
                 <span class="c1">#Update the energy source term</span>
                 <span class="n">Se</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">e_mol</span> <span class="o">*</span> <span class="n">w_s</span>
-                <span class="c1"># S += mmol * (np.matmul(np.transpose(omegap), obj.stoichp) - np.matmul(  np.transpose(omegar), obj.stoichr)) * w_s</span>
                 
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">reaction</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">subreaction</span><span class="p">):</span>
                 <span class="n">obj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">reaction</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
@@ -762,10 +809,14 @@ Manca un pezzo</p>
 <p class="admonition-title">Warning</p>
 <p>Since in general both temperature, density and composition may be unknown or uncertain, this function prints the chemical equilibrium composition BUT DOES NOT UPDATE the inital conditions of the problem.</p>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is not the most efficient way to compute chemical equilibrium composition, but given the code already written, it’s the easiest to implement.</p>
+</div>
 </div>
 <div class="section" id="euler-system-of-equation">
 <h2>Euler system of equation<a class="headerlink" href="#euler-system-of-equation" title="Permalink to this headline">¶</a></h2>
-<p>The primary variables considered are density, velocity, mass fractions and temperature. \</p>
+<p>The primary variables considered are density, velocity, mass fractions and temperature. <br></p>
 <p>The Euler equations read:</p>
 <ul class="simple">
 <li><p>Mass equation: <br />
@@ -775,9 +826,9 @@ Manca un pezzo</p>
 Since <span class="math notranslate nohighlight">\( P = P(\rho, T, Y) = \rho \Sigma_i Y_i R T \)</span> , then <span class="math notranslate nohighlight">\( dp = \frac{\partial P}{\partial \rho} d \rho + \frac{\partial P}{\partial T} d T + \Sigma_i \frac{\partial P}{\partial Y_i} d Y_i \)</span>  <br>
 The derivatives can be expressed as : <br></p>
 <ul>
-<li><p><span class="math notranslate nohighlight">\( \frac{\partial P}{\partial \rho} = \Sigma_i Y_i R_u T \)</span> <br></p></li>
-<li><p><span class="math notranslate nohighlight">\( \frac{\partial P}{\partial T} = \rho \Sigma_i Y_i R_u\)</span> <br></p></li>
-<li><p><span class="math notranslate nohighlight">\( \frac{\partial P}{\partial Y_i} = \rho R_u T\)</span> <br>
+<li><p><span class="math notranslate nohighlight">\( \frac{\partial P}{\partial \rho} = \Sigma_i Y_i R_i T \)</span> <br></p></li>
+<li><p><span class="math notranslate nohighlight">\( \frac{\partial P}{\partial T} = \rho \Sigma_i Y_i R_i\)</span> <br></p></li>
+<li><p><span class="math notranslate nohighlight">\( \frac{\partial P}{\partial Y_i} = \rho R_i T\)</span> <br>
 Hence, the momentum equation can be written as : <br>
 <span class="math notranslate nohighlight">\( \rho u \frac{\partial u}{\partial x} = - \frac{\partial P}{\partial x} = \Sigma_i Y_i R T \frac{\partial \rho}{\partial x} + \rho \Sigma_i Y_i R_u \frac{\partial T}{\partial x} + \rho R T \Sigma_i \frac{Y_i}{x}\)</span></p></li>
 </ul>
@@ -790,7 +841,7 @@ The derivatives can be expressed as : <br></p>
 <li><p><span class="math notranslate nohighlight">\( \frac{\partial e}{\partial T} = cv(T, Y_i) \)</span> <br></p></li>
 <li><p><span class="math notranslate nohighlight">\( \frac{\partial e}{\partial Y_i} = e_i(T) \)</span> <br>
 Hence, the energy equation can be written as : <br>
-<span class="math notranslate nohighlight">\( \frac{\partial T}{\partial x} = \frac{1}{cv}  \frac{P}{\rho^2} \frac{\partial \rho}{\partial x} - \Sigma_i e_i(T) \frac{\partialY_i} \)</span> Controllare per quale strano motivo latex non compila</p></li>
+<span class="math notranslate nohighlight">\( \frac{\partial T}{\partial x} = \frac{1}{cv} \left[ \frac{P}{\rho^2} \frac{\partial \rho}{\partial x} - \Sigma_i e_i(T) \frac{\partial Y_i}{\partial x} \right] \)</span></p></li>
 </ul>
 </li>
 <li><p>Species transport equation: <br />
@@ -1343,7 +1394,7 @@ The conservative fluxes are:</p>
 <ul class="simple">
 <li><p>Mass flux : <span class="math notranslate nohighlight">\( \rho u\)</span></p></li>
 <li><p>Momentum flux: <span class="math notranslate nohighlight">\( \rho u^2 + P \)</span></p></li>
-<li><p>Energy flux: <span class="math notranslate nohighlight">\( ( \rho ( e + \frac{1}{2} u ^ 2 ) + P ) u \)</span></p></li>
+<li><p>Energy flux: <span class="math notranslate nohighlight">\( \left[ \rho \left( e + \frac{1}{2} u ^ 2 \right) + P \right] u \)</span></p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1361,7 +1412,7 @@ The conservative fluxes are:</p>
     
     <span class="c1"># Compute and plot mass flux</span>
 
-    <span class="n">subaxes_mass</span>       <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">subaxes_mass</span>       <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
     <span class="n">mass_flux</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sol_rho</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">sol_u</span>
     <span class="n">error_mass_flux</span> <span class="o">=</span> <span class="p">(</span> <span class="n">mass_flux</span> <span class="o">-</span> <span class="n">mass_flux</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span> <span class="o">/</span> <span class="n">mass_flux</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">subaxes_mass</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sol_x</span><span class="p">,</span> <span class="n">error_mass_flux</span><span class="p">,</span> <span class="n">ls</span><span class="p">)</span>
@@ -1374,12 +1425,12 @@ The conservative fluxes are:</p>
     <span class="n">subaxes_mass2</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">mfp</span><span class="p">)</span>
     <span class="n">subaxes_mass</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x [m]&#39;</span><span class="p">)</span>
     <span class="n">subaxes_mass2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x / reference mfp [-]&#39;</span><span class="p">)</span>
-    <span class="n">subaxes_mass</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Mass flux [Kg/s]&#39;</span><span class="p">)</span>
+    <span class="n">subaxes_mass</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Mass flux [-]&#39;</span><span class="p">)</span>
     <span class="n">subaxes_mass2</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
     <span class="n">subaxes_mass</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
     
     <span class="c1"># Compute and plot momentum flux</span>
-    <span class="n">subaxes_momentum</span>   <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">subaxes_momentum</span>   <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
     <span class="n">momentum_flux</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sol_rho</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">sol_u</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">sol_p</span> 
     <span class="n">error_momentum_flux</span> <span class="o">=</span> <span class="p">(</span> <span class="n">momentum_flux</span> <span class="o">-</span> <span class="n">momentum_flux</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span> <span class="o">/</span> <span class="n">momentum_flux</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">subaxes_momentum</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sol_x</span><span class="p">,</span> <span class="n">error_momentum_flux</span><span class="p">,</span> <span class="n">ls</span><span class="p">)</span>
@@ -1392,12 +1443,12 @@ The conservative fluxes are:</p>
     <span class="n">subaxes_momentum2</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">mfp</span><span class="p">)</span>
     <span class="n">subaxes_momentum</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x [m]&#39;</span><span class="p">)</span>
     <span class="n">subaxes_momentum2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x / reference mfp [-]&#39;</span><span class="p">)</span>
-    <span class="n">subaxes_momentum</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Momentum flux [Pa * m / s]&#39;</span><span class="p">)</span>  <span class="c1"># CANCELLARE controllare unità di misura o toglierle</span>
+    <span class="n">subaxes_momentum</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Momentum flux [-]&#39;</span><span class="p">)</span> 
     <span class="n">subaxes_momentum2</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
     <span class="n">subaxes_momentum</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
     
     <span class="c1"># Compute and plot total enthalpy flux</span>
-    <span class="n">subaxes_enthalpy</span>     <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">subaxes_enthalpy</span>     <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
     <span class="n">enthalpy_flux</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sol_rho</span> <span class="o">*</span> <span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">sol_e</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">sol_u</span> <span class="o">**</span> <span class="mi">2</span> <span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">sol_p</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">sol_u</span> 
     <span class="n">error_enthalpy_flux</span> <span class="o">=</span> <span class="p">(</span> <span class="n">enthalpy_flux</span> <span class="o">-</span> <span class="n">enthalpy_flux</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span> <span class="o">/</span> <span class="n">enthalpy_flux</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">subaxes_enthalpy</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sol_x</span><span class="p">,</span> <span class="n">error_enthalpy_flux</span><span class="p">,</span> <span class="n">ls</span><span class="p">)</span>
@@ -1410,12 +1461,12 @@ The conservative fluxes are:</p>
     <span class="n">subaxes_enthalpy2</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">mfp</span><span class="p">)</span>
     <span class="n">subaxes_enthalpy</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x [m]&#39;</span><span class="p">)</span>
     <span class="n">subaxes_enthalpy2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x / reference mfp [-]&#39;</span><span class="p">)</span>
-    <span class="n">subaxes_enthalpy</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;enthalpy flux [J/ms]&#39;</span><span class="p">)</span> <span class="c1"># CANCELLARE controllare unità di misura o toglierle</span>
+    <span class="n">subaxes_enthalpy</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;enthalpy flux [-]&#39;</span><span class="p">)</span> 
     <span class="n">subaxes_enthalpy2</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
     <span class="n">subaxes_enthalpy</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
     
     <span class="c1"># Compute and plot sum of mass fractions</span>
-    <span class="n">subaxes_mass_frac</span>     <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="n">subaxes_mass_frac</span>     <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
     <span class="n">mass_frac_flux</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sol_Y</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> 
     <span class="n">error_mass_frac_flux</span> <span class="o">=</span> <span class="p">(</span> <span class="n">mass_frac_flux</span> <span class="o">-</span> <span class="n">mass_frac_flux</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span> <span class="o">/</span> <span class="n">mass_frac_flux</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">subaxes_mass_frac</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sol_x</span><span class="p">,</span> <span class="n">error_mass_frac_flux</span><span class="p">,</span> <span class="n">ls</span><span class="p">)</span>
@@ -1436,7 +1487,6 @@ The conservative fluxes are:</p>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Maximum mass flux error       : &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">error_mass_flux</span><span class="p">))))</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Maximum momentum flux error   : &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">error_momentum_flux</span><span class="p">))))</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Maximum enthalpy flux error   : &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">error_enthalpy_flux</span><span class="p">))))</span>
-        <span class="c1"># print(&#39;Maximum energy flux error     : &#39; + str(np.max(np.abs(error_energy_flux))))</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Maximum mass frac error       : &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">error_mass_frac_flux</span><span class="p">))))</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Last value of mass flux       : &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">mass_flux</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Ymin                          : &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sol_Y</span><span class="p">)))</span>
@@ -1474,12 +1524,19 @@ The conservative fluxes are:</p>
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="Specie_class_definition.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="Reaction_class_definition.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Specie class definition</p>
+            <p class="prev-next-title">Reaction and sub-reaction classes</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="../2_Temperature/_2T_code_structure.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Two-temperature</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             
@@ -1488,9 +1545,9 @@ The conservative fluxes are:</p>
     <footer class="footer">
   <p>
     
-      By Venti Edoardo, Zucchelli Umberto<br/>
+      Di Venti Edoardo, Zucchelli Umberto<br/>
     
-        &copy; Copyright 2021.<br/>
+        &copy; Diritto d'autore 2021.<br/>
   </p>
 </footer>
 </main>
