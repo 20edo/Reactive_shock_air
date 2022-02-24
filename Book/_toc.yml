@@ -17,5 +17,8 @@ parts:
   - caption: Results
     chapters:
     - file: Results/Results
+  - caption: Bibliography
+    chapters:
+    - file: Results/Bib
 
 

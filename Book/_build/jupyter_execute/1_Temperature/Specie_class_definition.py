@@ -29,7 +29,7 @@ get_ipython().run_line_magic('run', '1T_code_structure.ipynb')
 #     
 #     Analogously with the vibrational contribution, the expression for the specific heat is obtained deriving the formula with respect to T.
 #     
-# The enthalpy of formation of species i $\Delta h_{f,i}$ is at $T_0 = 298.15 K$
+# The enthalpy of formation of specie $i$ $\Delta h_{f,i}$ is at $T_0 = 298.15 K$
 
 # In[2]:
 

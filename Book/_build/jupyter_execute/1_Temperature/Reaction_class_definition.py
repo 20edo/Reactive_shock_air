@@ -86,7 +86,7 @@ class reaction:
 # In[4]:
 
 
-# The constant rate Cf is devided by 1e6 to convert from cm3/mol to m3/mol
+# The pre-exponential coefficent Cf is devided by 1e6 to convert from cm3/mol to m3/mol
 # e_mol is multiplicated by 4184 in order to convert Kcal/mol in J/mol
 
 O2diss = reaction([1.335, -4.127, -0.616, 0.093, -0.005], -117.98*4184)

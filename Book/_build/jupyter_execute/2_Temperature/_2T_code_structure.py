@@ -49,7 +49,7 @@ Kb  = 1.3806503e-23;     # Boltzmann constant [J/K]
 amu = 1.66053904020e-24; # 1/Avogadro's number [mol]
 Ru = Kb/amu              # [J/(K*mol)]
 
-# I set minimum and maximum values for the equilibrium constant Kc 
+# Minimum and maximum values for the equilibrium constant Kc 
 # in order to avoid convergence problem due to too big or too small numerical values
 kc_min = 1e-20
 kc_max = 1e20

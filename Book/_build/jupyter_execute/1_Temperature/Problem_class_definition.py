@@ -99,7 +99,7 @@ class problem:
 # 
 # The Rankine-Hugoniot relations read: <br>
 # 
-# $ \rho_0 u_0 = \rho_1 u $ <br>
+# $ \rho_0 u_0 = \rho_1 u_1 $ <br>
 # $ \rho_0 u_0^2 + P_0 = \rho_1 u_1^2 + P_1 $ <br>
 # $ h_0^t  = e_0 + \frac{P_0}{\rho_0} + \frac{1}{2}u_0^2 = 
 # e_1 + \frac{P_1}{\rho_1} + \frac{1}{2} u_1^2 = h_1^t  $
@@ -212,7 +212,7 @@ problem.RHjump = RHjump
 # $R_{f,r} = k_{f,r} \Pi_{i = 0}^{N_{s}} \chi_i^{\alpha_{i,r}} $ <br>
 # and <br>
 # $R_{b,r} = k_{b,r} \Pi_{i = 0}^{N_{s}} \chi_i^{\beta_{i,r}} $ <br>
-# Where $\alpha_{i,r}$ and $\beta_{i,r}$ are the stechiometric mole numbers for reactants and products respectively.
+# Where $\alpha_{i,r}$ and $\beta_{i,r}$ are the stoichiometric mole numbers for reactants and products respectively.
 # 
 # <!-- Finally, the generated/destroyed species are expressed in terms of "global" mass fraction rate and summed for each reaction and sub-reaction. -->
 # 
@@ -235,7 +235,7 @@ def compute_Sy(self, rho, T, Y):
     S = np.zeros(np.shape(self.specie))
     Y = np.array(Y)
     Se = 0
-    # Recover mmol
+    # Recover mmol array
     mmol = np.array([])
     for i in self.specie:
         mmol = np.append(mmol, i.mmol)
@@ -261,16 +261,16 @@ def compute_Sy(self, rho, T, Y):
                     omegap[k, idx] = 1
                 
                 # Transform the global y vector to the local n vector
-                nr_l = np.matmul( rho * Y / mmol, np.transpose(omegar))
-                np_l = np.matmul( rho * Y / mmol, np.transpose(omegap))
+                chi_r_l = np.matmul( rho * Y / mmol, np.transpose(omegar))
+                chi_p_l = np.matmul( rho * Y / mmol, np.transpose(omegap))
                 
                 # Compute the reaction rate
-                w_s = obj.kf(T) * np.prod(nr_l ** obj.stoichr) - obj.kb(T) * np.prod(np_l ** obj.stoichp)
+                R_s = obj.kf(T) * np.prod(chi_r_l ** obj.stoichr) - obj.kb(T) * np.prod(chi_p_l ** obj.stoichp)
                 #breakpoint()
                 # Update the source terms for the species equation
-                S += mmol * (np.matmul(obj.stoichp, omegap) - np.matmul( obj.stoichr, omegar)) * w_s
+                S += mmol * (np.matmul(obj.stoichp, omegap) - np.matmul( obj.stoichr, omegar)) * R_s
                 #Update the energy source term
-                Se = obj.e_mol * w_s
+                Se = obj.e_mol * R_s
                 
         elif isinstance(self.reaction[i], subreaction):
                 obj = self.reaction[i]
@@ -291,17 +291,17 @@ def compute_Sy(self, rho, T, Y):
                     omegap[k, idx] = 1
 
                 # Transform the global y vector to the local n vector
-                nr_l = np.matmul( rho * Y / mmol, np.transpose(omegar))
-                np_l = np.matmul( rho * Y / mmol, np.transpose(omegap))
+                chi_r_l = np.matmul( rho * Y / mmol, np.transpose(omegar))
+                chi_p_l = np.matmul( rho * Y / mmol, np.transpose(omegap))
                 
                 # Compute the reaction rate
-                w_s = obj.kf(T) * np.prod(nr_l ** obj.stoichr) - obj.kb(T) * np.prod(np_l ** obj.stoichp)
+                R_s = obj.kf(T) * np.prod(chi_r_l ** obj.stoichr) - obj.kb(T) * np.prod(chi_p_l ** obj.stoichp)
                 
                 # breakpoint()
                 # Update the source terms for the species equation
-                S += mmol * (np.matmul(obj.stoichp, omegap) - np.matmul( obj.stoichr, omegar)) * w_s
+                S += mmol * (np.matmul(obj.stoichp, omegap) - np.matmul( obj.stoichr, omegar)) * R_s
                 #Update the energy source term
-                Se = obj.e_mol * w_s
+                Se = obj.e_mol * R_s
                 
                 
         else: print('Member of the reaction group of this problem are ill-defined')
@@ -369,13 +369,13 @@ problem.pre_shock_relax_chemistry = pre_shock_relax_chemistry
 #     
 # * Momentum equation: <br />
 #     $ \rho u \frac{\partial u}{\partial x} = - \frac{\partial P}{\partial x} $ <br>
-#     Since $ P = P(\rho, T, Y) = \rho \Sigma_i Y_i R T $ , then $ dp = \frac{\partial P}{\partial \rho} d \rho + \frac{\partial P}{\partial T} d T + \Sigma_i \frac{\partial P}{\partial Y_i} d Y_i $  <br>
+#     Since $ P = P(\rho, T, Y) = \rho \Sigma_i Y_i R_i T $ , then $ dp = \frac{\partial P}{\partial \rho} d \rho + \frac{\partial P}{\partial T} d T + \Sigma_i \frac{\partial P}{\partial Y_i} d Y_i $  <br>
 #     The derivatives can be expressed as : <br>
 #     - $ \frac{\partial P}{\partial \rho} = \Sigma_i Y_i R_i T $ <br>
 #     - $ \frac{\partial P}{\partial T} = \rho \Sigma_i Y_i R_i$ <br>
 #     - $ \frac{\partial P}{\partial Y_i} = \rho R_i T$ <br>
 #     Hence, the momentum equation can be written as : <br>
-#     $ \rho u \frac{\partial u}{\partial x} = - \frac{\partial P}{\partial x} = \Sigma_i Y_i R T \frac{\partial \rho}{\partial x} + \rho \Sigma_i Y_i R_u \frac{\partial T}{\partial x} + \rho R T \Sigma_i \frac{Y_i}{x}$    
+#     $ \rho u \frac{\partial u}{\partial x} = - \frac{\partial P}{\partial x} = \Sigma_i Y_i R_i T \frac{\partial \rho}{\partial x} + \rho \Sigma_i Y_i R_i \frac{\partial T}{\partial x} + \rho R T \Sigma_i \frac{Y_i}{x}$    
 #     
 # * Energy equation: <br />
 #     $ \frac{\partial e}{\partial x} = \frac{P}{\rho^2} \frac{\partial \rho}{\partial x}$ <br>

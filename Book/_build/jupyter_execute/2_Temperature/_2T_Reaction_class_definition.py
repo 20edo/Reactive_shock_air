@@ -13,8 +13,8 @@ get_ipython().run_line_magic('run', '_2T_Specie_class_definition.ipynb')
 # # Chemical reaction class definition
 # A reaction is defined by the stochiometric coefficients, the reactants, the products and the reaction rate coefficients. The latter are computed as follows:
 # 
-# * $\textbf{Forward reaction coefficient}$ : &nbsp; &nbsp; &nbsp; $k_f$ can be expressed through the modified Arrhenius equation: $k_f = C_f T ^{\eta_f}e^{-\frac{\theta_d}{T}}$ <br> (coefficients from Park's tables [1])
-# * $\textbf{Equilibrium reaction coefficient}$ : &nbsp; $k_c$ is computed from the fitted fouth-order polynomial interpolation by Park [1]: $k_c = exp(A_i + A_2Z + A_3Z^2 + A_4Z^3 + A_5Z^4)$ <br>
+# * $\textbf{Forward reaction coefficient}$ : &nbsp; &nbsp; &nbsp; $k_f$ can be expressed through the modified Arrhenius equation: $k_f = C_f T ^{\eta_f}e^{-\frac{\theta_d}{T}}$ <br> (coefficients: $C_f, \eta_f, \theta_d$ from Park's tables [1])
+# * $\textbf{Equilibrium reaction coefficient}$ : &nbsp; $k_c$ is computed from the fitted fouth-order polynomial interpolation by Park [1]: $k_c = exp(A_1 + A_2Z + A_3Z^2 + A_4Z^3 + A_5Z^4)$ <br>
 # Where: $Z = \frac{10000}{T}$
 # * $\textbf{Backward reaction coefficient}$: &nbsp; &nbsp; &nbsp; $k_b$ is computed as $k_b = \frac{k_f}{k_c}$
 # <br>
@@ -25,7 +25,7 @@ get_ipython().run_line_magic('run', '_2T_Specie_class_definition.ipynb')
 # $
 # AB + M \rightleftharpoons A + B + M
 # $ <br>
-# The forward reaction occurs mostly as a result of vibrational ladder-climbing process, that is the successive excitation of vibrational energy levels in the molecule AB. The final parting process occurs mostly from the levels close to the dissociation limit, that is, from the levels that are located within an energy $K_bT$ from the dissociation limit. The rate coefficient is approximately proportional, therefore to the population of the vibrational level $K_bT$ below the dissociation limit $D' = D - K_bT$, resulting proportional to  $exp(− D' /(K_b T_v)) = exp(− (D - K_bT) /(K_b T_v)) = exp(− \theta^d /(T_v) + T/T^v)$. The rate of parting of the molecules from this level is dictated mostly by the kinetic energy of the impacting particles $K_bT$ hence its rate is proportional to $exp(−(K_b T)/(K_b T)) = exp(−1)$. The preexponential factor T expresses the dependence of the collision frequence and cross sections on he collision energy, both of which are dictated by the translational temperature T. Therefore the expression for $k_f$ becomes: 
+# The forward reaction occurs mostly as a result of vibrational ladder-climbing process, that is the successive excitation of vibrational energy levels in the molecule AB. The final parting process occurs mostly from the levels close to the dissociation limit, that is, from the levels that are located within an energy $K_bT$ from the dissociation limit. The rate coefficient is approximately proportional, therefore to the population of the vibrational level $K_bT$ below the dissociation limit $D' = D - K_bT$, resulting proportional to  $exp(− D' /(K_b T_v)) = exp(− (D - K_bT) /(K_b T_v)) = exp(− \theta^d /T^v + T/T^v)$. The rate of parting of the molecules from this level is dictated mostly by the kinetic energy of the impacting particles $K_bT$ hence its rate is proportional to $exp(−(K_b T)/(K_b T)) = exp(−1)$. The preexponential factor T expresses the dependence of the collision frequence and cross sections on the collision energy, both of which are dictated by the translational temperature T. Therefore the expression for $k_f$ becomes: 
 # $k_f = C T exp(- \theta^d/T^v - 1 + T/T^v)$ <br>
 # The reverse rate of this process are dictated only by the translational temperature of the particles involved:
 # $k_b = k_b(T)$
@@ -186,7 +186,7 @@ class reaction:
 # In[4]:
 
 
-# The constant rate Cf is devided by 1e6 to convert from cm3/mol to m3/mol
+# The pre-exponential coefficent Cf is devided by 1e6 to convert from cm3/mol to m3/mol
 # e_mol is multiplicated by 4184 in order to convert Kcal/mol in J/mol
 
 O2diss = reaction([1.335, -4.127, -0.616, 0.093, -0.005], -117.98*4184)

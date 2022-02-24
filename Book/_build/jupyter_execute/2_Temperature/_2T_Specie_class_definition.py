@@ -40,7 +40,7 @@ get_ipython().run_line_magic('run', '_2T_code_structure.ipynb')
 # 
 # For the two-temperature model has been assumed that: 
 # 
-# * $T^t = T^r = T^{tr} $
+# * $T^t = T^r = T^{tr} = T $
 #     
 # * $T^v = T^{el} = T^{ve} $
 

@@ -116,7 +116,7 @@ class problem:
 # $ Y_{i_0} = Y_{i_1} $ <br>
 # 
 # 
-# Where $P = \rho \sum_{i}^{N_s} Y_i R_i T $ and $e = e^{tr} + e^{ve}$ <br>
+# Where $P = \rho \sum_{i}^{N_s} Y_i R_i T^{tr} $ and $e = e^{tr} + e^{ve}$ <br>
 # The non-linear equations are written in the "RHsystem" function whose solutions are found through a non-linear solver. 
 
 # ```{note}
@@ -515,7 +515,7 @@ def Euler_x_2T(self, x_spatial, x, x0 = None):
                 print('State values  = ' + str(x))
         
         if x0 == None:
-            a = 0.2
+            a = 0.15
             x0 = [self.rho1, self.u1, self.T1, ( a * self.T1 + (1-a) * self.T0)]
             for i in self.Y0:
                 x0.append(i)

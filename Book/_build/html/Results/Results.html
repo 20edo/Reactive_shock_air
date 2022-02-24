@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -33,19 +33,22 @@
     
   <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -53,6 +56,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="&lt;no title&gt;" href="Bib.html" />
     <link rel="prev" title="Problem class definition" href="../2_Temperature/_2T_Problem_class_definition.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -87,7 +91,7 @@
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Cerca in questo libro ..." aria-label="Cerca in questo libro ..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
@@ -97,7 +101,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   One temperature code description
  </span>
@@ -124,7 +128,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Two-temperatures code description
  </span>
@@ -151,7 +155,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Results
  </span>
@@ -187,8 +191,8 @@
             
             <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
                 data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                aria-expanded="true" aria-label="Attiva / disattiva la navigazione" aria-controls="site-navigation"
+                title="Attiva / disattiva la navigazione" data-toggle="tooltip" data-placement="left">
                 <i class="fas fa-bars"></i>
                 <i class="fas fa-arrow-left"></i>
                 <i class="fas fa-arrow-up"></i>
@@ -196,7 +200,7 @@
             
             
 <div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Scarica questa pagina"><i
             class="fas fa-download"></i></button>
 
     <div class="dropdown-buttons">
@@ -204,10 +208,10 @@
         
         <!-- Download raw file -->
         <a class="dropdown-buttons" href="../_sources/Results/Results.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                class="btn btn-secondary topbarbtn" title="Scarica il file sorgente" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Stampa in PDF"
                 onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
@@ -217,8 +221,8 @@
             <!-- Full screen (wrap in <a> to have style consistency -->
 
 <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Modalità schermo intero"
+        title="Modalità schermo intero"><i
             class="fas fa-expand"></i></button></a>
 
             <!-- Launch buttons -->
@@ -229,7 +233,7 @@
     <div class="dropdown-buttons">
         
         <a class="binder-button" href="https://mybinder.org/v2/gh/20edo/Reactive_shock_air/master?urlpath=tree/Book/Results/Results.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                class="btn btn-secondary topbarbtn" title="Lanciare Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
                     alt="Interact on binder">Binder</button></a>
@@ -246,7 +250,7 @@
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+                <i class="fas fa-list"></i> Contenuti
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -369,7 +373,7 @@
                     <div id="jb-print-toc">
                         
                         <div>
-                            <h2> Contents </h2>
+                            <h2> Contenuti </h2>
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
@@ -629,31 +633,29 @@ A Solving for x = 0.000000000000e+00
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 0.000000000000e+00
 A Solving for x = 2.159272964462e-09
 A Solving for x = 2.159272964462e-09
+A Solving for x = 4.318545928924e-09
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 4.318545928924e-09
-A Solving for x = 4.318545928924e-09
 A Solving for x = 8.711736530694e-09
 A Solving for x = 8.711736530694e-09
+A Solving for x = 1.310492713247e-08
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 1.310492713247e-08
-A Solving for x = 1.310492713247e-08
 A Solving for x = 1.749811773424e-08
 A Solving for x = 1.749811773424e-08
+A Solving for x = 2.673147595904e-08
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 2.673147595904e-08
-A Solving for x = 2.673147595904e-08
 A Solving for x = 3.596483418385e-08
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 3.596483418385e-08
-A Solving for x = 4.519819240866e-08
+A Solving for x = 3.596483418385e-08
 A Solving for x = 4.519819240866e-08
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 5.443155063347e-08
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 4.519819240866e-08
+A Solving for x = 5.443155063347e-08
 A Solving for x = 5.443155063347e-08
 A Solving for x = 8.129950685415e-08
 </pre></div>
@@ -661,670 +663,789 @@ A Solving for x = 8.129950685415e-08
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 8.129950685415e-08
 A Solving for x = 1.081674630748e-07
 A Solving for x = 1.081674630748e-07
+A Solving for x = 1.350354192955e-07
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 1.350354192955e-07
-A Solving for x = 1.350354192955e-07
-A Solving for x = 2.517609435902e-07
-A Solving for x = 2.517609435902e-07
+A Solving for x = 2.517609434289e-07
+A Solving for x = 2.517609434289e-07
+A Solving for x = 3.684864675623e-07
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 3.684864678849e-07
-A Solving for x = 3.684864678849e-07
-A Solving for x = 4.852119921795e-07
-A Solving for x = 4.852119921795e-07
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 3.684864675623e-07
+A Solving for x = 4.852119916957e-07
+A Solving for x = 4.852119916957e-07
+A Solving for x = 6.019375158291e-07
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 6.019375164742e-07
-A Solving for x = 6.019375164742e-07
-A Solving for x = 8.835122996581e-07
-A Solving for x = 8.835122996581e-07
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 6.019375158291e-07
+A Solving for x = 8.835122927244e-07
+A Solving for x = 8.835122927244e-07
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 1.165087082842e-06
-A Solving for x = 1.165087082842e-06
-A Solving for x = 1.446661866026e-06
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 1.165087069620e-06
+A Solving for x = 1.165087069620e-06
+A Solving for x = 1.446661846515e-06
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 1.446661866026e-06
-A Solving for x = 1.728236649210e-06
-A Solving for x = 1.728236649210e-06
-A Solving for x = 2.278107472415e-06
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 1.446661846515e-06
+A Solving for x = 1.728236623410e-06
+A Solving for x = 1.728236623410e-06
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 2.278107472415e-06
-A Solving for x = 2.827978295620e-06
-A Solving for x = 2.827978295620e-06
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 2.278107497315e-06
+A Solving for x = 2.278107497315e-06
+A Solving for x = 2.827978371219e-06
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 3.377849118825e-06
-A Solving for x = 3.377849118825e-06
-A Solving for x = 3.927719942030e-06
-A Solving for x = 3.927719942030e-06
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 2.827978371219e-06
+A Solving for x = 3.377849245124e-06
+A Solving for x = 3.377849245124e-06
+A Solving for x = 3.927720119028e-06
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 5.053141471569e-06
-A Solving for x = 5.053141471569e-06
-A Solving for x = 6.178563001108e-06
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 3.927720119028e-06
+A Solving for x = 5.053142185714e-06
+A Solving for x = 5.053142185714e-06
+A Solving for x = 6.178564252401e-06
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 6.178563001108e-06
-A Solving for x = 7.303984530647e-06
-A Solving for x = 7.303984530647e-06
-A Solving for x = 8.429406060186e-06
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 6.178564252401e-06
+A Solving for x = 7.303986319087e-06
+A Solving for x = 7.303986319087e-06
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 8.429406060186e-06
-A Solving for x = 9.554827589725e-06
-A Solving for x = 9.554827589725e-06
-A Solving for x = 1.113705205789e-05
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 8.429408385774e-06
+A Solving for x = 8.429408385774e-06
+A Solving for x = 9.554830452460e-06
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 1.113705205789e-05
-A Solving for x = 1.271927652606e-05
-A Solving for x = 1.271927652606e-05
-A Solving for x = 1.430150099423e-05
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 9.554830452460e-06
+A Solving for x = 1.113705477629e-05
+A Solving for x = 1.113705477629e-05
+A Solving for x = 1.271927910012e-05
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 1.430150099423e-05
-A Solving for x = 1.588372546239e-05
-A Solving for x = 1.588372546239e-05
-A Solving for x = 1.746594993056e-05
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 1.271927910012e-05
+A Solving for x = 1.430150342395e-05
+A Solving for x = 1.430150342395e-05
+A Solving for x = 1.588372774778e-05
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 1.746594993056e-05
-A Solving for x = 1.971455233511e-05
-A Solving for x = 1.971455233511e-05
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 1.588372774778e-05
+A Solving for x = 1.746595207160e-05
+A Solving for x = 1.746595207160e-05
+A Solving for x = 1.971455575259e-05
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 2.196315473966e-05
-A Solving for x = 2.196315473966e-05
-A Solving for x = 2.421175714421e-05
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 1.971455575259e-05
+A Solving for x = 2.196315943357e-05
+A Solving for x = 2.196315943357e-05
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 2.421175714421e-05
-A Solving for x = 2.646035954876e-05
-A Solving for x = 2.646035954876e-05
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 2.421176311455e-05
+A Solving for x = 2.421176311455e-05
+A Solving for x = 2.646036679553e-05
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 2.870896195331e-05
-A Solving for x = 2.870896195331e-05
-A Solving for x = 3.095756435786e-05
-A Solving for x = 3.095756435786e-05
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 2.646036679553e-05
+A Solving for x = 2.870897047651e-05
+A Solving for x = 2.870897047651e-05
+A Solving for x = 3.095757415749e-05
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 3.372503662650e-05
-A Solving for x = 3.372503662650e-05
-A Solving for x = 3.649250889514e-05
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 3.095757415749e-05
+A Solving for x = 3.372504566883e-05
+A Solving for x = 3.372504566883e-05
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 3.649250889514e-05
-A Solving for x = 3.925998116378e-05
-A Solving for x = 3.925998116378e-05
-A Solving for x = 4.202745343242e-05
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 3.649251718016e-05
+A Solving for x = 3.649251718016e-05
+A Solving for x = 3.925998869150e-05
+A Solving for x = 3.925998869150e-05
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 4.202745343242e-05
-A Solving for x = 4.479492570106e-05
-A Solving for x = 4.479492570106e-05
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 4.202746020284e-05
+A Solving for x = 4.202746020284e-05
+A Solving for x = 4.479493171417e-05
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 4.756239796970e-05
-A Solving for x = 4.756239796970e-05
-A Solving for x = 5.034000381193e-05
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 4.479493171417e-05
+A Solving for x = 4.756240322551e-05
+A Solving for x = 4.756240322551e-05
+A Solving for x = 5.034000840254e-05
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 5.034000381193e-05
-A Solving for x = 5.311760965417e-05
-A Solving for x = 5.311760965417e-05
-A Solving for x = 5.589521549640e-05
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 5.034000840254e-05
+A Solving for x = 5.311761357956e-05
+A Solving for x = 5.311761357956e-05
+A Solving for x = 5.589521875659e-05
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 5.589521549640e-05
-A Solving for x = 5.867282133863e-05
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 5.589521875659e-05
+A Solving for x = 5.867282393362e-05
+A Solving for x = 5.867282393362e-05
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 5.867282133863e-05
-A Solving for x = 6.145042718087e-05
-A Solving for x = 6.145042718087e-05
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 6.145042911065e-05
+A Solving for x = 6.145042911065e-05
+A Solving for x = 6.422803428767e-05
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 6.422803302310e-05
-A Solving for x = 6.422803302310e-05
-A Solving for x = 6.701763686358e-05
-A Solving for x = 6.701763686358e-05
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 6.422803428767e-05
+A Solving for x = 6.701763862818e-05
+A Solving for x = 6.701763862818e-05
+A Solving for x = 6.980724296869e-05
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 6.980724070405e-05
-A Solving for x = 6.980724070405e-05
-A Solving for x = 7.259684454453e-05
-A Solving for x = 7.259684454453e-05
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 6.980724296869e-05
+A Solving for x = 7.259684730920e-05
+A Solving for x = 7.259684730920e-05
+A Solving for x = 7.538645164971e-05
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 7.538644838500e-05
-A Solving for x = 7.538644838500e-05
-A Solving for x = 7.817605222548e-05
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 7.538645164971e-05
+A Solving for x = 7.817605599022e-05
+A Solving for x = 7.817605599022e-05
+A Solving for x = 8.096566033073e-05
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 7.817605222548e-05
-A Solving for x = 8.096565606595e-05
-A Solving for x = 8.096565606595e-05
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 8.096566033073e-05
+A Solving for x = 8.378665503259e-05
+A Solving for x = 8.378665503259e-05
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 8.378665087437e-05
-A Solving for x = 8.378665087437e-05
-A Solving for x = 8.660764568279e-05
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 8.660764973444e-05
+A Solving for x = 8.660764973444e-05
+A Solving for x = 8.942864443630e-05
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 8.660764568279e-05
-A Solving for x = 8.942864049121e-05
-A Solving for x = 8.942864049121e-05
-A Solving for x = 9.224963529963e-05
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 8.942864443630e-05
+A Solving for x = 9.224963913816e-05
+A Solving for x = 9.224963913816e-05
+A Solving for x = 9.507063384001e-05
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 9.224963529963e-05
-A Solving for x = 9.507063010805e-05
-A Solving for x = 9.507063010805e-05
-A Solving for x = 9.789162491646e-05
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 9.507063384001e-05
+A Solving for x = 9.789162854187e-05
+A Solving for x = 9.789162854187e-05
+A Solving for x = 1.007477152105e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 9.789162491646e-05
-A Solving for x = 1.007477117179e-04
-A Solving for x = 1.007477117179e-04
-A Solving for x = 1.036037985192e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 1.007477152105e-04
+A Solving for x = 1.036038018792e-04
+A Solving for x = 1.036038018792e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 1.036037985192e-04
-A Solving for x = 1.064598853206e-04
-A Solving for x = 1.064598853206e-04
-A Solving for x = 1.093159721220e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 1.064598885478e-04
+A Solving for x = 1.064598885478e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 1.093159721220e-04
-A Solving for x = 1.121720589234e-04
-A Solving for x = 1.121720589234e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 1.093159752164e-04
+A Solving for x = 1.093159752164e-04
+A Solving for x = 1.121720618851e-04
+A Solving for x = 1.121720618851e-04
+A Solving for x = 1.150281485537e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 1.150281457248e-04
-A Solving for x = 1.150281457248e-04
-A Solving for x = 1.179280658738e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 1.150281485537e-04
+A Solving for x = 1.179280690206e-04
+A Solving for x = 1.179280690206e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 1.179280658738e-04
-A Solving for x = 1.208279860229e-04
-A Solving for x = 1.208279860229e-04
-A Solving for x = 1.237279061719e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 1.208279894876e-04
+A Solving for x = 1.208279894876e-04
+A Solving for x = 1.237279099545e-04
+A Solving for x = 1.237279099545e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 1.237279061719e-04
-A Solving for x = 1.266278263209e-04
-A Solving for x = 1.266278263209e-04
-A Solving for x = 1.295277464699e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 1.266278304214e-04
+A Solving for x = 1.266278304214e-04
+A Solving for x = 1.295277508883e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 1.295277464699e-04
-A Solving for x = 1.324276666190e-04
-A Solving for x = 1.324276666190e-04
-A Solving for x = 1.353859723117e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 1.295277508883e-04
+A Solving for x = 1.324276713552e-04
+A Solving for x = 1.324276713552e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 1.353859723117e-04
-A Solving for x = 1.383442780044e-04
-A Solving for x = 1.383442780044e-04
-A Solving for x = 1.413025836971e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 1.353859766144e-04
+A Solving for x = 1.353859766144e-04
+A Solving for x = 1.383442818735e-04
+A Solving for x = 1.383442818735e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 1.413025836971e-04
-A Solving for x = 1.442608893899e-04
-A Solving for x = 1.442608893899e-04
-A Solving for x = 1.472191950826e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 1.413025871327e-04
+A Solving for x = 1.413025871327e-04
+A Solving for x = 1.442608923918e-04
+A Solving for x = 1.442608923918e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 1.472191950826e-04
-A Solving for x = 1.501775007753e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 1.472191976509e-04
+A Solving for x = 1.472191976509e-04
+A Solving for x = 1.501775029101e-04
+A Solving for x = 1.501775029101e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 1.501775007753e-04
-A Solving for x = 1.532096409996e-04
-A Solving for x = 1.532096409996e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 1.532096430457e-04
+A Solving for x = 1.532096430457e-04
+A Solving for x = 1.562417831814e-04
+A Solving for x = 1.562417831814e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 1.562417812239e-04
-A Solving for x = 1.562417812239e-04
-A Solving for x = 1.592739214483e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 1.592739233171e-04
+A Solving for x = 1.592739233171e-04
+A Solving for x = 1.623060634527e-04
+A Solving for x = 1.623060634527e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 1.592739214483e-04
-A Solving for x = 1.623060616726e-04
-A Solving for x = 1.623060616726e-04
-A Solving for x = 1.653382018969e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 1.653382035884e-04
+A Solving for x = 1.653382035884e-04
+A Solving for x = 1.683703437241e-04
+A Solving for x = 1.683703437241e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 1.653382018969e-04
-A Solving for x = 1.683703421212e-04
-A Solving for x = 1.683703421212e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 1.714861173400e-04
+A Solving for x = 1.714861173400e-04
+A Solving for x = 1.746018909560e-04
+A Solving for x = 1.746018909560e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 1.714861160360e-04
-A Solving for x = 1.714861160360e-04
-A Solving for x = 1.746018899508e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 1.777176645719e-04
+A Solving for x = 1.777176645719e-04
+A Solving for x = 1.808334381879e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 1.746018899508e-04
-A Solving for x = 1.777176638656e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 1.808334381879e-04
+A Solving for x = 1.839492118039e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 1.777176638656e-04
-A Solving for x = 1.808334377803e-04
-A Solving for x = 1.808334377803e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 1.839492118039e-04
+A Solving for x = 1.870649854198e-04
+A Solving for x = 1.870649854198e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 1.839492116951e-04
-A Solving for x = 1.839492116951e-04
-A Solving for x = 1.870649856099e-04
-A Solving for x = 1.870649856099e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 1.902576191988e-04
+A Solving for x = 1.902576191988e-04
+A Solving for x = 1.934502529779e-04
+A Solving for x = 1.934502529779e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 1.902576195787e-04
-A Solving for x = 1.902576195787e-04
-A Solving for x = 1.934502535476e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 1.966428867569e-04
+A Solving for x = 1.966428867569e-04
+A Solving for x = 1.998355205359e-04
+A Solving for x = 1.998355205359e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 1.934502535476e-04
-A Solving for x = 1.966428875165e-04
-A Solving for x = 1.966428875165e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 2.030281543150e-04
+A Solving for x = 2.030281543150e-04
+A Solving for x = 2.062207880940e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 1.998355214854e-04
-A Solving for x = 1.998355214854e-04
-A Solving for x = 2.030281554542e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 2.062207880940e-04
+A Solving for x = 2.094595838531e-04
+A Solving for x = 2.094595838531e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 2.030281554542e-04
-A Solving for x = 2.062207894231e-04
-A Solving for x = 2.062207894231e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 2.126983796121e-04
+A Solving for x = 2.126983796121e-04
+A Solving for x = 2.159371753712e-04
+A Solving for x = 2.159371753712e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 2.094595844941e-04
-A Solving for x = 2.094595844941e-04
-A Solving for x = 2.126983795652e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 2.191759711302e-04
+A Solving for x = 2.191759711302e-04
+A Solving for x = 2.224147668893e-04
+A Solving for x = 2.224147668893e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 2.126983795652e-04
-A Solving for x = 2.159371746362e-04
-A Solving for x = 2.159371746362e-04
-A Solving for x = 2.191759697072e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 2.256535626483e-04
+A Solving for x = 2.256535626483e-04
+A Solving for x = 2.289003858633e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 2.191759697072e-04
-A Solving for x = 2.224147647783e-04
-A Solving for x = 2.224147647783e-04
-A Solving for x = 2.256535598493e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 2.289003858633e-04
+A Solving for x = 2.321472090783e-04
+A Solving for x = 2.321472090783e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 2.256535598493e-04
-A Solving for x = 2.289003826486e-04
-A Solving for x = 2.289003826486e-04
-A Solving for x = 2.321472054479e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 2.353940322933e-04
+A Solving for x = 2.353940322933e-04
+A Solving for x = 2.386408555082e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 2.321472054479e-04
-A Solving for x = 2.353940282472e-04
-A Solving for x = 2.353940282472e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 2.386408555082e-04
+A Solving for x = 2.418876787232e-04
+A Solving for x = 2.418876787232e-04
+A Solving for x = 2.451345019382e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 2.386408510465e-04
-A Solving for x = 2.386408510465e-04
-A Solving for x = 2.418876738458e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 2.451345019382e-04
+A Solving for x = 2.483710301974e-04
+A Solving for x = 2.483710301974e-04
+A Solving for x = 2.516075584565e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 2.418876738458e-04
-A Solving for x = 2.451344966451e-04
-A Solving for x = 2.451344966451e-04
-A Solving for x = 2.483710253252e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 2.516075584565e-04
+A Solving for x = 2.548440867157e-04
+A Solving for x = 2.548440867157e-04
+A Solving for x = 2.580806149748e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 2.483710253252e-04
-A Solving for x = 2.516075540052e-04
-A Solving for x = 2.516075540052e-04
-A Solving for x = 2.548440826853e-04
-A Solving for x = 2.548440826853e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 2.580806149748e-04
+A Solving for x = 2.613171432340e-04
+A Solving for x = 2.613171432340e-04
+A Solving for x = 2.645536714931e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 2.580806113653e-04
-A Solving for x = 2.580806113653e-04
-A Solving for x = 2.613171400454e-04
-A Solving for x = 2.613171400454e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 2.645536714931e-04
+A Solving for x = 2.677848150044e-04
+A Solving for x = 2.677848150044e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 2.645536687254e-04
-A Solving for x = 2.645536687254e-04
-A Solving for x = 2.677848127827e-04
-A Solving for x = 2.677848127827e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 2.710159585157e-04
+A Solving for x = 2.710159585157e-04
+A Solving for x = 2.742471020270e-04
+A Solving for x = 2.742471020270e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 2.710159568399e-04
-A Solving for x = 2.710159568399e-04
-A Solving for x = 2.742471008972e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 2.774782455384e-04
+A Solving for x = 2.774782455384e-04
+A Solving for x = 2.807093890497e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 2.742471008972e-04
-A Solving for x = 2.774782449544e-04
-A Solving for x = 2.774782449544e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 2.807093890497e-04
+A Solving for x = 2.839405325610e-04
+A Solving for x = 2.839405325610e-04
+A Solving for x = 2.871826725818e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 2.807093890117e-04
-A Solving for x = 2.807093890117e-04
-A Solving for x = 2.839405330689e-04
-A Solving for x = 2.839405330689e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 2.871826725818e-04
+A Solving for x = 2.904248126027e-04
+A Solving for x = 2.904248126027e-04
+A Solving for x = 2.936669526235e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 2.871826727056e-04
-A Solving for x = 2.871826727056e-04
-A Solving for x = 2.904248123424e-04
-A Solving for x = 2.904248123424e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 2.936669526235e-04
+A Solving for x = 2.969090926444e-04
+A Solving for x = 2.969090926444e-04
+A Solving for x = 3.001512326652e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 2.936669519791e-04
-A Solving for x = 2.936669519791e-04
-A Solving for x = 2.969090916158e-04
-A Solving for x = 2.969090916158e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 3.001512326652e-04
+A Solving for x = 3.033933726860e-04
+A Solving for x = 3.033933726860e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 3.001512312525e-04
-A Solving for x = 3.001512312525e-04
-A Solving for x = 3.033933708893e-04
-A Solving for x = 3.033933708893e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 3.066662098967e-04
+A Solving for x = 3.066662098967e-04
+A Solving for x = 3.099390471073e-04
+A Solving for x = 3.099390471073e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 3.066662079299e-04
-A Solving for x = 3.066662079299e-04
-A Solving for x = 3.099390449705e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 3.132118843179e-04
+A Solving for x = 3.132118843179e-04
+A Solving for x = 3.164847215286e-04
+A Solving for x = 3.164847215286e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 3.099390449705e-04
-A Solving for x = 3.132118820111e-04
-A Solving for x = 3.132118820111e-04
-A Solving for x = 3.164847190517e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 3.197575587392e-04
+A Solving for x = 3.197575587392e-04
+A Solving for x = 3.230303959498e-04
+A Solving for x = 3.230303959498e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 3.164847190517e-04
-A Solving for x = 3.197575560923e-04
-A Solving for x = 3.197575560923e-04
-A Solving for x = 3.230303931330e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 3.263545367903e-04
+A Solving for x = 3.263545367903e-04
+A Solving for x = 3.296786776307e-04
+A Solving for x = 3.296786776307e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 3.230303931330e-04
-A Solving for x = 3.263545337665e-04
-A Solving for x = 3.263545337665e-04
-A Solving for x = 3.296786744001e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 3.330028184712e-04
+A Solving for x = 3.330028184712e-04
+A Solving for x = 3.363269593116e-04
+A Solving for x = 3.363269593116e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 3.296786744001e-04
-A Solving for x = 3.330028150336e-04
-A Solving for x = 3.330028150336e-04
-A Solving for x = 3.363269556672e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 3.396511001521e-04
+A Solving for x = 3.396511001521e-04
+A Solving for x = 3.429752409925e-04
+A Solving for x = 3.429752409925e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 3.363269556672e-04
-A Solving for x = 3.396510963007e-04
-A Solving for x = 3.396510963007e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 3.463722336214e-04
+A Solving for x = 3.463722336214e-04
+A Solving for x = 3.497692262504e-04
+A Solving for x = 3.497692262504e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 3.429752369343e-04
-A Solving for x = 3.429752369343e-04
-A Solving for x = 3.463722290897e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 3.531662188793e-04
+A Solving for x = 3.531662188793e-04
+A Solving for x = 3.565632115082e-04
+A Solving for x = 3.565632115082e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 3.463722290897e-04
-A Solving for x = 3.497692212450e-04
-A Solving for x = 3.497692212450e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 3.599602041371e-04
+A Solving for x = 3.599602041371e-04
+A Solving for x = 3.633571967661e-04
+A Solving for x = 3.633571967661e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 3.531662134004e-04
-A Solving for x = 3.531662134004e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 3.668503948200e-04
+A Solving for x = 3.668503948200e-04
+A Solving for x = 3.703435928739e-04
+A Solving for x = 3.703435928739e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 3.565632055558e-04
-A Solving for x = 3.565632055558e-04
-A Solving for x = 3.599601977112e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 3.738367909278e-04
+A Solving for x = 3.738367909278e-04
+A Solving for x = 3.773299889817e-04
+A Solving for x = 3.773299889817e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 3.599601977112e-04
-A Solving for x = 3.633571898665e-04
-A Solving for x = 3.633571898665e-04
-A Solving for x = 3.668503883117e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 3.808231870356e-04
+A Solving for x = 3.808231870356e-04
+A Solving for x = 3.843163850895e-04
+A Solving for x = 3.843163850895e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 3.668503883117e-04
-A Solving for x = 3.703435867569e-04
-A Solving for x = 3.703435867569e-04
-A Solving for x = 3.738367852020e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 3.879323251596e-04
+A Solving for x = 3.879323251596e-04
+A Solving for x = 3.915482652298e-04
+A Solving for x = 3.915482652298e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 3.738367852020e-04
-A Solving for x = 3.773299836472e-04
-A Solving for x = 3.773299836472e-04
-A Solving for x = 3.808231820923e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 3.951642053000e-04
+A Solving for x = 3.951642053000e-04
+A Solving for x = 3.987801453702e-04
+A Solving for x = 3.987801453702e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 3.808231820923e-04
-A Solving for x = 3.843163805375e-04
-A Solving for x = 3.843163805375e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 4.023960854404e-04
+A Solving for x = 4.023960854404e-04
+A Solving for x = 4.060120255106e-04
+A Solving for x = 4.060120255106e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 3.879323203277e-04
-A Solving for x = 3.879323203277e-04
-A Solving for x = 3.915482601180e-04
-A Solving for x = 3.915482601180e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 4.097824596445e-04
+A Solving for x = 4.097824596445e-04
+A Solving for x = 4.135528937784e-04
+A Solving for x = 4.135528937784e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 3.951641999082e-04
-A Solving for x = 3.951641999082e-04
-A Solving for x = 3.987801396984e-04
-A Solving for x = 3.987801396984e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 4.173233279123e-04
+A Solving for x = 4.173233279123e-04
+A Solving for x = 4.210937620462e-04
+A Solving for x = 4.210937620462e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 4.023960794886e-04
-A Solving for x = 4.023960794886e-04
-A Solving for x = 4.060120192789e-04
-A Solving for x = 4.060120192789e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 4.248641961801e-04
+A Solving for x = 4.248641961801e-04
+A Solving for x = 4.286346303140e-04
+A Solving for x = 4.286346303140e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 4.097824528780e-04
-A Solving for x = 4.097824528780e-04
-A Solving for x = 4.135528864771e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 4.325995807921e-04
+A Solving for x = 4.325995807921e-04
+A Solving for x = 4.365645312702e-04
+A Solving for x = 4.365645312702e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 4.135528864771e-04
-A Solving for x = 4.173233200762e-04
-A Solving for x = 4.173233200762e-04
-A Solving for x = 4.210937536753e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 4.405294817482e-04
+A Solving for x = 4.405294817482e-04
+A Solving for x = 4.444944322263e-04
+A Solving for x = 4.444944322263e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 4.210937536753e-04
-A Solving for x = 4.248641872744e-04
-A Solving for x = 4.248641872744e-04
-A Solving for x = 4.286346208735e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 4.484593827043e-04
+A Solving for x = 4.484593827043e-04
+A Solving for x = 4.524243331824e-04
+A Solving for x = 4.524243331824e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 4.286346208735e-04
-A Solving for x = 4.325995705235e-04
-A Solving for x = 4.325995705235e-04
-A Solving for x = 4.365645201735e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 4.566365161854e-04
+A Solving for x = 4.566365161854e-04
+A Solving for x = 4.608486991884e-04
+A Solving for x = 4.608486991884e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 4.365645201735e-04
-A Solving for x = 4.405294698235e-04
-A Solving for x = 4.405294698235e-04
-A Solving for x = 4.444944194736e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 4.650608821915e-04
+A Solving for x = 4.650608821915e-04
+A Solving for x = 4.692730651945e-04
+A Solving for x = 4.692730651945e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 4.444944194736e-04
-A Solving for x = 4.484593691236e-04
-A Solving for x = 4.484593691236e-04
-A Solving for x = 4.524243187736e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 4.734852481976e-04
+A Solving for x = 4.734852481976e-04
+A Solving for x = 4.776974312006e-04
+A Solving for x = 4.776974312006e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 4.524243187736e-04
-A Solving for x = 4.566365023478e-04
-A Solving for x = 4.566365023478e-04
-A Solving for x = 4.608486859219e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 4.822260298375e-04
+A Solving for x = 4.822260298375e-04
+A Solving for x = 4.867546284744e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 4.608486859219e-04
-A Solving for x = 4.650608694961e-04
-A Solving for x = 4.650608694961e-04
-A Solving for x = 4.692730530702e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 4.867546284744e-04
+A Solving for x = 4.912832271112e-04
+A Solving for x = 4.912832271112e-04
+A Solving for x = 4.958118257481e-04
+A Solving for x = 4.958118257481e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 4.692730530702e-04
-A Solving for x = 4.734852366444e-04
-A Solving for x = 4.734852366444e-04
-A Solving for x = 4.776974202186e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 5.003404243850e-04
+A Solving for x = 5.003404243850e-04
+A Solving for x = 5.048690230219e-04
+A Solving for x = 5.048690230219e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 4.776974202186e-04
-A Solving for x = 4.822260184659e-04
-A Solving for x = 4.822260184659e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 5.097805244503e-04
+A Solving for x = 5.097805244503e-04
+A Solving for x = 5.146920258788e-04
+A Solving for x = 5.146920258788e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 4.867546167132e-04
-A Solving for x = 4.867546167132e-04
-A Solving for x = 4.912832149606e-04
-A Solving for x = 4.912832149606e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 5.196035273072e-04
+A Solving for x = 5.196035273072e-04
+A Solving for x = 5.245150287357e-04
+A Solving for x = 5.245150287357e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 4.958118132079e-04
-A Solving for x = 4.958118132079e-04
-A Solving for x = 5.003404114553e-04
-A Solving for x = 5.003404114553e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 5.294265301641e-04
+A Solving for x = 5.294265301641e-04
+A Solving for x = 5.343380315926e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 5.048690097026e-04
-A Solving for x = 5.048690097026e-04
-A Solving for x = 5.097805117403e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 5.343380315926e-04
+A Solving for x = 5.395588336669e-04
+A Solving for x = 5.395588336669e-04
+A Solving for x = 5.447796357412e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 5.097805117403e-04
-A Solving for x = 5.146920137780e-04
-A Solving for x = 5.146920137780e-04
-A Solving for x = 5.196035158157e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 5.447796357412e-04
+A Solving for x = 5.500004378155e-04
+A Solving for x = 5.500004378155e-04
+A Solving for x = 5.552212398898e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 5.196035158157e-04
-A Solving for x = 5.245150178534e-04
-A Solving for x = 5.245150178534e-04
-A Solving for x = 5.294265198911e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 5.552212398898e-04
+A Solving for x = 5.604420419641e-04
+A Solving for x = 5.604420419641e-04
+A Solving for x = 5.656628440384e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 5.294265198911e-04
-A Solving for x = 5.343380219288e-04
-A Solving for x = 5.343380219288e-04
-A Solving for x = 5.395588237612e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 5.656628440384e-04
+A Solving for x = 5.709162817805e-04
+A Solving for x = 5.709162817805e-04
+A Solving for x = 5.761697195226e-04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 5.395588237612e-04
-A Solving for x = 5.447796255936e-04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 5.761697195226e-04
+A Solving for x = 5.814231572647e-04
+A Solving for x = 5.814231572647e-04
+A Solving for x = 5.866765950068e-04
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 5.866765950068e-04
+A Solving for x = 5.919300327489e-04
+A Solving for x = 5.919300327489e-04
+A Solving for x = 5.971834704910e-04
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 5.971834704910e-04
+A Solving for x = 6.023722606330e-04
+A Solving for x = 6.023722606330e-04
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 6.075610507749e-04
+A Solving for x = 6.075610507749e-04
+A Solving for x = 6.127498409169e-04
+A Solving for x = 6.127498409169e-04
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 6.179386310588e-04
+A Solving for x = 6.179386310588e-04
+A Solving for x = 6.231274212008e-04
+A Solving for x = 6.231274212008e-04
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 6.283162113428e-04
+A Solving for x = 6.283162113428e-04
+A Solving for x = 6.334922228709e-04
+A Solving for x = 6.334922228709e-04
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 6.386682343990e-04
+A Solving for x = 6.386682343990e-04
+A Solving for x = 6.438442459271e-04
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 6.438442459271e-04
+A Solving for x = 6.490202574552e-04
+A Solving for x = 6.490202574552e-04
+A Solving for x = 6.541962689833e-04
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 6.541962689833e-04
+A Solving for x = 6.593722805114e-04
+A Solving for x = 6.593722805114e-04
+A Solving for x = 6.645942775499e-04
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 6.645942775499e-04
+A Solving for x = 6.698162745884e-04
+A Solving for x = 6.698162745884e-04
+A Solving for x = 6.750382716269e-04
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 6.750382716269e-04
+A Solving for x = 6.802602686654e-04
+A Solving for x = 6.802602686654e-04
+A Solving for x = 6.854822657039e-04
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 6.854822657039e-04
+A Solving for x = 6.907042627425e-04
+A Solving for x = 6.907042627425e-04
+A Solving for x = 6.960127861552e-04
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 6.960127861552e-04
+A Solving for x = 7.013213095678e-04
+A Solving for x = 7.013213095678e-04
+A Solving for x = 7.066298329805e-04
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 7.066298329805e-04
+A Solving for x = 7.119383563932e-04
+A Solving for x = 7.119383563932e-04
+A Solving for x = 7.172468798059e-04
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 7.172468798059e-04
+A Solving for x = 7.225554032186e-04
+A Solving for x = 7.225554032186e-04
+A Solving for x = 7.279822211262e-04
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 7.279822211262e-04
+A Solving for x = 7.334090390338e-04
+A Solving for x = 7.334090390338e-04
+A Solving for x = 7.388358569415e-04
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 7.388358569415e-04
+A Solving for x = 7.442626748491e-04
+A Solving for x = 7.442626748491e-04
+A Solving for x = 7.496894927567e-04
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 7.496894927567e-04
+A Solving for x = 7.551163106643e-04
+A Solving for x = 7.551163106643e-04
+A Solving for x = 7.606895758156e-04
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Solving for x = 7.606895758156e-04
 </pre></div>
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_8908</span><span class="o">/</span><span class="mf">3566615667.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_49160</span><span class="o">/</span><span class="mf">3566615667.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Solve</span>
 <span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">_11specie</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">_11specie</span><span class="o">.</span><span class="n">postprocess</span><span class="p">()</span>
 
-<span class="nn">~/Documents/Hypersonic/Reactive_shock_air/Reactive_shock_air/Book/Results/Reactive_Air_shock_2T_last.py</span> in <span class="ni">solve</span><span class="nt">(self, xf)</span>
+<span class="nn">~/Università/Hypersonic/Project/Git/Reactive_shock_air/Book/Results/Reactive_Air_shock_2T_last.py</span> in <span class="ni">solve</span><span class="nt">(self, xf)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1463</span>         <span class="n">y0</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1464</span> 
 <span class="ne">-&gt; </span><span class="mi">1465</span>     <span class="n">sol</span> <span class="o">=</span> <span class="n">itg</span><span class="o">.</span><span class="n">solve_ivp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Euler_x</span><span class="p">,</span> 
 <span class="g g-Whitespace">   </span><span class="mi">1466</span>                               <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">xf</span><span class="p">],</span> <span class="n">y0</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;BDF&#39;</span><span class="p">,</span> <span class="n">t_eval</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dense_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">first_step</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mfp</span> <span class="o">/</span> <span class="mf">1e4</span><span class="p">,</span>
 <span class="g g-Whitespace">   </span><span class="mi">1467</span>                               <span class="n">events</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">vectorized</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="n">rtol</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="n">atol</span><span class="p">)</span>
 
-<span class="nn">~/.local/lib/python3.8/site-packages/scipy/integrate/_ivp/ivp.py</span> in <span class="ni">solve_ivp</span><span class="nt">(fun, t_span, y0, method, t_eval, dense_output, events, vectorized, args, **options)</span>
-<span class="g g-Whitespace">    </span><span class="mi">574</span>     <span class="n">status</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="g g-Whitespace">    </span><span class="mi">575</span>     <span class="k">while</span> <span class="n">status</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">576</span>         <span class="n">message</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">577</span> 
-<span class="g g-Whitespace">    </span><span class="mi">578</span>         <span class="k">if</span> <span class="n">solver</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="s1">&#39;finished&#39;</span><span class="p">:</span>
+<span class="nn">/usr/lib/python3/dist-packages/scipy/integrate/_ivp/ivp.py</span> in <span class="ni">solve_ivp</span><span class="nt">(fun, t_span, y0, method, t_eval, dense_output, events, vectorized, **options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">500</span>     <span class="n">status</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="g g-Whitespace">    </span><span class="mi">501</span>     <span class="k">while</span> <span class="n">status</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">502</span>         <span class="n">message</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">503</span> 
+<span class="g g-Whitespace">    </span><span class="mi">504</span>         <span class="k">if</span> <span class="n">solver</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="s1">&#39;finished&#39;</span><span class="p">:</span>
 
-<span class="nn">~/.local/lib/python3.8/site-packages/scipy/integrate/_ivp/base.py</span> in <span class="ni">step</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">179</span>         <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">180</span>             <span class="n">t</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">t</span>
-<span class="ne">--&gt; </span><span class="mi">181</span>             <span class="n">success</span><span class="p">,</span> <span class="n">message</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_step_impl</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">182</span> 
-<span class="g g-Whitespace">    </span><span class="mi">183</span>             <span class="k">if</span> <span class="ow">not</span> <span class="n">success</span><span class="p">:</span>
+<span class="nn">/usr/lib/python3/dist-packages/scipy/integrate/_ivp/base.py</span> in <span class="ni">step</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">180</span>         <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">181</span>             <span class="n">t</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">t</span>
+<span class="ne">--&gt; </span><span class="mi">182</span>             <span class="n">success</span><span class="p">,</span> <span class="n">message</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_step_impl</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">183</span> 
+<span class="g g-Whitespace">    </span><span class="mi">184</span>             <span class="k">if</span> <span class="ow">not</span> <span class="n">success</span><span class="p">:</span>
 
-<span class="nn">~/.local/lib/python3.8/site-packages/scipy/integrate/_ivp/bdf.py</span> in <span class="ni">_step_impl</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">351</span>                     <span class="n">LU</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">I</span> <span class="o">-</span> <span class="n">c</span> <span class="o">*</span> <span class="n">J</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">352</span> 
-<span class="ne">--&gt; </span><span class="mi">353</span>                 <span class="n">converged</span><span class="p">,</span> <span class="n">n_iter</span><span class="p">,</span> <span class="n">y_new</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="n">solve_bdf_system</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">354</span>                     <span class="bp">self</span><span class="o">.</span><span class="n">fun</span><span class="p">,</span> <span class="n">t_new</span><span class="p">,</span> <span class="n">y_predict</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">psi</span><span class="p">,</span> <span class="n">LU</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">solve_lu</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">355</span>                     <span class="n">scale</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">newton_tol</span><span class="p">)</span>
+<span class="nn">/usr/lib/python3/dist-packages/scipy/integrate/_ivp/bdf.py</span> in <span class="ni">_step_impl</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">352</span>                     <span class="n">LU</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">I</span> <span class="o">-</span> <span class="n">c</span> <span class="o">*</span> <span class="n">J</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">353</span> 
+<span class="ne">--&gt; </span><span class="mi">354</span>                 <span class="n">converged</span><span class="p">,</span> <span class="n">n_iter</span><span class="p">,</span> <span class="n">y_new</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="n">solve_bdf_system</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">355</span>                     <span class="bp">self</span><span class="o">.</span><span class="n">fun</span><span class="p">,</span> <span class="n">t_new</span><span class="p">,</span> <span class="n">y_predict</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">psi</span><span class="p">,</span> <span class="n">LU</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">solve_lu</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">356</span>                     <span class="n">scale</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">newton_tol</span><span class="p">)</span>
 
-<span class="nn">~/.local/lib/python3.8/site-packages/scipy/integrate/_ivp/bdf.py</span> in <span class="ni">solve_bdf_system</span><span class="nt">(fun, t_new, y_predict, c, psi, LU, solve_lu, scale, tol)</span>
-<span class="g g-Whitespace">     </span><span class="mi">41</span>     <span class="n">converged</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="g g-Whitespace">     </span><span class="mi">42</span>     <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">NEWTON_MAXITER</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">43</span>         <span class="n">f</span> <span class="o">=</span> <span class="n">fun</span><span class="p">(</span><span class="n">t_new</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">44</span>         <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">f</span><span class="p">)):</span>
-<span class="g g-Whitespace">     </span><span class="mi">45</span>             <span class="k">break</span>
+<span class="nn">/usr/lib/python3/dist-packages/scipy/integrate/_ivp/bdf.py</span> in <span class="ni">solve_bdf_system</span><span class="nt">(fun, t_new, y_predict, c, psi, LU, solve_lu, scale, tol)</span>
+<span class="g g-Whitespace">     </span><span class="mi">42</span>     <span class="n">converged</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="g g-Whitespace">     </span><span class="mi">43</span>     <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">NEWTON_MAXITER</span><span class="p">):</span>
+<span class="ne">---&gt; </span><span class="mi">44</span>         <span class="n">f</span> <span class="o">=</span> <span class="n">fun</span><span class="p">(</span><span class="n">t_new</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">45</span>         <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">f</span><span class="p">)):</span>
+<span class="g g-Whitespace">     </span><span class="mi">46</span>             <span class="k">break</span>
 
-<span class="nn">~/.local/lib/python3.8/site-packages/scipy/integrate/_ivp/base.py</span> in <span class="ni">fun</span><span class="nt">(t, y)</span>
-<span class="g g-Whitespace">    </span><span class="mi">136</span>         <span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">137</span>             <span class="bp">self</span><span class="o">.</span><span class="n">nfev</span> <span class="o">+=</span> <span class="mi">1</span>
-<span class="ne">--&gt; </span><span class="mi">138</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">fun_single</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">139</span> 
-<span class="g g-Whitespace">    </span><span class="mi">140</span>         <span class="bp">self</span><span class="o">.</span><span class="n">fun</span> <span class="o">=</span> <span class="n">fun</span>
+<span class="nn">/usr/lib/python3/dist-packages/scipy/integrate/_ivp/base.py</span> in <span class="ni">fun</span><span class="nt">(t, y)</span>
+<span class="g g-Whitespace">    </span><span class="mi">137</span>         <span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">138</span>             <span class="bp">self</span><span class="o">.</span><span class="n">nfev</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="ne">--&gt; </span><span class="mi">139</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">fun_single</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">140</span> 
+<span class="g g-Whitespace">    </span><span class="mi">141</span>         <span class="bp">self</span><span class="o">.</span><span class="n">fun</span> <span class="o">=</span> <span class="n">fun</span>
 
-<span class="nn">~/.local/lib/python3.8/site-packages/scipy/integrate/_ivp/base.py</span> in <span class="ni">fun_wrapped</span><span class="nt">(t, y)</span>
-<span class="g g-Whitespace">     </span><span class="mi">18</span> 
-<span class="g g-Whitespace">     </span><span class="mi">19</span>     <span class="k">def</span> <span class="nf">fun_wrapped</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">20</span>         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">fun</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">21</span> 
-<span class="g g-Whitespace">     </span><span class="mi">22</span>     <span class="k">return</span> <span class="n">fun_wrapped</span><span class="p">,</span> <span class="n">y0</span>
+<span class="nn">/usr/lib/python3/dist-packages/scipy/integrate/_ivp/base.py</span> in <span class="ni">fun_wrapped</span><span class="nt">(t, y)</span>
+<span class="g g-Whitespace">     </span><span class="mi">19</span> 
+<span class="g g-Whitespace">     </span><span class="mi">20</span>     <span class="k">def</span> <span class="nf">fun_wrapped</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="ne">---&gt; </span><span class="mi">21</span>         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">fun</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">22</span> 
+<span class="g g-Whitespace">     </span><span class="mi">23</span>     <span class="k">return</span> <span class="n">fun_wrapped</span><span class="p">,</span> <span class="n">y0</span>
 
-<span class="nn">~/Documents/Hypersonic/Reactive_shock_air/Reactive_shock_air/Book/Results/Reactive_Air_shock_2T_last.py</span> in <span class="ni">Euler_x</span><span class="nt">(self, x_spatial, x)</span>
+<span class="nn">~/Università/Hypersonic/Project/Git/Reactive_shock_air/Book/Results/Reactive_Air_shock_2T_last.py</span> in <span class="ni">Euler_x</span><span class="nt">(self, x_spatial, x)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1430</span>         <span class="n">x0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1431</span> 
 <span class="ne">-&gt; </span><span class="mi">1432</span>         <span class="n">x_x</span><span class="p">,</span> <span class="n">infodict</span><span class="p">,</span> <span class="n">ier</span><span class="p">,</span> <span class="n">mesg</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">fsolve</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x_x</span> <span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">Euler_system</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x_x</span><span class="p">),</span> 
 <span class="g g-Whitespace">   </span><span class="mi">1433</span>                                             <span class="n">x0</span><span class="o">=</span><span class="n">x0</span><span class="p">,</span>
 <span class="g g-Whitespace">   </span><span class="mi">1434</span>                                             <span class="n">xtol</span><span class="o">=</span><span class="n">atol</span><span class="o">*</span><span class="mf">1e-2</span><span class="p">,</span> <span class="n">full_output</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="nn">~/.local/lib/python3.8/site-packages/scipy/optimize/minpack.py</span> in <span class="ni">fsolve</span><span class="nt">(func, x0, args, fprime, full_output, col_deriv, xtol, maxfev, band, epsfcn, factor, diag)</span>
-<span class="g g-Whitespace">    </span><span class="mi">158</span>                <span class="s1">&#39;diag&#39;</span><span class="p">:</span> <span class="n">diag</span><span class="p">}</span>
-<span class="g g-Whitespace">    </span><span class="mi">159</span> 
-<span class="ne">--&gt; </span><span class="mi">160</span>     <span class="n">res</span> <span class="o">=</span> <span class="n">_root_hybr</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">jac</span><span class="o">=</span><span class="n">fprime</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">161</span>     <span class="k">if</span> <span class="n">full_output</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">162</span>         <span class="n">x</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span>
+<span class="nn">/usr/lib/python3/dist-packages/scipy/optimize/minpack.py</span> in <span class="ni">fsolve</span><span class="nt">(func, x0, args, fprime, full_output, col_deriv, xtol, maxfev, band, epsfcn, factor, diag)</span>
+<span class="g g-Whitespace">    </span><span class="mi">145</span>                <span class="s1">&#39;diag&#39;</span><span class="p">:</span> <span class="n">diag</span><span class="p">}</span>
+<span class="g g-Whitespace">    </span><span class="mi">146</span> 
+<span class="ne">--&gt; </span><span class="mi">147</span>     <span class="n">res</span> <span class="o">=</span> <span class="n">_root_hybr</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">jac</span><span class="o">=</span><span class="n">fprime</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">148</span>     <span class="k">if</span> <span class="n">full_output</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">149</span>         <span class="n">x</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span>
 
-<span class="nn">~/.local/lib/python3.8/site-packages/scipy/optimize/minpack.py</span> in <span class="ni">_root_hybr</span><span class="nt">(func, x0, args, jac, col_deriv, xtol, maxfev, band, eps, factor, diag, **unknown_options)</span>
-<span class="g g-Whitespace">    </span><span class="mi">235</span>         <span class="k">if</span> <span class="n">maxfev</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">236</span>             <span class="n">maxfev</span> <span class="o">=</span> <span class="mi">200</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">237</span>         <span class="n">retval</span> <span class="o">=</span> <span class="n">_minpack</span><span class="o">.</span><span class="n">_hybrd</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">xtol</span><span class="p">,</span> <span class="n">maxfev</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">238</span>                                  <span class="n">ml</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">epsfcn</span><span class="p">,</span> <span class="n">factor</span><span class="p">,</span> <span class="n">diag</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">239</span>     <span class="k">else</span><span class="p">:</span>
+<span class="nn">/usr/lib/python3/dist-packages/scipy/optimize/minpack.py</span> in <span class="ni">_root_hybr</span><span class="nt">(func, x0, args, jac, col_deriv, xtol, maxfev, band, eps, factor, diag, **unknown_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">222</span>         <span class="k">if</span> <span class="n">maxfev</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">223</span>             <span class="n">maxfev</span> <span class="o">=</span> <span class="mi">200</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">224</span>         <span class="n">retval</span> <span class="o">=</span> <span class="n">_minpack</span><span class="o">.</span><span class="n">_hybrd</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">xtol</span><span class="p">,</span> <span class="n">maxfev</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">225</span>                                  <span class="n">ml</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">epsfcn</span><span class="p">,</span> <span class="n">factor</span><span class="p">,</span> <span class="n">diag</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">226</span>     <span class="k">else</span><span class="p">:</span>
 
-<span class="nn">~/Documents/Hypersonic/Reactive_shock_air/Reactive_shock_air/Book/Results/Reactive_Air_shock_2T_last.py</span> in <span class="ni">&lt;lambda&gt;</span><span class="nt">(x_x)</span>
+<span class="nn">~/Università/Hypersonic/Project/Git/Reactive_shock_air/Book/Results/Reactive_Air_shock_2T_last.py</span> in <span class="ni">&lt;lambda&gt;</span><span class="nt">(x_x)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1430</span>         <span class="n">x0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1431</span> 
 <span class="ne">-&gt; </span><span class="mi">1432</span>         <span class="n">x_x</span><span class="p">,</span> <span class="n">infodict</span><span class="p">,</span> <span class="n">ier</span><span class="p">,</span> <span class="n">mesg</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">fsolve</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x_x</span> <span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">Euler_system</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x_x</span><span class="p">),</span> 
 <span class="g g-Whitespace">   </span><span class="mi">1433</span>                                             <span class="n">x0</span><span class="o">=</span><span class="n">x0</span><span class="p">,</span>
 <span class="g g-Whitespace">   </span><span class="mi">1434</span>                                             <span class="n">xtol</span><span class="o">=</span><span class="n">atol</span><span class="o">*</span><span class="mf">1e-2</span><span class="p">,</span> <span class="n">full_output</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="nn">~/Documents/Hypersonic/Reactive_shock_air/Reactive_shock_air/Book/Results/Reactive_Air_shock_2T_last.py</span> in <span class="ni">Euler_system</span><span class="nt">(self, x, x_x)</span>
+<span class="nn">~/Università/Hypersonic/Project/Git/Reactive_shock_air/Book/Results/Reactive_Air_shock_2T_last.py</span> in <span class="ni">Euler_system</span><span class="nt">(self, x, x_x)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1353</span>         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;First term of the derivative p_x: &#39;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">rho_x</span> <span class="o">*</span> <span class="n">Y</span>  <span class="o">*</span> <span class="n">Ru</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">specie</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">mmol</span> <span class="o">*</span> <span class="n">T</span><span class="p">))</span>
 <span class="g g-Whitespace">   </span><span class="mi">1354</span> 
 <span class="ne">-&gt; </span><span class="mi">1355</span>     <span class="n">S</span><span class="p">,</span> <span class="n">Se</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">compute_Sy</span><span class="p">(</span><span class="n">rho</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1356</span>     <span class="c1"># print(&#39;S NOp = %.12e&#39; %S[-5])</span>
 <span class="g g-Whitespace">   </span><span class="mi">1357</span>     <span class="c1"># print(&#39;S em = %.12e&#39; %S[-1])</span>
 
-<span class="nn">~/Documents/Hypersonic/Reactive_shock_air/Reactive_shock_air/Book/Results/Reactive_Air_shock_2T_last.py</span> in <span class="ni">compute_Sy</span><span class="nt">(self, rho, T, Y)</span>
+<span class="nn">~/Università/Hypersonic/Project/Git/Reactive_shock_air/Book/Results/Reactive_Air_shock_2T_last.py</span> in <span class="ni">compute_Sy</span><span class="nt">(self, rho, T, Y)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1052</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1053</span>                 <span class="c1"># Compute the reaction rate</span>
+<span class="ne">-&gt; </span><span class="mi">1054</span>                 <span class="n">R_s</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">kf</span><span class="p">(</span><span class="n">T</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">chi_r_l</span> <span class="o">**</span> <span class="n">obj</span><span class="o">.</span><span class="n">stoichr</span><span class="p">)</span> <span class="o">-</span> <span class="n">obj</span><span class="o">.</span><span class="n">kb</span><span class="p">(</span><span class="n">T</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">chi_p_l</span> <span class="o">**</span> <span class="n">obj</span><span class="o">.</span><span class="n">stoichp</span><span class="p">)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1055</span>                 <span class="c1">#breakpoint()</span>
 <span class="g g-Whitespace">   </span><span class="mi">1056</span>                 <span class="c1"># Update the source terms for the species equation</span>
-<span class="ne">-&gt; </span><span class="mi">1057</span>                 <span class="n">S</span> <span class="o">+=</span> <span class="n">mmol</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">stoichp</span><span class="p">,</span> <span class="n">omegap</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span> <span class="n">obj</span><span class="o">.</span><span class="n">stoichr</span><span class="p">,</span> <span class="n">omegar</span><span class="p">))</span> <span class="o">*</span> <span class="n">R_s</span>
-<span class="g g-Whitespace">   </span><span class="mi">1058</span>                 <span class="c1">#Update the energy source term</span>
-<span class="g g-Whitespace">   </span><span class="mi">1059</span>                 <span class="n">Se</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">e_mol</span> <span class="o">*</span> <span class="n">R_s</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
@@ -1961,7 +2082,7 @@ Solving for x = 1.000000000000e+00
 </div>
 </div>
 <p>The above mentioned fact becomes evident from the comparison of the two models, where not only the molar fraction of the ionized species are missing, but also the flow variables, such as temperature, density and velocity, tend to different equilibrium values.</p>
-</div>
+<span class="target" id="id7"></span></div>
 </div>
 </div>
 
@@ -1997,6 +2118,13 @@ Solving for x = 1.000000000000e+00
             <p class="prev-next-title">Problem class definition</p>
         </div>
     </a>
+    <a class='right-next' id="next-link" href="Bib.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">&lt;no title&gt;</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             
         </div>
@@ -2004,9 +2132,9 @@ Solving for x = 1.000000000000e+00
     <footer class="footer">
   <p>
     
-      By Venti Edoardo, Zucchelli Umberto<br/>
+      Di Venti Edoardo, Zucchelli Umberto<br/>
     
-        &copy; Copyright 2021.<br/>
+        &copy; Diritto d'autore 2021.<br/>
   </p>
 </footer>
 </main>

@@ -139,13 +139,13 @@ fig.tight_layout()
 
 # The validation plots show that the flux of the conservative variables are constant up to a small tolerance for both mixture models.
 
-# In[8]:
+# In[7]:
 
 
 _11specie.validate()
 
 
-# In[9]:
+# In[8]:
 
 
 _11specie_2T.validate_2T()
@@ -155,7 +155,7 @@ _11specie_2T.validate_2T()
 
 # The same problem is studied by 7 species model.
 
-# In[37]:
+# In[9]:
 
 
 _7specie_2T = problem()
@@ -183,7 +183,7 @@ _7specie_2T.rho0   = _11specie.rho0
 _7specie_2T.u0     = _11specie.u0
 
 
-# In[38]:
+# In[10]:
 
 
 _7specie_2T.solve_2T()
@@ -192,7 +192,7 @@ _7specie_2T.postprocess()
 
 # #### Plot
 
-# In[39]:
+# In[11]:
 
 
 xmax = 5e-3
@@ -221,7 +221,7 @@ fig.tight_layout()
 
 # ### 11 species two-temperature mixture model
 
-# In[26]:
+# In[12]:
 
 
 low_altitude = cp.deepcopy(_11specie)
@@ -235,7 +235,7 @@ low_altitude.solve()
 low_altitude.postprocess()
 
 
-# In[14]:
+# In[13]:
 
 
 xmax = 5e-3
@@ -258,7 +258,7 @@ fig.tight_layout()
 
 # While the values of velocity and temperature of the post-shock flow are very similar, their evolution as well as density values are noticeably different. The free mean molecular path is smaller, as well as the average collision time, which leads to a shorter relaxation region. To allow a more appropriate comparison, results are compared on a spatial coordiante scaled on mean free paths.
 
-# In[15]:
+# In[14]:
 
 
 xmax = 4.5e-3
@@ -281,7 +281,7 @@ fig.tight_layout()
 
 # The upper plots show the temperature evolution in physical space (meters). The lower plots instead show the temperature evolution in terms on number of reference mean free paths. Despite the different initial conditions, the extension of the relaxation region measured in terms of mean free paths is approximately the same.
 
-# In[16]:
+# In[15]:
 
 
 fig, ax = plt.subplots(2,2, sharey = True)
@@ -307,7 +307,7 @@ fig.tight_layout()
 
 # ### 11 species two-temperature mixture model
 
-# In[30]:
+# In[16]:
 
 
 high_altitude = cp.deepcopy(_11specie)
@@ -321,7 +321,7 @@ high_altitude.solve()
 high_altitude.postprocess()
 
 
-# In[32]:
+# In[17]:
 
 
 xmax = 1e-1
@@ -342,7 +342,7 @@ _11specie.plot_u(ax[3], xmax = xmax, ls = '--')
 fig.tight_layout()
 
 
-# In[33]:
+# In[18]:
 
 
 high_altitude_2T = cp.deepcopy(high_altitude)
@@ -351,7 +351,7 @@ high_altitude_2T.solve_2T()
 high_altitude_2T.postprocess()
 
 
-# In[34]:
+# In[19]:
 
 
 xmax = 1e-1
@@ -374,7 +374,7 @@ fig.tight_layout()
 
 # As expected the relaxation region is longer, more physical space (meters) is required to achieve equilibrium.
 
-# In[19]:
+# In[20]:
 
 
 xmax = 4.5e-2
@@ -398,7 +398,7 @@ fig.tight_layout()
 
 # ### 11 species two-temperature mixture model
 
-# In[20]:
+# In[21]:
 
 
 _11specie_Q = cp.deepcopy(_11specie)
@@ -411,7 +411,7 @@ _11specie_Q.solve_2T()
 _11specie_Q.postprocess()
 
 
-# In[21]:
+# In[22]:
 
 
 xmax = 1.5e-3
@@ -431,7 +431,7 @@ fig.tight_layout()
 
 # ### 7 species two-temperature mixture model
 
-# In[22]:
+# In[23]:
 
 
 _7specie_Q = cp.deepcopy(_7specie_2T)
@@ -443,7 +443,7 @@ _7specie_Q.solve_2T()
 _7specie_Q.postprocess()
 
 
-# In[23]:
+# In[24]:
 
 
 xmax = 1e-3
@@ -461,7 +461,7 @@ fig.tight_layout()
 
 # While the 7 specie mixture model at low temeperature is reliable, at high temperature, when molar fractions of ionized molecules become relevant, the description of mixture is incomplete.  
 
-# In[24]:
+# In[25]:
 
 
 xmax = 1e-3
@@ -483,3 +483,12 @@ fig.tight_layout()
 
 
 # The above mentioned fact becomes evident from the comparison of the two models, where not only the molar fraction of the ionized species are missing, but also the flow variables, such as temperature, density and velocity, tend to different equilibrium values. 
+
+# In[ ]:
+
+
+
+
+
+# ```{bibliography}
+# ```
